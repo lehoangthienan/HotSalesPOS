@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "815272879399",
+    "firebase_url": "https://hotsalesmanager-fef89.firebaseio.com",
+    "project_id": "hotsalesmanager-fef89",
+    "storage_bucket": "hotsalesmanager-fef89.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:815272879399:android:75196d250142f85d",
+        "android_client_info": {
+          "package_name": "com.uit.daniel.hotsalesmanager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "815272879399-hqvecikm3tdivas3ovcvk75na8a31q5h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACMb2l2S-YhnnCSht8cqI_8E-RsRsdXNE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

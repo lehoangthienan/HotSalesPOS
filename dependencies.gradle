@@ -1,0 +1,69 @@
+
+ext {
+    versionMajor = 0
+    versionMinor = 0
+    versionPatch = 0
+    versionBuild = 1
+
+    androidApplicationId = 'com.dwarvesf.findfriends'
+    androidVersionCode = versionMajor * 1000000 + versionMinor * 10000 + versionPatch * 100 + versionBuild
+    androidVersionName = "${versionMajor}.${versionMinor}.${versionPatch}"
+    androidCompileSdkVersion = 28
+    androidTargetSdkVersion = 28
+    androidMinSdkVersion = 21
+    kotlinVersion = "1.2.51"
+
+    androidSupportVertion = '28.0.0'
+    retrofitVersion = '2.4.0'
+    rxkotlinVersion= '2.2.0'
+    rxjavaVersion= '2.1.12'
+    rxandroidVersion= '2.0.2'
+    rxbindingVersion= '2.1.1'
+
+    extensionsVersion= '1.1.1'
+    interceptorVersion= '3.10.0'
+
+    glideVersion= '4.8.0'
+    jodaTimeVersion= '2.10'
+
+    ankoVersion= '0.10.5'
+    placeServicesVersion= '16.0.0'
+
+    roomVersion = '1.1.1'
+    shimmerVersion = 'v1.3'
+
+    firebaseAuthVersion = '16.0.4'
+    firebaseMessagingVersion = '17.3.3'
+    firebaseInviteVersion = '16.0.4'
+
+    googleServicesVertion = '3.2.1'
+
+    facebookLoginVertion = '4.35.0'
+
+    showcaseviewVertion = '5.4.3'
+
+    keyboardVisibilityEventVertion = '2.1.0'
+
+    circleimageviewVertion = '2.2.0'
+
+    glideVertion = '4.7.1'
+
+    kotlinxCoroutinesVertion = '0.19.3'
+    tutorsKotlinVertion = '1.0.6'
+    constraintLayoutVertion = '1.1.2'
+
+    tutoshowcaseVertion = '1.0.1'
+    walkerVertion = '1.0.0'
+    materialIntroViewVertion = '1.6.0'
+
+    toggleVertion = '1.0.0'
+    svgVertion = '2.0.6'
+
+    rxpermissionsVertion = '0.10.2'
+
+    lottieVertion = '2.5.5'
+
+    espressoVertion = '3.0.2'
+
+    androidTestVertion = '1.0.2'
+}

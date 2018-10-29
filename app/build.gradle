@@ -1,0 +1,158 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.uit.daniel.hotsalesmanager"
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
+    testImplementation 'junit:junit:4.12'
+
+    implementation "com.android.support:appcompat-v7:$androidSupportVertion"
+    implementation "com.android.support:design:$androidSupportVertion"
+
+    //test lib
+    implementation "com.android.support:support-v4:$androidSupportVertion"
+    implementation "com.google.firebase:firebase-auth:$firebaseAuthVersion"
+    implementation "com.google.firebase:firebase-messaging:$firebaseMessagingVersion"
+    implementation "com.google.firebase:firebase-invites:$firebaseInviteVersion"
+
+
+    testImplementation "com.nhaarman:mockito-kotlin-kt1.1:1.5.0"
+    testImplementation 'org.mockito:mockito-core:2.19.0'
+    testImplementation 'org.assertj:assertj-core:3.8.0'
+    testImplementation 'org.mockito:mockito-inline:2.19.0'
+    androidTestImplementation 'org.mockito:mockito-android:2.8.47'
+
+    androidTestImplementation "com.android.support.test:runner:$androidTestVertion"
+    androidTestImplementation "com.android.support.test:rules:$androidTestVertion"
+    androidTestImplementation "com.android.support.test.espresso:espresso-intents:$espressoVertion"
+    androidTestImplementation "com.android.support:support-annotations:$androidSupportVertion"
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:$espressoVertion"
+
+    androidTestImplementation "com.android.support.test.espresso:espresso-contrib:$espressoVertion"
+    implementation "com.android.support.test.espresso:espresso-idling-resource:$espressoVertion"
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
+
+    //lifecycle
+    implementation "android.arch.lifecycle:extensions:$extensionsVersion"
+    implementation "android.arch.lifecycle:common-java8:$extensionsVersion"
+
+    //reactive programming
+    implementation "io.reactivex.rxjava2:rxkotlin:$rxkotlinVersion"
+    implementation "io.reactivex.rxjava2:rxjava:$rxjavaVersion"
+    implementation "io.reactivex.rxjava2:rxandroid:$rxandroidVersion"
+    implementation "com.jakewharton.rxbinding2:rxbinding:$rxbindingVersion"
+
+    //call restful
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$interceptorVersion"
+
+    //load image
+    implementation "com.github.bumptech.glide:glide:$glideVersion"
+    annotationProcessor "com.github.bumptech.glide:compiler:$glideVersion"
+
+    //time library
+    implementation "joda-time:joda-time:$jodaTimeVersion"
+
+    //common for use intent, dialog, toast,v.v.... simply
+    implementation "org.jetbrains.anko:anko-appcompat-v7-commons:$ankoVersion"
+
+    //map
+    implementation "com.google.android.gms:play-services-maps:$placeServicesVersion"
+    implementation "com.google.android.gms:play-services-places:$placeServicesVersion"
+    implementation "com.google.android.gms:play-services-location:$placeServicesVersion"
+    implementation 'com.google.maps.android:android-maps-utils:0.5'
+
+    //local database
+    implementation "android.arch.persistence.room:runtime:$roomVersion"
+    kapt "android.arch.persistence.room:compiler:$roomVersion"
+
+    //custom recycler view with shimmer views
+    implementation "com.github.sharish:ShimmerRecyclerView:$shimmerVersion"
+
+    implementation "com.airbnb.android:lottie:$lottieVertion"
+
+    //drawable circle image
+    implementation "de.hdodenhof:circleimageview:$circleimageviewVertion"
+
+    //login with facebookk
+    //noinspection GradleDependency
+    implementation "com.facebook.android:facebook-login:$facebookLoginVertion"
+
+    implementation "com.android.support.constraint:constraint-layout:$constraintLayoutVertion"
+
+    //PageIndicatorView
+    implementation 'com.romandanylyk:pageindicatorview:1.0.1'
+    implementation 'com.romandanylyk:pageindicatorview:1.0.1@aar'
+    implementation "com.android.support:support-annotations:$androidSupportVertion"
+    //noinspection GradleDependency
+    implementation "com.android.support:support-compat:$androidSupportVertion"
+    //noinspection GradleDependency
+    implementation "com.android.support:support-core-ui:$androidSupportVertion"
+
+    //RxPermissions
+    implementation "com.github.tbruyelle:rxpermissions:$rxpermissionsVertion"
+
+    //KeyboardVisibilityEvent
+    implementation "net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:$keyboardVisibilityEventVertion"
+
+    // tutorial caseview
+    implementation "com.github.florent37:tutoshowcase:$tutoshowcaseVertion"
+    implementation "com.github.faruktoptas:FancyShowCaseView:$tutoshowcaseVertion"
+    implementation "com.github.iammert:MaterialIntroView:$materialIntroViewVertion"
+    implementation 'com.abanoub.androidlib:walkthrough:1.0.3:release@aar'
+    implementation "com.goka:walker:$walkerVertion"
+    implementation "com.github.popalay:tutors:$tutorsKotlinVertion"
+    implementation "com.github.popalay:tutors-kotlin:$tutorsKotlinVertion"
+    // thread
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinxCoroutinesVertion"
+
+    implementation "com.github.japgolly.android:svg-android:$svgVertion"
+
+    implementation "com.github.angads25:toggle:$toggleVertion"
+
+    implementation 'com.github.pulse-id:CustomAutoCompleteLocation:v1.0'
+    implementation 'com.jpardogo.materialtabstrip:library:1.1.1'
+    implementation "com.daimajia.swipelayout:library:1.2.0@aar"
+    implementation 'io.branch.sdk.android:library:2.19.5'
+
+    implementation 'org.greenrobot:eventbus:3.1.1'
+    implementation 'jp.wasabeef:recyclerview-animators:2.3.0'
+}
+
+
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
