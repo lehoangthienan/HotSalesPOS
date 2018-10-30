@@ -1,5 +1,6 @@
 package com.uit.daniel.hotsalesmanager.view.signin.signinwithfacebook
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.ActionBar
 import android.support.v7.app.AppCompatActivity
@@ -17,5 +18,11 @@ class SignInFacebookActivity : AppCompatActivity() {
     private fun initView() {
         val actionBar: ActionBar? = supportActionBar
         actionBar?.hide()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        val fragment = fragmentManager.findFragmentById(R.id.fragment2)
+        fragment.onActivityResult(requestCode, resultCode, data)
     }
 }

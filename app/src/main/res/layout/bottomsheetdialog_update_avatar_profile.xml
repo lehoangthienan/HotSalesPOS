@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="103dp"
+              android:background="@drawable/drawable_dialog"
+              android:orientation="vertical">
+
+    <RelativeLayout
+            android:id="@+id/takePhotoFromCamera"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:background="?selectableItemBackgroundBorderless">
+
+        <ImageView
+                android:id="@+id/updateCameraAvatar"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="16dp"
+                android:src="@drawable/ic_photo_camera_update_avatar"
+                tools:ignore="ContentDescription" />
+
+        <TextView
+                android:id="@+id/txtCamera"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="14dp"
+                android:layout_toEndOf="@id/updateCameraAvatar"
+                android:fontFamily="@font/lato_regular"
+                android:text="@string/action_camera"
+                android:textColor="@color/colorText"
+                android:textSize="14sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+            android:id="@+id/takePhotoFromLibrary"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:background="?selectableItemBackgroundBorderless">
+
+        <ImageView
+                android:id="@+id/updateLibraryAvatar"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="16dp"
+                android:src="@drawable/ic_photo_library_update_avatar"
+                tools:ignore="ContentDescription" />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="14dp"
+                android:layout_toEndOf="@id/updateLibraryAvatar"
+                android:fontFamily="@font/lato_regular"
+                android:text="@string/action_choose_library_image"
+                android:textColor="@color/colorText"
+                android:textSize="14sp" />
+    </RelativeLayout>
+
+
+</LinearLayout>

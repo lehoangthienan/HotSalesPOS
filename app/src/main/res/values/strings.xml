@@ -10,4 +10,25 @@
         https://banner2.kisspng.com/20180406/xxw/kisspng-user-profile-facebook-clip-art-passport-5ac82fb9a13376.6053831915230688576603.jpg
     </string>
 
+    <string name="action_back_update_user_profile"></string>
+    <string name="title_report_map_update_user_profile">Preview your profile and update info</string>
+    <string name="action_check_finish_update_user_profile"></string>
+    <string name="ic_phone_number_update_user_profile"></string>
+    <string name="ic_name_update_user_profile"></string>
+    <string name="title_name_update_user_profile">Name</string>
+    <string name="title_phone_number_update_user_profile">Phone Number</string>
+    <string name="content_invite_friend_map_update_user_profile">Enter your phone number to keep your account secure and add friends from your Contact list</string>
+    <string name="title_logout_update_user_profile">Sign Out</string>
+    <string name="ic_logout_update_user_profile"></string>
+    <string name="content_dialog_permission_storage">Before you continue, We needs access to your storage. Turn on Storage Services in your Settings.</string>
+    <string name="action_camera">Take Photo</string>
+    <string name="action_choose_library_image">Choose from Library</string>
+    <string name="authentication">Authentication</string>
+    <string name="title_verify_your_phone">Verify your phone number</string>
+    <string name="action_back_confirm_phone"></string>
+    <string name="action_turn_on_permission_location">TURN ON</string>
+    <string name="content_content_support_confirm_phone">We sent you a verification code to your phone, please enter it below.</string>
+    <string name="title_not_receive_code">Not receive your code?</string>
+    <string name="action_resend_confirm_phone">Resend code</string>
+
 </resources>

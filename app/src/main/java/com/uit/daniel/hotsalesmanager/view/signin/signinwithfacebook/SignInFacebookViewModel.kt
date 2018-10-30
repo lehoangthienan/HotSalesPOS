@@ -98,6 +98,7 @@ class SignInFacebookViewModel(context: Context) : SignInFacebookViewModelInputs,
                             }
                         }
                     }
+                    checkLogInFinishPublishSubject.onNext(true)
                     val parameters = Bundle()
                     parameters.putString("fields", "id,name,email,location,birthday")
                     request.parameters = parameters
@@ -105,12 +106,10 @@ class SignInFacebookViewModel(context: Context) : SignInFacebookViewModelInputs,
                 }
 
                 override fun onCancel() {
-                    Log.d("Anle", "onCancel")
                 }
 
                 override fun onError(exception: FacebookException) {
                     Toast.makeText(context, exception.message, Toast.LENGTH_LONG).show()
-                    Log.d("Anle", "onError")
                 }
             })
     }

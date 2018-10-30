@@ -7,6 +7,7 @@ import com.uit.daniel.hotsalesmanager.R
 
 class UpdatePhoneNumberActivity : AppCompatActivity() {
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_update_phone_number)

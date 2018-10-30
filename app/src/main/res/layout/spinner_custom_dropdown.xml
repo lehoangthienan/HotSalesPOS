@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:background="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+    <ImageView
+            android:id="@+id/imgFlagCountryDropDown"
+            android:layout_width="20dp"
+            android:layout_height="19dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="31dp"
+            android:layout_marginLeft="20dp" />
+
+    <TextView
+            android:id="@+id/tvNameCountryDropDown"
+            android:layout_width="wrap_content"
+            android:layout_height="19dp"
+            android:layout_marginBottom="31dp"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/imgFlagCountryDropDown"
+            android:fontFamily="@font/lato_regular"
+            android:textColor="@color/colorText"
+            android:textSize="14sp" />
+
+    <TextView
+            android:id="@+id/tvCodeCountryDropDown"
+            android:layout_width="wrap_content"
+            android:layout_height="19dp"
+            android:layout_marginBottom="31dp"
+            android:layout_marginLeft="4dp"
+            android:layout_toRightOf="@id/tvNameCountryDropDown"
+            android:fontFamily="@font/lato_regular"
+            android:textColor="@color/colorText"
+            android:textSize="14sp" />
+
+</RelativeLayout>

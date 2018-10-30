@@ -45,6 +45,10 @@ class UserManagerUtil constructor(var context: Context) {
         editor.apply()
     }
 
+    fun getCheck(): Boolean {
+        return sharedPrefsExtraUserInformation.getBoolean(Constant.CHECK_SIGNINFB, true)
+    }
+
     fun getFacebookID(): String {
         return sharedPrefsExtraUserInformation.getString(Constant.FACEBOOK_ID, "")
     }
