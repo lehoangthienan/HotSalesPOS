@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        android:orientation="vertical"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.signin.updateuserphonenumber.UpdatePhoneNumberActivity">
+
+    <fragment
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:name="com.uit.daniel.hotsalesmanager.view.signin.updateuserphonenumber.UpdatePhoneNumberFragment"
+            tools:layout_editor_absoluteY="288dp" tools:layout_editor_absoluteX="137dp" android:id="@+id/fragment4"/>
+</LinearLayout>

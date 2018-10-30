@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
+                                             xmlns:tools="http://schemas.android.com/tools"
+                                             android:layout_width="match_parent"
+                                             android:layout_height="match_parent"
+                                             android:background="@color/white">
+
+    <TextView
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="56dp"
+            android:fontFamily="@font/lato_regular"
+            android:text="Hot Sales For You"
+            android:textColor="@color/colorText"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                  android:id="@+id/imUserAvatar"
+                                                  android:layout_width="80dp"
+                                                  android:layout_height="80dp"
+                                                  android:layout_marginEnd="8dp"
+                                                  android:layout_marginStart="8dp"
+                                                  android:layout_marginTop="40dp"
+                                                  android:src="@drawable/ic_sales2"
+                                                  app:layout_constraintEnd_toEndOf="parent"
+                                                  app:layout_constraintStart_toStartOf="parent"
+                                                  app:layout_constraintTop_toBottomOf="@+id/textView12"/>
+
+    <TextView
+            android:id="@+id/tvSignin"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:fontFamily="@font/lato_regular"
+            android:text="Sign In With Facebook"
+            android:textColor="@color/colorText"
+            android:textSize="14sp"
+            tools:ignore="KeyboardInaccessibleWidget"
+            android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="56dp"
+            app:layout_constraintTop_toBottomOf="@+id/imUserAvatar"/>
+
+    <TextView
+            android:id="@+id/tv2"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:fontFamily="@font/lato_regular"
+            android:text="Terms &amp; Privacy"
+            android:textColor="@color/colorText"
+            android:textSize="14sp"
+            tools:ignore="HardcodedText,KeyboardInaccessibleWidget"
+            android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="112dp"
+            app:layout_constraintTop_toBottomOf="@+id/imUserAvatar"/>
+
+    <TextView
+            android:id="@+id/tv1"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:fontFamily="@font/lato_regular"
+            android:text="Report an Issue"
+            android:textColor="@color/colorText"
+            android:textSize="14sp"
+            tools:ignore="KeyboardInaccessibleWidget"
+            android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="176dp"
+            app:layout_constraintTop_toBottomOf="@+id/imUserAvatar"/>
+
+    <TextView
+            android:id="@+id/tvExit"
+            android:layout_width="150dp"
+            android:layout_height="19dp"
+            android:clickable="true"
+            android:fontFamily="@font/lato_regular"
+            android:text="Exit application"
+            android:textColor="@color/colorText"
+            android:textSize="14sp"
+            tools:ignore="KeyboardInaccessibleWidget"
+            android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="240dp"
+            app:layout_constraintTop_toBottomOf="@+id/imUserAvatar"/>
+
+    <TextView
+            android:id="@+id/textView23"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:fontFamily="@font/material"
+            android:text=""
+            android:textColor="@color/colorText"
+            android:textSize="20sp" android:layout_marginTop="112dp"
+            app:layout_constraintTop_toBottomOf="@+id/imUserAvatar" android:layout_marginStart="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginEnd="8dp" app:layout_constraintEnd_toStartOf="@+id/tv2"
+            app:layout_constraintHorizontal_bias="0.986"/>
+
+    <TextView
+            android:id="@+id/textView24"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:fontFamily="@font/fontawesome"
+            android:text=""
+            android:textColor="@color/colorText"
+            android:textSize="20sp" android:layout_marginTop="56dp"
+            app:layout_constraintTop_toBottomOf="@+id/imUserAvatar" android:layout_marginStart="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginEnd="8dp" app:layout_constraintEnd_toStartOf="@+id/tvSignin"
+            app:layout_constraintHorizontal_bias="0.986"/>
+
+    <TextView
+            android:id="@+id/textView25"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:fontFamily="@font/material"
+            android:text=""
+            android:textColor="@color/colorText"
+            android:textSize="20sp" android:layout_marginTop="240dp"
+            app:layout_constraintTop_toBottomOf="@+id/imUserAvatar" android:layout_marginStart="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginEnd="8dp" app:layout_constraintEnd_toStartOf="@+id/tvExit"
+            app:layout_constraintHorizontal_bias="1.0"/>
+
+    <TextView
+            android:id="@+id/textView22"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:fontFamily="@font/material"
+            android:text=""
+            android:textColor="@color/colorText"
+            android:textSize="20sp" android:layout_marginStart="60dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="176dp" app:layout_constraintTop_toBottomOf="@+id/imUserAvatar"
+            android:layout_marginEnd="8dp" app:layout_constraintEnd_toStartOf="@+id/tv1"
+            app:layout_constraintHorizontal_bias="0.965"/>
+
+</android.support.constraint.ConstraintLayout>

@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">HotSalesManager</string>
+
+    <string name="facebook_app_id">479938699179203</string>
+    <string name="fb_login_protocol_scheme">fb479938699179203</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="url_image_user">
+        https://banner2.kisspng.com/20180406/xxw/kisspng-user-profile-facebook-clip-art-passport-5ac82fb9a13376.6053831915230688576603.jpg
+    </string>
+
 </resources>

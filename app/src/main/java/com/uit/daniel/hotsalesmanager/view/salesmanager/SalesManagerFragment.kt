@@ -1,13 +1,22 @@
 package com.uit.daniel.hotsalesmanager.view.salesmanager
 
 import android.app.Fragment
+import android.content.Intent
+import android.graphics.PorterDuff
 import android.os.Bundle
+import android.support.v4.view.GravityCompat
+import android.support.v7.app.ActionBarDrawerToggle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.uit.daniel.hotsalesmanager.R
+import com.uit.daniel.hotsalesmanager.view.signin.signinwithfacebook.SignInFacebookActivity
+import kotlinx.android.synthetic.main.fragment_sales_manager.*
+import kotlinx.android.synthetic.main.navigation_sales_manager.*
 
 class SalesManagerFragment : Fragment() {
+
+    private lateinit var drawerToggle: ActionBarDrawerToggle
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_sales_manager, container, false)
@@ -16,5 +25,36 @@ class SalesManagerFragment : Fragment() {
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        addControls()
+        addEvents()
+    }
+
+    private fun addEvents() {
+        tvMenu.setOnClickListener {
+            activity_main_drawer.openDrawer(GravityCompat.START)
+        }
+        tvExit.setOnClickListener {
+            activity.finish()
+        }
+        tvSignin.setOnClickListener {
+            startLogInWithFacebookActivity()
+        }
+    }
+
+    private fun startLogInWithFacebookActivity() {
+        val intent = Intent(activity, SignInFacebookActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun addControls() {
+        drawerToggle = ActionBarDrawerToggle(
+            activity,
+            activity_main_drawer,
+            R.string.navigation_drawer_open,
+            R.string.navigation_drawer_close
+        )
+        activity_main_drawer.addDrawerListener(drawerToggle)
+
+        nvvSalesManager.background.setColorFilter(0x800000, PorterDuff.Mode.MULTIPLY)
     }
 }
