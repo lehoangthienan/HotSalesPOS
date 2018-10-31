@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="105dp">
+
+    <android.support.v7.widget.CardView
+            android:id="@+id/cvItemGroupOfList"
+            android:layout_width="match_parent"
+            android:layout_height="96dp"
+            android:layout_marginBottom="8dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground">
+
+        <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="96dp">
+
+            <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp" app:srcCompat="@drawable/ic_sales2"
+                    android:id="@+id/ivProduct" android:layout_marginTop="8dp"
+                    app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="8dp" android:layout_marginBottom="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <ImageView
+                    android:layout_width="36dp"
+                    android:layout_height="34dp" app:srcCompat="@drawable/ic_sales2"
+                    android:id="@+id/imageView5"
+                    android:layout_marginBottom="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"/>
+            <TextView
+                    android:id="@+id/tvName"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:text="AAA"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textSize="14sp"
+                    android:textColor="@color/colorText"
+                    android:fontFamily="@font/lato_regular"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="95dp"/>
+
+            <TextView
+                    android:id="@+id/tvPrice"
+                    android:layout_width="100dp"
+                    android:layout_height="20dp"
+                    android:text="AAA"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textSize="16sp"
+                    android:textColor="@color/colorAccent"
+                    android:fontFamily="@font/lato_regular"
+                    android:layout_marginTop="32dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="95dp"/>
+
+            <TextView
+                    android:id="@+id/tvPriceDiscount"
+                    android:layout_width="50dp"
+                    android:layout_height="20dp"
+                    android:text="400,000"
+                    android:background="@drawable/dashed"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textSize="12sp"
+                    android:textColor="@color/gray"
+                    android:fontFamily="@font/lato_regular"
+                    android:layout_marginTop="55dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="95dp"/>
+
+            <TextView
+                    android:id="@+id/tvPercentDiscount"
+                    android:layout_width="28dp"
+                    android:layout_height="20dp"
+                    android:text="70%"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textSize="12sp"
+                    android:textColor="@color/colorText"
+                    android:fontFamily="@font/lato_regular"
+                    android:layout_marginTop="55dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="152dp"/>
+
+            <TextView
+                    android:id="@+id/tvBranchName"
+                    android:layout_width="28dp"
+                    android:layout_height="20dp"
+                    android:text="TiKi"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textSize="12sp"
+                    android:textColor="@color/colorText"
+                    android:fontFamily="@font/lato_regular"
+                    android:layout_marginTop="75dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="95dp"/>
+
+
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>
