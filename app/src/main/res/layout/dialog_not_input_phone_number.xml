@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
+                                             xmlns:tools="http://schemas.android.com/tools"
+                                             android:layout_width="281dp"
+                                             android:layout_height="144dp"
+                                             android:background="@drawable/drawable_dialog"
+                                             android:orientation="vertical">
+
+    <TextView
+            android:id="@+id/textView8"
+            android:layout_width="232dp"
+            android:layout_height="51dp"
+            android:layout_gravity="center"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="22dp"
+            android:fontFamily="@font/lato_regular"
+            android:text="You need input phone number as verify to oder products"
+            android:textColor="@color/colorText"
+            android:textSize="14sp"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.484"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    <Button
+            android:id="@+id/btSkip"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="95dp"
+            android:layout_height="36dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/white"
+            android:fontFamily="@font/lato_regular"
+            android:foreground="?selectableItemBackgroundBorderless"
+            android:text="Skip"
+            android:textColor="@color/colorTextDialog"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toStartOf="@+id/btUpdate"
+            app:layout_constraintTop_toBottomOf="@+id/textView8"
+            tools:ignore="RtlHardcoded"/>
+
+    <Button
+            android:id="@+id/btUpdate"
+            android:layout_width="95dp"
+            android:layout_height="37dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/buttonloginfacebook"
+            android:fontFamily="@font/lato_regular"
+            android:foreground="?selectableItemBackgroundBorderless"
+            android:text="Update"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView8"/>
+
+</android.support.constraint.ConstraintLayout>

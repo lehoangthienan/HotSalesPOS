@@ -2,6 +2,9 @@ package com.uit.daniel.hotsalesmanager.view.signin.updateuserprofile
 
 import android.app.Dialog
 import android.content.Context
+import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +17,8 @@ import com.uit.daniel.hotsalesmanager.utils.UserManagerUtil
 import com.uit.daniel.hotsalesmanager.view.custom.countrycode.Country
 import com.uit.daniel.hotsalesmanager.view.custom.countrycode.CustomAdapter
 import com.uit.daniel.hotsalesmanager.view.custom.countrycode.listCodeCountry
+import com.uit.daniel.hotsalesmanager.view.signin.updateuserphonenumber.UpdatePhoneNumberActivity
+import kotlinx.android.synthetic.main.dialog_not_input_phone_number.*
 import kotlinx.android.synthetic.main.fragment_update_user_profile.*
 
 class UpdateUserProfileFragment : android.app.Fragment() {
@@ -26,7 +31,7 @@ class UpdateUserProfileFragment : android.app.Fragment() {
     private var urlAvatarUser: String = ""
     private var check: Boolean = false
     private var dlPermissionStorage: Dialog? = null
-
+    private lateinit var dlNotInputPhoneNumber: Dialog
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_update_user_profile, container, false)
@@ -36,12 +41,19 @@ class UpdateUserProfileFragment : android.app.Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         getDataUser()
+        initeDialogNotInputPhoneNumber()
         addItemSpinerCodeCountry()
         initView()
         setFocusInitView()
         setDefaultValueOfSpinner()
         getCodeCountryPhoneNumber()
         addEvents()
+    }
+
+    private fun initeDialogNotInputPhoneNumber() {
+        dlNotInputPhoneNumber = Dialog(activity)
+        dlNotInputPhoneNumber.setContentView(R.layout.dialog_not_input_phone_number)
+        dlNotInputPhoneNumber.window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
     }
 
     private fun setDefaultValueOfSpinner() {
@@ -89,7 +101,26 @@ class UpdateUserProfileFragment : android.app.Fragment() {
     }
 
     private fun addEvents() {
+        tvCheckFinish.setOnClickListener {
+            if (etPhoneNumber.text.toString().isNullOrBlank()) {
+                dlNotInputPhoneNumber.show()
+            } else {
+                getCodeCountryPhoneNumber()
+                startConfirmPhoneNumberActivity()
+            }
+        }
+        dlNotInputPhoneNumber.btUpdate.setOnClickListener {
+            dlNotInputPhoneNumber.dismiss()
+        }
+        dlNotInputPhoneNumber.btSkip.setOnClickListener {
+            dlNotInputPhoneNumber.dismiss()
+            activity.finish()
+        }
+    }
 
+    private fun startConfirmPhoneNumberActivity() {
+        val intent = Intent(activity, UpdatePhoneNumberActivity::class.java)
+        startActivity(intent)
     }
 
     private fun getCodeCountryPhoneNumber() {

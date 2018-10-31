@@ -30,5 +30,6 @@
     <string name="content_content_support_confirm_phone">We sent you a verification code to your phone, please enter it below.</string>
     <string name="title_not_receive_code">Not receive your code?</string>
     <string name="action_resend_confirm_phone">Resend code</string>
+    <string name="content_resend_confirm_phonenumber">We resent you a verification code to your phone, please check your message again.</string>
 
 </resources>

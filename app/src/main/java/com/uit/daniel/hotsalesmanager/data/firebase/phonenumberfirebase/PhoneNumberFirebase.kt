@@ -65,7 +65,7 @@ class PhoneNumberFirebase {
         Log.d("CodeOfUser::", code)
 
         try {
-            var credential: PhoneAuthCredential = PhoneAuthProvider.getCredential(verificationId, code)
+            val credential: PhoneAuthCredential = PhoneAuthProvider.getCredential(verificationId, code)
             signInWithPhoneAuthCredential(credential)
         } catch (e: Exception) {
         }
@@ -78,7 +78,7 @@ class PhoneNumberFirebase {
                 override fun onComplete(@NonNull taskAuth: Task<AuthResult>) {
                     if (taskAuth.isSuccessful()) {
 
-                        var user: FirebaseUser = FirebaseAuth.getInstance().currentUser!!
+                        val user: FirebaseUser = FirebaseAuth.getInstance().currentUser!!
 
                         user.getIdToken(true).addOnCompleteListener(object : OnCompleteListener<GetTokenResult> {
                             @SuppressLint("CheckResult")
