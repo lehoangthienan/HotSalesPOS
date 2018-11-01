@@ -2,6 +2,7 @@ package com.uit.daniel.hotsalesmanager.view.product.productdetail
 
 import android.annotation.SuppressLint
 import android.app.Fragment
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import com.bumptech.glide.Glide
 import com.uit.daniel.hotsalesmanager.R
 import com.uit.daniel.hotsalesmanager.data.model.Product
 import com.uit.daniel.hotsalesmanager.utils.PriceUtils
+import com.uit.daniel.hotsalesmanager.view.product.searchaddresslocation.SearchAddressLocationActivity
 import kotlinx.android.synthetic.main.fragment_product_detail.*
 
 class ProductDetailFragment : Fragment() {
@@ -78,7 +80,8 @@ class ProductDetailFragment : Fragment() {
     }
 
     private fun startOrderActivity() {
-
+        val intent = Intent(activity, SearchAddressLocationActivity::class.java)
+        activity.startActivity(intent)
     }
 
 }
