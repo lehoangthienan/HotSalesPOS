@@ -2,7 +2,6 @@ package com.uit.daniel.hotsalesmanager.view.product.productaddedcart
 
 import android.app.Fragment
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
@@ -11,17 +10,14 @@ import android.view.ViewGroup
 import com.uit.daniel.hotsalesmanager.R
 import com.uit.daniel.hotsalesmanager.data.model.Product
 import com.uit.daniel.hotsalesmanager.utils.UserManagerUtil
-import com.uit.daniel.hotsalesmanager.view.custom.products.ProductsAdapter
-import com.uit.daniel.hotsalesmanager.view.product.createproduct.CreateProductActivity
-import com.uit.daniel.hotsalesmanager.view.product.productdetail.ProductDetailActivity
-import com.uit.daniel.hotsalesmanager.view.signin.signinwithfacebook.SignInFacebookActivity
+import com.uit.daniel.hotsalesmanager.view.custom.productadded.ProductAddedAdapter
 import kotlinx.android.synthetic.main.fragment_product_added_cart.*
 
 class ProductAddedCartFragment : Fragment() {
 
     private lateinit var userManagerUtil: UserManagerUtil
     private var products = ArrayList<Product>()
-    private lateinit var productsAdapter: ProductsAdapter
+    private lateinit var productAddedAdapter: ProductAddedAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_product_added_cart, container, false)
@@ -39,22 +35,12 @@ class ProductAddedCartFragment : Fragment() {
     private fun setProductsView() {
         rvProducts.apply {
             this.layoutManager = LinearLayoutManager(activity)
-            this.adapter = productsAdapter
+            this.adapter = productAddedAdapter
         }
     }
 
     private fun setProductsAdapter() {
-        productsAdapter = ProductsAdapter(products, object : ProductsAdapter.OnItemClickedListener {
-            override fun onItemClicked(id: String) {
-                startProductDetailActivity(id)
-            }
-        })
-    }
-
-    private fun startProductDetailActivity(id: String) {
-        val intent = Intent(activity, ProductDetailActivity::class.java)
-        intent.putExtra("ID", id)
-        activity.startActivity(intent)
+        productAddedAdapter = ProductAddedAdapter(products)
     }
 
     private fun initFakeData() {
@@ -155,17 +141,6 @@ class ProductAddedCartFragment : Fragment() {
             activity.finish()
         }
     }
-
-    private fun startCreateProduct() {
-        val intent = Intent(activity, CreateProductActivity::class.java)
-        activity.startActivity(intent)
-    }
-
-    private fun startLogInWithFacebookActivity() {
-        val intent = Intent(activity, SignInFacebookActivity::class.java)
-        startActivity(intent)
-    }
-
 
     override fun onResume() {
         super.onResume()
