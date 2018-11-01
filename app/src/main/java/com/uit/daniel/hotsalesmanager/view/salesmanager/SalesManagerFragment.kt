@@ -16,6 +16,7 @@ import com.uit.daniel.hotsalesmanager.R
 import com.uit.daniel.hotsalesmanager.data.model.Product
 import com.uit.daniel.hotsalesmanager.utils.UserManagerUtil
 import com.uit.daniel.hotsalesmanager.view.custom.products.ProductsAdapter
+import com.uit.daniel.hotsalesmanager.view.product.productdetail.ProductDetailActivity
 import com.uit.daniel.hotsalesmanager.view.signin.signinwithfacebook.SignInFacebookActivity
 import kotlinx.android.synthetic.main.fragment_sales_manager.*
 import kotlinx.android.synthetic.main.navigation_sales_manager.*
@@ -57,7 +58,9 @@ class SalesManagerFragment : Fragment() {
     }
 
     private fun startProductDetailActivity(id: String) {
-
+        val intent = Intent(activity, ProductDetailActivity::class.java)
+        intent.putExtra("ID", id)
+        activity.startActivity(intent)
     }
 
     private fun initFakeData() {
