@@ -55,9 +55,6 @@ class UpdatePhoneNumberFragment : android.app.Fragment() {
         tvBack?.setOnClickListener {
             activity.finish()
         }
-
-
-
         RxTextView.textChanges(edtCheckNumber1).subscribe { text ->
             updatePhoneNumberViewModel.setCodeAtPosition1(text.toString())
         }
@@ -98,7 +95,7 @@ class UpdatePhoneNumberFragment : android.app.Fragment() {
             Log.d("Anleresult", result.toString())
             if (result) {
                 userManagerUtil.setUserPhoneNumberVerifired(phoneNumber)
-                startMapActivity()
+                startSalesManagerActivity()
             }
         }
     }
@@ -178,7 +175,7 @@ class UpdatePhoneNumberFragment : android.app.Fragment() {
         edtCheckNumber1.requestFocus()
     }
 
-    private fun startMapActivity() {
+    private fun startSalesManagerActivity() {
         val intent = Intent(activity, SalesManagerActivity::class.java)
         startActivity(intent)
     }

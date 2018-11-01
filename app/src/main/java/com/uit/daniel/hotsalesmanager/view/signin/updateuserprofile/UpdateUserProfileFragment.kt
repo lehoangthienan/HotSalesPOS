@@ -6,6 +6,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,7 +31,6 @@ class UpdateUserProfileFragment : android.app.Fragment() {
     private var userName: String = ""
     private var urlAvatarUser: String = ""
     private var check: Boolean = false
-    private var dlPermissionStorage: Dialog? = null
     private lateinit var dlNotInputPhoneNumber: Dialog
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -40,14 +40,17 @@ class UpdateUserProfileFragment : android.app.Fragment() {
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        getDataUser()
-        initeDialogNotInputPhoneNumber()
-        addItemSpinerCodeCountry()
-        initView()
-        setFocusInitView()
-        setDefaultValueOfSpinner()
-        getCodeCountryPhoneNumber()
-        addEvents()
+        val handler = Handler()
+        handler.postDelayed({
+            initeDialogNotInputPhoneNumber()
+            addItemSpinerCodeCountry()
+            setFocusInitView()
+            setDefaultValueOfSpinner()
+            getCodeCountryPhoneNumber()
+            getDataUser()
+            initView()
+            addEvents()
+        }, 1000)
     }
 
     private fun initeDialogNotInputPhoneNumber() {
@@ -114,6 +117,9 @@ class UpdateUserProfileFragment : android.app.Fragment() {
         }
         dlNotInputPhoneNumber.btSkip.setOnClickListener {
             dlNotInputPhoneNumber.dismiss()
+            activity.finish()
+        }
+        tvBack.setOnClickListener {
             activity.finish()
         }
     }

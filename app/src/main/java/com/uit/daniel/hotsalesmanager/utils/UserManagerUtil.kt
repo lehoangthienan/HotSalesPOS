@@ -11,7 +11,13 @@ class UserManagerUtil constructor(var context: Context) {
     private var sharedPrefsExtraUserInformation: SharedPreferences =
         context.getSharedPreferences(Constant.EXTRA_USER_INFORMATION, Context.MODE_PRIVATE)
 
-    fun setExtraUserInformation(userId: String, name: String, urlUserAvatar: String, facebookID: String, check : Boolean) {
+    fun setExtraUserInformation(
+        userId: String,
+        name: String,
+        urlUserAvatar: String,
+        facebookID: String,
+        check: Boolean
+    ) {
         val editor = sharedPrefsExtraUserInformation.edit()
         editor.putString(Constant.USER_ID, userId)
         editor.putString(Constant.USER_NAME, name)
