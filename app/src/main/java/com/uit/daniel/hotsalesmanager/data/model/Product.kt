@@ -15,11 +15,11 @@ data class Product(
 
     @SerializedName("price")
     @Expose
-    var price: String? = null,
+    var price: Int? = null,
 
     @SerializedName("discount")
     @Expose
-    var discount: String? = null,
+    var discount: Int? = null,
 
     @SerializedName("image")
     @Expose

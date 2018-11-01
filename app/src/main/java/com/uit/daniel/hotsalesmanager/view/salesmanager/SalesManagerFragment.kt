@@ -65,8 +65,8 @@ class SalesManagerFragment : Fragment() {
             Product(
                 "1",
                 "Iphone Xs Max",
-                "15.0000.000",
-                "50%",
+                15000000,
+                50,
                 "https://hoanghamobile.com/tin-tuc/wp-content/uploads/2018/09/danh-gia-iphone-xs-max-12.jpg",
                 "TiKi"
             )
@@ -75,8 +75,8 @@ class SalesManagerFragment : Fragment() {
             Product(
                 "1",
                 "Iphone Xs Max",
-                "15.0000.000",
-                "50%",
+                15000000,
+                50,
                 "https://hoanghamobile.com/tin-tuc/wp-content/uploads/2018/09/danh-gia-iphone-xs-max-12.jpg",
                 "Lazada"
             )
@@ -85,8 +85,8 @@ class SalesManagerFragment : Fragment() {
             Product(
                 "1",
                 "Iphone Xs Max",
-                "15.0000.000",
-                "50%",
+                15000000,
+                50,
                 "https://hoanghamobile.com/tin-tuc/wp-content/uploads/2018/09/danh-gia-iphone-xs-max-12.jpg",
                 "TiKi"
             )
@@ -95,8 +95,8 @@ class SalesManagerFragment : Fragment() {
             Product(
                 "1",
                 "Iphone Xs Max",
-                "15.0000.000",
-                "50%",
+                15000000,
+                50,
                 "https://hoanghamobile.com/tin-tuc/wp-content/uploads/2018/09/danh-gia-iphone-xs-max-12.jpg",
                 "Sendo"
             )
@@ -105,8 +105,8 @@ class SalesManagerFragment : Fragment() {
             Product(
                 "1",
                 "Iphone Xs Max",
-                "15.0000.000",
-                "50%",
+                15000000,
+                50,
                 "https://hoanghamobile.com/tin-tuc/wp-content/uploads/2018/09/danh-gia-iphone-xs-max-12.jpg",
                 "TiKi"
             )
@@ -115,8 +115,8 @@ class SalesManagerFragment : Fragment() {
             Product(
                 "1",
                 "Iphone Xs Max",
-                "15.0000.000",
-                "50%",
+                15000000,
+                50,
                 "https://hoanghamobile.com/tin-tuc/wp-content/uploads/2018/09/danh-gia-iphone-xs-max-12.jpg",
                 "ChoTot"
             )
@@ -125,8 +125,8 @@ class SalesManagerFragment : Fragment() {
             Product(
                 "1",
                 "Iphone Xs Max",
-                "15.0000.000",
-                "50%",
+                15000000,
+                50,
                 "https://hoanghamobile.com/tin-tuc/wp-content/uploads/2018/09/danh-gia-iphone-xs-max-12.jpg",
                 "TiKi"
             )
@@ -135,8 +135,8 @@ class SalesManagerFragment : Fragment() {
             Product(
                 "1",
                 "Iphone Xs Max",
-                "15.0000.000",
-                "50%",
+                15000000,
+                50,
                 "https://hoanghamobile.com/tin-tuc/wp-content/uploads/2018/09/danh-gia-iphone-xs-max-12.jpg",
                 "AnLe"
             )
@@ -145,8 +145,8 @@ class SalesManagerFragment : Fragment() {
             Product(
                 "1",
                 "Iphone Xs Max",
-                "15.0000.000",
-                "50%",
+                15000000,
+                50,
                 "https://hoanghamobile.com/tin-tuc/wp-content/uploads/2018/09/danh-gia-iphone-xs-max-12.jpg",
                 "TiKi"
             )
@@ -155,8 +155,8 @@ class SalesManagerFragment : Fragment() {
             Product(
                 "1",
                 "Iphone Xs Max",
-                "15.0000.000",
-                "50%",
+                15000000,
+                50,
                 "https://hoanghamobile.com/tin-tuc/wp-content/uploads/2018/09/danh-gia-iphone-xs-max-12.jpg",
                 "ChuGiong"
             )
@@ -165,8 +165,8 @@ class SalesManagerFragment : Fragment() {
             Product(
                 "1",
                 "Iphone Xs Max",
-                "15.0000.000",
-                "50%",
+                15000000,
+                50,
                 "https://hoanghamobile.com/tin-tuc/wp-content/uploads/2018/09/danh-gia-iphone-xs-max-12.jpg",
                 "TiKi"
             )
@@ -175,8 +175,8 @@ class SalesManagerFragment : Fragment() {
             Product(
                 "1",
                 "Iphone Xs Max",
-                "15.0000.000",
-                "50%",
+                15000000,
+                50,
                 "https://hoanghamobile.com/tin-tuc/wp-content/uploads/2018/09/danh-gia-iphone-xs-max-12.jpg",
                 "Shopee"
             )
@@ -185,8 +185,8 @@ class SalesManagerFragment : Fragment() {
             Product(
                 "1",
                 "Iphone Xs Max",
-                "15.0000.000",
-                "50%",
+                15000000,
+                50,
                 "https://hoanghamobile.com/tin-tuc/wp-content/uploads/2018/09/danh-gia-iphone-xs-max-12.jpg",
                 "TiKi"
             )
@@ -195,8 +195,8 @@ class SalesManagerFragment : Fragment() {
             Product(
                 "1",
                 "Iphone Xs Max",
-                "15.0000.000",
-                "50%",
+                15000000,
+                50,
                 "https://hoanghamobile.com/tin-tuc/wp-content/uploads/2018/09/danh-gia-iphone-xs-max-12.jpg",
                 "TiKi"
             )
@@ -205,8 +205,8 @@ class SalesManagerFragment : Fragment() {
             Product(
                 "1",
                 "Iphone Xs Max",
-                "15.0000.000",
-                "50%",
+                15000000,
+                50,
                 "https://hoanghamobile.com/tin-tuc/wp-content/uploads/2018/09/danh-gia-iphone-xs-max-12.jpg",
                 "TiKi"
             )
@@ -215,8 +215,8 @@ class SalesManagerFragment : Fragment() {
             Product(
                 "1",
                 "Iphone Xs Max",
-                "15.0000.000",
-                "50%",
+                15000000,
+                50,
                 "https://hoanghamobile.com/tin-tuc/wp-content/uploads/2018/09/danh-gia-iphone-xs-max-12.jpg",
                 "TiKi"
             )
