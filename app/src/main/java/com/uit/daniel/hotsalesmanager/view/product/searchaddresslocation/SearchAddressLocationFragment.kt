@@ -77,6 +77,7 @@ class SearchAddressLocationFragment : BaseFragment(), OnMapReadyCallback {
 
     private fun addEvents() {
         tvFinishAddressSearch.setOnClickListener {
+            if (!actAddressSearch.text.toString().isNullOrBlank()) userManagerUtil.setAddressLocation(actAddressSearch.text.toString())
             activity?.finish()
         }
         tvBackAddressSearch.setOnClickListener {

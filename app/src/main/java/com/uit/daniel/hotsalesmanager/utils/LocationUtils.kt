@@ -4,6 +4,7 @@ import android.content.Context
 import android.location.Address
 import android.location.Geocoder
 import com.google.android.gms.maps.model.LatLng
+import foundation.dwarves.findfriends.utils.Constant
 import java.util.*
 
 class LocationUtils {

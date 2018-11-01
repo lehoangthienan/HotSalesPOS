@@ -1,6 +1,7 @@
 package com.uit.daniel.hotsalesmanager.view.product.orderproduct
 
 import android.app.Fragment
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,12 +11,14 @@ import com.bumptech.glide.Glide
 import com.uit.daniel.hotsalesmanager.R
 import com.uit.daniel.hotsalesmanager.data.model.Product
 import com.uit.daniel.hotsalesmanager.utils.PriceUtils
+import com.uit.daniel.hotsalesmanager.utils.UserManagerUtil
 import com.uit.daniel.hotsalesmanager.view.product.searchaddresslocation.SearchAddressLocationActivity
 import kotlinx.android.synthetic.main.fragment_order_product.*
 
 class OrderProductFragment : Fragment() {
 
     private val priceUtils = PriceUtils()
+    private lateinit var userManagerUtil: UserManagerUtil
     private var productId: String = ""
     private var product = Product(
         "1",
@@ -83,6 +86,16 @@ class OrderProductFragment : Fragment() {
                 .load(product.image)
                 .into(it)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (!userManagerUtil.getAddressLocation().isNullOrBlank()) etAddress.setText(userManagerUtil.getAddressLocation())
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        userManagerUtil = UserManagerUtil.getInstance(context)
     }
 
     private fun getProductDetail() {
