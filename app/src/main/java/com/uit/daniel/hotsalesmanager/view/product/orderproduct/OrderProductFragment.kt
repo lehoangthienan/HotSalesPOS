@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.bumptech.glide.Glide
 import com.uit.daniel.hotsalesmanager.R
 import com.uit.daniel.hotsalesmanager.data.model.Product
 import com.uit.daniel.hotsalesmanager.utils.PriceUtils
@@ -46,6 +47,15 @@ class OrderProductFragment : Fragment() {
         ivAddLocation.setOnClickListener {
             startSearchLocationActivity()
         }
+        btConfirm.setOnClickListener {
+            activity.finish()
+        }
+        tvBack.setOnClickListener {
+            activity.finish()
+        }
+        tvCheckFinish.setOnClickListener {
+            activity.finish()
+        }
     }
 
     private fun startSearchLocationActivity() {
@@ -54,7 +64,25 @@ class OrderProductFragment : Fragment() {
     }
 
     private fun initView() {
+        tvName.text = product.name
+        tvPrice.text = product.price?.let { priceUtils.setStringMoney(it) }
+        tvPriceDiscount.text = priceUtils.setStringMoney(product.discount?.let {
+            product.price?.let { it1 ->
+                priceUtils.priceDiscount(
+                    it,
+                    it1
+                )
+            }
+        }!!)
+        tvPercentDiscount.text = product.discount.toString() + "%"
+        tvBranchName.text = product.branch
 
+        ivProduct?.let {
+            Glide.with(activity)
+                .asBitmap()
+                .load(product.image)
+                .into(it)
+        }
     }
 
     private fun getProductDetail() {
