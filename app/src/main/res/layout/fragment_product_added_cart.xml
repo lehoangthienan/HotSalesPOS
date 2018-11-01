@@ -35,7 +35,7 @@
                         android:layout_centerInParent="true"
                         android:layout_marginTop="12dp"
                         android:fontFamily="@font/lato_semibold"
-                        android:text="Hot Sales For You"
+                        android:text="Your shopping cart"
                         android:textColor="@color/white"
                         android:textSize="20sp"
                         app:layout_constraintEnd_toEndOf="parent"
