@@ -23,7 +23,6 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
-
         <meta-data
                 android:name="com.google.android.geo.API_KEY"
                 android:value="AIzaSyAVfQ1cotCxn5mHuuYmp9tdf45YIYpd8Ww"/>
@@ -75,7 +74,11 @@
                 android:name=".view.product.productdetail.ProductDetailActivity"
                 android:theme="@style/AppThemeMain">
         </activity>
-        <activity android:name=".view.product.searchaddresslocation.SearchAddressLocationActivity"
+        <activity
+                android:name=".view.product.searchaddresslocation.SearchAddressLocationActivity"
+                android:theme="@style/AppThemeMain">
+        </activity>
+        <activity android:name=".view.product.orderproduct.OrderProductActivity"
                   android:theme="@style/AppThemeMain">
         </activity>
     </application>

@@ -245,7 +245,7 @@
                         android:layout_marginEnd="24dp"
                         android:layout_marginTop="8dp"
                         android:fontFamily="@font/lato_semibold"
-                        android:text="ORDER NOW                             "
+                        android:text="ORDER NOW                                 "
                         android:textColor="@color/white"
                         android:textSize="16sp"
                         app:layout_constraintBottom_toBottomOf="parent"
