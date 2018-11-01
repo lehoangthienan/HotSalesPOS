@@ -1,6 +1,7 @@
 package com.uit.daniel.hotsalesmanager.view.product.orderproduct
 
 import android.app.Fragment
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,8 @@ import android.view.ViewGroup
 import com.uit.daniel.hotsalesmanager.R
 import com.uit.daniel.hotsalesmanager.data.model.Product
 import com.uit.daniel.hotsalesmanager.utils.PriceUtils
+import com.uit.daniel.hotsalesmanager.view.product.searchaddresslocation.SearchAddressLocationActivity
+import kotlinx.android.synthetic.main.fragment_order_product.*
 
 class OrderProductFragment : Fragment() {
 
@@ -40,7 +43,14 @@ class OrderProductFragment : Fragment() {
     }
 
     private fun addEvents() {
+        ivAddLocation.setOnClickListener {
+            startSearchLocationActivity()
+        }
+    }
 
+    private fun startSearchLocationActivity() {
+        val intent = Intent(activity, SearchAddressLocationActivity::class.java)
+        activity.startActivity(intent)
     }
 
     private fun initView() {
