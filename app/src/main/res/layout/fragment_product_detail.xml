@@ -38,24 +38,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"/>
 
-            <ImageView
-                    android:id="@+id/ivOrder"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="16dp"
-                    android:background="?selectableItemBackgroundBorderless"
-                    android:fontFamily="@font/material"
-                    android:gravity="center"
-                    android:clickable="true"
-                    android:textColor="@color/white"
-                    android:textSize="24sp"
-                    android:src="@drawable/ic_shopping_cart"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
-                    android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"/>
-
             <TextView
                     android:id="@+id/tvBack"
                     android:layout_width="40dp"

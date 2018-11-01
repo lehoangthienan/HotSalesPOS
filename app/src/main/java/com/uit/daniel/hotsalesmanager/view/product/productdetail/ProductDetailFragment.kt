@@ -77,9 +77,6 @@ class ProductDetailFragment : Fragment() {
         tvBack.setOnClickListener {
             activity.finish()
         }
-        ivOrder.setOnClickListener {
-            startOrderActivity()
-        }
         btOrder.setOnClickListener {
             startOrderActivity()
         }
