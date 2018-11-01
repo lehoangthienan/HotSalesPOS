@@ -46,6 +46,6 @@
     <string name="error_verification">There was some error in verifycation.</string>
     <string name="action_back_address_search"></string>
     <string name="action_finish_address_search"></string>
-
+    <string name="title_acctione">Action</string>
 
 </resources>

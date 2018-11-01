@@ -78,7 +78,11 @@
                 android:name=".view.product.searchaddresslocation.SearchAddressLocationActivity"
                 android:theme="@style/AppThemeMain">
         </activity>
-        <activity android:name=".view.product.orderproduct.OrderProductActivity"
+        <activity
+                android:name=".view.product.orderproduct.OrderProductActivity"
+                android:theme="@style/AppThemeMain">
+        </activity>
+        <activity android:name=".view.product.createproduct.CreateProductActivity"
                   android:theme="@style/AppThemeMain">
         </activity>
     </application>
