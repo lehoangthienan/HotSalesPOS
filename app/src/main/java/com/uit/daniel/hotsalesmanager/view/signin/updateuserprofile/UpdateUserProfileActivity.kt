@@ -19,10 +19,10 @@ import com.bumptech.glide.Glide
 import com.tbruyelle.rxpermissions2.RxPermissions
 import com.uit.daniel.hotsalesmanager.R
 import com.uit.daniel.hotsalesmanager.utils.CameraUtils
+import com.uit.daniel.hotsalesmanager.utils.Constant
+import com.uit.daniel.hotsalesmanager.utils.Constant.REQUEST_CAMERA
 import com.uit.daniel.hotsalesmanager.utils.ImageUtils
 import com.uit.daniel.hotsalesmanager.utils.IntentUtils
-import foundation.dwarves.findfriends.utils.Constant
-import foundation.dwarves.findfriends.utils.Constant.REQUEST_CAMERA
 import kotlinx.android.synthetic.main.dialog_permissin_read_write_storage.*
 import kotlinx.android.synthetic.main.fragment_update_user_profile.*
 import java.io.File
