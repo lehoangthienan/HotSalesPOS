@@ -82,7 +82,11 @@
                 android:name=".view.product.orderproduct.OrderProductActivity"
                 android:theme="@style/AppThemeMain">
         </activity>
-        <activity android:name=".view.product.createproduct.CreateProductActivity"
+        <activity
+                android:name=".view.product.createproduct.CreateProductActivity"
+                android:theme="@style/AppThemeMain">
+        </activity>
+        <activity android:name=".view.product.productaddedcart.ProductAddedCartActivity"
                   android:theme="@style/AppThemeMain">
         </activity>
     </application>

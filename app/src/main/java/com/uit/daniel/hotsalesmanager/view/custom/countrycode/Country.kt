@@ -1,7 +1,7 @@
 package com.uit.daniel.hotsalesmanager.view.custom.countrycode
 
 import android.content.Context
-import foundation.dwarves.findfriends.utils.Constant
+import com.uit.daniel.hotsalesmanager.utils.Constant
 import org.json.JSONArray
 
 data class Country(

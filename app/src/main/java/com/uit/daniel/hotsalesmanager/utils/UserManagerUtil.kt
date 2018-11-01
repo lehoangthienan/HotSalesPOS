@@ -2,7 +2,6 @@ package com.uit.daniel.hotsalesmanager.utils
 
 import android.content.Context
 import android.content.SharedPreferences
-import foundation.dwarves.findfriends.utils.Constant
 
 class UserManagerUtil constructor(var context: Context) {
 

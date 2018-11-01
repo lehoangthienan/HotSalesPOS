@@ -14,13 +14,14 @@ import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.uit.daniel.hotsalesmanager.R
 import com.uit.daniel.hotsalesmanager.data.model.Product
+import com.uit.daniel.hotsalesmanager.utils.Constant.NAME_USER_DEFAULT
 import com.uit.daniel.hotsalesmanager.utils.ToastSnackBar
 import com.uit.daniel.hotsalesmanager.utils.UserManagerUtil
 import com.uit.daniel.hotsalesmanager.view.custom.products.ProductsAdapter
 import com.uit.daniel.hotsalesmanager.view.product.createproduct.CreateProductActivity
+import com.uit.daniel.hotsalesmanager.view.product.productaddedcart.ProductAddedCartActivity
 import com.uit.daniel.hotsalesmanager.view.product.productdetail.ProductDetailActivity
 import com.uit.daniel.hotsalesmanager.view.signin.signinwithfacebook.SignInFacebookActivity
-import foundation.dwarves.findfriends.utils.Constant.NAME_USER_DEFAULT
 import kotlinx.android.synthetic.main.fragment_sales_manager.*
 import kotlinx.android.synthetic.main.navigation_sales_manager.*
 
@@ -248,6 +249,14 @@ class SalesManagerFragment : Fragment() {
             )
             else startCreateProduct()
         }
+        ivShoppingCart.setOnClickListener {
+            startProductAddedCart()
+        }
+    }
+
+    private fun startProductAddedCart() {
+        val intent = Intent(activity, ProductAddedCartActivity::class.java)
+        activity.startActivity(intent)
     }
 
     private fun startCreateProduct() {

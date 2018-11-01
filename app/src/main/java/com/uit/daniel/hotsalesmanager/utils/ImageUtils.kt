@@ -9,10 +9,10 @@ import android.support.v4.content.FileProvider
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.SimpleTarget
-import foundation.dwarves.findfriends.utils.Constant.FORMAT_NAME_IMAGE
-import foundation.dwarves.findfriends.utils.Constant.IMG
-import foundation.dwarves.findfriends.utils.Constant.JPG
-import foundation.dwarves.findfriends.utils.Constant.NAME_PROVIDER
+import com.uit.daniel.hotsalesmanager.utils.Constant.FORMAT_NAME_IMAGE
+import com.uit.daniel.hotsalesmanager.utils.Constant.IMG
+import com.uit.daniel.hotsalesmanager.utils.Constant.JPG
+import com.uit.daniel.hotsalesmanager.utils.Constant.NAME_PROVIDER
 import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat

@@ -1,4 +1,4 @@
-package foundation.dwarves.findfriends.utils
+package com.uit.daniel.hotsalesmanager.utils
 
 object Constant {
     const val TAG = "MyFirebaseMsgService"
