@@ -4,21 +4,25 @@ import android.Manifest
 import android.app.Dialog
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.provider.MediaStore
 import android.support.design.widget.BottomSheetDialog
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.ActionBar
 import android.support.v7.app.AppCompatActivity
 import android.widget.RelativeLayout
+import com.bumptech.glide.Glide
 import com.tbruyelle.rxpermissions2.RxPermissions
 import com.uit.daniel.hotsalesmanager.R
 import com.uit.daniel.hotsalesmanager.utils.CameraUtils
 import com.uit.daniel.hotsalesmanager.utils.ImageUtils
 import com.uit.daniel.hotsalesmanager.utils.IntentUtils
 import foundation.dwarves.findfriends.utils.Constant
+import foundation.dwarves.findfriends.utils.Constant.REQUEST_CAMERA
 import kotlinx.android.synthetic.main.dialog_permissin_read_write_storage.*
 import kotlinx.android.synthetic.main.fragment_update_user_profile.*
 import java.io.File
@@ -87,10 +91,7 @@ class UpdateUserProfileActivity : AppCompatActivity() {
     private fun showBottomSheetDialogUpdateAvatarUser() {
         bottomSheetDialogUpdateAvatarUser.show()
         bottomSheetDialogUpdateAvatarUser.findViewById<RelativeLayout>(R.id.takePhotoFromCamera)?.setOnClickListener {
-            val takePictureIntent = intentUtils.intentActionImageCapture()
-            if (takePictureIntent.resolveActivity(packageManager) != null) {
-                startCameraActivity(takePictureIntent)
-            }
+            startCameraIntent()
         }
 
         bottomSheetDialogUpdateAvatarUser.findViewById<RelativeLayout>(R.id.takePhotoFromLibrary)?.setOnClickListener {
@@ -98,11 +99,20 @@ class UpdateUserProfileActivity : AppCompatActivity() {
         }
     }
 
-    private fun startCameraActivity(takePictureIntent: Intent) {
-        photoFile = imageUtils.createImageFile(this)
-        cameraUtils.putUriImage(takePictureIntent, imageUtils.createPhotoURI(photoFile, this))
-        startActivityForResult(takePictureIntent, Constant.REQUEST_CAMERA)
+    private fun startCameraIntent() {
+        val takePictureIntent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+        if (takePictureIntent.resolveActivity(packageManager) != null) {
+            startCameraActivity()
+        }
     }
+
+    private fun startCameraActivity() {
+        val takePictureIntent = Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE)
+        if (takePictureIntent.resolveActivity(this.packageManager) != null) {
+            this.startActivityForResult(takePictureIntent, REQUEST_CAMERA)
+        }
+    }
+
 
     private fun inItBottomSheetDialog() {
         bottomSheetDialogUpdateAvatarUser = BottomSheetDialog(this)
@@ -125,16 +135,18 @@ class UpdateUserProfileActivity : AppCompatActivity() {
                 setImageForGallery(data)
             }
             Constant.REQUEST_CAMERA -> {
-                setImageForCamera()
+                setImageForCamera(data)
             }
         }
     }
 
-    private fun setImageForCamera() {
-        //Get path from picture take with camera
-        urlUserImage = photoFile.absolutePath
-        val bitmap = BitmapFactory.decodeFile(urlUserImage)
-        imgAvatarUpdate.setImageBitmap(bitmap)
+    private fun setImageForCamera(data: Intent?) {
+        if (data?.extras?.get("data") == null) return
+        val bitmap = data.extras?.get("data") as Bitmap
+        Glide.with(this)
+            .asBitmap()
+            .load(bitmap)
+            .into(imgAvatarUpdate)
         bottomSheetDialogUpdateAvatarUser.dismiss()
     }
 

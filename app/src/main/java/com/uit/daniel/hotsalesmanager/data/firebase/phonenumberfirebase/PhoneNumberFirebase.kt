@@ -5,10 +5,12 @@ import android.app.Activity
 import android.content.Context
 import android.support.annotation.NonNull
 import android.util.Log
+import android.widget.Toast
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.*
+import com.uit.daniel.hotsalesmanager.R
 import io.reactivex.subjects.PublishSubject
 import java.util.concurrent.TimeUnit
 
@@ -40,6 +42,7 @@ class PhoneNumberFirebase {
                 }
 
                 override fun onVerificationFailed(e: FirebaseException) {
+                    Toast.makeText(activity, R.string.error_verification, Toast.LENGTH_LONG).show()
                 }
 
                 override fun onCodeSent(verificationId: String, token: PhoneAuthProvider.ForceResendingToken?) {
@@ -57,6 +60,7 @@ class PhoneNumberFirebase {
                 callbacks
             )
         } catch (e: Exception) {
+            Toast.makeText(activity, R.string.error_seding_code, Toast.LENGTH_LONG).show()
         }
     }
 
@@ -68,6 +72,7 @@ class PhoneNumberFirebase {
             val credential: PhoneAuthCredential = PhoneAuthProvider.getCredential(verificationId, code)
             signInWithPhoneAuthCredential(credential)
         } catch (e: Exception) {
+            Toast.makeText(activity, R.string.code_wrong, Toast.LENGTH_LONG).show()
         }
     }
 
@@ -92,6 +97,8 @@ class PhoneNumberFirebase {
                             }
                         })
                     } else {
+                        Toast.makeText(activity, R.string.code_wrong, Toast.LENGTH_LONG).show()
+
                         if (taskAuth.getException() is FirebaseAuthInvalidCredentialsException) {
 
                         }

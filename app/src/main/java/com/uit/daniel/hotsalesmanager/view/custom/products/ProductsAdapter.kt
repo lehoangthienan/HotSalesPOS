@@ -28,6 +28,6 @@ class ProductsAdapter(
     }
 
     interface OnItemClickedListener {
-        fun onItemClicked()
+        fun onItemClicked(id: String)
     }
 }

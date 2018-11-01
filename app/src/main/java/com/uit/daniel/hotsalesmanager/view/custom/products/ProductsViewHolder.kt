@@ -11,12 +11,12 @@ class ProductsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     fun bindData(context: Context, product: Product, onItemClickedListener: ProductsAdapter.OnItemClickedListener) {
         loadImage(context, product, itemView)
         loadText(product, itemView)
-        addEvents(itemView, onItemClickedListener)
+        addEvents(itemView, onItemClickedListener , product)
     }
 
-    private fun addEvents(itemView: View, onItemClickedListener: ProductsAdapter.OnItemClickedListener) {
+    private fun addEvents(itemView: View, onItemClickedListener: ProductsAdapter.OnItemClickedListener, product: Product) {
         itemView.cvItemProduct.setOnClickListener {
-            onItemClickedListener.onItemClicked()
+            onItemClickedListener.onItemClicked(product.id.toString())
         }
     }
 
