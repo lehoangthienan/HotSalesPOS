@@ -58,10 +58,15 @@
                 <data android:scheme="@string/fb_login_protocol_scheme"/>
             </intent-filter>
         </activity>
-        <activity android:name=".view.signin.updateuserprofile.UpdateUserProfileActivity"
-                  android:theme="@style/AppThemeMain">
+        <activity
+                android:name=".view.signin.updateuserprofile.UpdateUserProfileActivity"
+                android:theme="@style/AppThemeMain">
         </activity>
-        <activity android:name=".view.signin.updateuserphonenumber.UpdatePhoneNumberActivity"
+        <activity
+                android:name=".view.signin.updateuserphonenumber.UpdatePhoneNumberActivity"
+                android:theme="@style/AppThemeMain">
+        </activity>
+        <activity android:name=".view.product.productdetail.ProductDetailActivity"
                   android:theme="@style/AppThemeMain">
         </activity>
     </application>
