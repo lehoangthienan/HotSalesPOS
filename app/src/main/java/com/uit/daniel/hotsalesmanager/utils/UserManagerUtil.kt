@@ -78,4 +78,14 @@ class UserManagerUtil constructor(var context: Context) {
     fun getUserId(): String {
         return sharedPrefsExtraUserInformation.getString(Constant.USER_ID, "")
     }
+
+    fun setAddressLocation(name: String) {
+        val editor = sharedPrefsExtraUserInformation.edit()
+        editor.putString("AddressLocation", name)
+        editor.apply()
+    }
+
+    fun getAddressLocation(): String {
+        return sharedPrefsExtraUserInformation.getString("AddressLocation", "")
+    }
 }
