@@ -11,7 +11,7 @@ import com.bumptech.glide.Glide
 import com.uit.daniel.hotsalesmanager.R
 import com.uit.daniel.hotsalesmanager.data.model.Product
 import com.uit.daniel.hotsalesmanager.utils.PriceUtils
-import com.uit.daniel.hotsalesmanager.view.product.searchaddresslocation.SearchAddressLocationActivity
+import com.uit.daniel.hotsalesmanager.view.product.orderproduct.OrderProductActivity
 import kotlinx.android.synthetic.main.fragment_product_detail.*
 
 class ProductDetailFragment : Fragment() {
@@ -86,7 +86,7 @@ class ProductDetailFragment : Fragment() {
     }
 
     private fun startOrderActivity() {
-        val intent = Intent(activity, SearchAddressLocationActivity::class.java)
+        val intent = Intent(activity, OrderProductActivity::class.java)
         intent.putExtra("ID", productId)
         activity.startActivity(intent)
     }
