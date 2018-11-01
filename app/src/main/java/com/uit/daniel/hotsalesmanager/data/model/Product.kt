@@ -27,5 +27,9 @@ data class Product(
 
     @SerializedName("branch")
     @Expose
-    var branch: String? = null
+    var branch: String? = null,
+
+    @SerializedName("content")
+    @Expose
+    var content: String? = null
 )
