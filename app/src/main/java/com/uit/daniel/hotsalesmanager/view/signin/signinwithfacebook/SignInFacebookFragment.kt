@@ -10,7 +10,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.facebook.CallbackManager
 import com.uit.daniel.hotsalesmanager.R
-import com.uit.daniel.hotsalesmanager.view.signin.updateuserphonenumber.UpdatePhoneNumberActivity
 import com.uit.daniel.hotsalesmanager.view.signin.updateuserprofile.UpdateUserProfileActivity
 import kotlinx.android.synthetic.main.fragment_signin_facebook.*
 
@@ -46,6 +45,9 @@ class SignInFacebookFragment : Fragment() {
     private fun addEvents() {
         btLoginFb.setOnClickListener {
             signInFacebookViewModel.loginFacebook(activity, callbackManager)
+        }
+        tvBack.setOnClickListener {
+            activity.finish()
         }
     }
 

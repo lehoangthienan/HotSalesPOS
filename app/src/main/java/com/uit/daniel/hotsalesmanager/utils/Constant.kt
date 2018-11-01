@@ -3,7 +3,7 @@ package foundation.dwarves.findfriends.utils
 object Constant {
     const val TAG = "MyFirebaseMsgService"
     const val FILE = "file"
-    const val NAME_USER_DEFAULT = "Find Friend"
+    const val NAME_USER_DEFAULT = "Hot Sales"
     const val URL_AVATAR_DEFAULT = "https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/user_male2-512.png"
     const val EXTRA_USER_INFORMATION = "UserInformation"
     const val URL_AVATAR_USER = "UrlPictureFacebookUser"

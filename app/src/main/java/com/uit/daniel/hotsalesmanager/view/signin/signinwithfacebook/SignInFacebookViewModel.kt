@@ -56,6 +56,8 @@ class SignInFacebookViewModel(context: Context) : SignInFacebookViewModelInputs,
                             `object`?.getString("id").toString(),
                             true
                         )
+                        userManagerUtil.setUserName(getNameUser(`object`, context).toString())
+                        userManagerUtil.setUserUrlAvatar(getUrlProfilePicture(`object`, context))
                     }
                 }
                 checkLoggedFacebookhPublishSubject.onNext(true)
@@ -95,6 +97,8 @@ class SignInFacebookViewModel(context: Context) : SignInFacebookViewModelInputs,
                                     `object`?.getString("id").toString(),
                                     true
                                 )
+                                userManagerUtil.setUserName(getNameUser(`object`, context).toString())
+                                userManagerUtil.setUserUrlAvatar(getUrlProfilePicture(`object`, context))
                             }
                         }
                     }

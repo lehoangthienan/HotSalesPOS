@@ -1,6 +1,7 @@
 package com.uit.daniel.hotsalesmanager.view.salesmanager
 
 import android.app.Fragment
+import android.content.Context
 import android.content.Intent
 import android.graphics.PorterDuff
 import android.os.Bundle
@@ -9,7 +10,9 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.bumptech.glide.Glide
 import com.uit.daniel.hotsalesmanager.R
+import com.uit.daniel.hotsalesmanager.utils.UserManagerUtil
 import com.uit.daniel.hotsalesmanager.view.signin.signinwithfacebook.SignInFacebookActivity
 import kotlinx.android.synthetic.main.fragment_sales_manager.*
 import kotlinx.android.synthetic.main.navigation_sales_manager.*
@@ -17,6 +20,7 @@ import kotlinx.android.synthetic.main.navigation_sales_manager.*
 class SalesManagerFragment : Fragment() {
 
     private lateinit var drawerToggle: ActionBarDrawerToggle
+    private lateinit var userManagerUtil: UserManagerUtil
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_sales_manager, container, false)
@@ -56,5 +60,32 @@ class SalesManagerFragment : Fragment() {
         activity_main_drawer.addDrawerListener(drawerToggle)
 
         nvvSalesManager.background.setColorFilter(0x800000, PorterDuff.Mode.MULTIPLY)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        try {
+            setUserImage()
+            setUserName()
+        } catch (e: Exception) {
+        }
+    }
+
+    private fun setUserName() {
+        tvUserName.text = userManagerUtil.getUserName()
+    }
+
+    private fun setUserImage() {
+        imUserAvatar?.let {
+            Glide.with(activity)
+                .asBitmap()
+                .load(userManagerUtil.getUrlkUserAvatar())
+                .into(it)
+        }
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        userManagerUtil = UserManagerUtil(context)
     }
 }
