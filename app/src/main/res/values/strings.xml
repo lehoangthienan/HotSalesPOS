@@ -44,5 +44,8 @@
     <string name="not_get_token_firebase">Can not get TokenID</string>
     <string name="error_firebase">ERROR IN FIREBASE</string>
     <string name="error_verification">There was some error in verifycation.</string>
+    <string name="action_back_address_search"></string>
+    <string name="action_finish_address_search"></string>
+
 
 </resources>

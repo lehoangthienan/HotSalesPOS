@@ -23,6 +23,11 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
+
+        <meta-data
+                android:name="com.google.android.geo.API_KEY"
+                android:value="AIzaSyAVfQ1cotCxn5mHuuYmp9tdf45YIYpd8Ww"/>
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -66,7 +71,11 @@
                 android:name=".view.signin.updateuserphonenumber.UpdatePhoneNumberActivity"
                 android:theme="@style/AppThemeMain">
         </activity>
-        <activity android:name=".view.product.productdetail.ProductDetailActivity"
+        <activity
+                android:name=".view.product.productdetail.ProductDetailActivity"
+                android:theme="@style/AppThemeMain">
+        </activity>
+        <activity android:name=".view.product.searchaddresslocation.SearchAddressLocationActivity"
                   android:theme="@style/AppThemeMain">
         </activity>
     </application>
