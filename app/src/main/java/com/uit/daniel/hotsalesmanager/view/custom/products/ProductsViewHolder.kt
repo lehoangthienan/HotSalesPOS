@@ -4,17 +4,30 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.View
+import android.view.animation.Animation
+import android.view.animation.LinearInterpolator
+import android.view.animation.RotateAnimation
 import com.bumptech.glide.Glide
 import com.uit.daniel.hotsalesmanager.data.model.Product
 import com.uit.daniel.hotsalesmanager.utils.PriceUtils
 import kotlinx.android.synthetic.main.item_products.view.*
+
 
 class ProductsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val priceUtils = PriceUtils()
     fun bindData(context: Context, product: Product, onItemClickedListener: ProductsAdapter.OnItemClickedListener) {
         loadImage(context, product, itemView)
         loadText(product, itemView)
+        loadAnimationForSale(itemView)
         addEvents(itemView, onItemClickedListener, product)
+    }
+
+    private fun loadAnimationForSale(itemView: View) {
+        val anim = RotateAnimation(0f, 350f, 50f, 50f)
+        anim.interpolator = LinearInterpolator()
+        anim.repeatCount = Animation.INFINITE
+        anim.duration = 700
+        itemView.ivIcHotSale.startAnimation(anim)
     }
 
     private fun addEvents(

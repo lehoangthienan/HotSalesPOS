@@ -30,7 +30,7 @@
             <ImageView
                     android:layout_width="36dp"
                     android:layout_height="34dp" app:srcCompat="@drawable/ic_sales2"
-                    android:id="@+id/imageView5"
+                    android:id="@+id/ivIcHotSale"
                     android:layout_marginBottom="8dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
