@@ -1,10 +1,10 @@
 var config = require('../../../../config');
 var response_express = require(config.library_dir+'/response').response_express;
-var User = require(config.models_dir + '/mongo/user');
+var Product = require(config.models_dir + '/mongo/product');
 
 module.exports = (req, res)=>{
-    let user_id = req.params.user_id
-    User.deleteOne({_id: user_id})
+    let product_id = req.params.product_id
+    Product.deleteOne({_id: product_id})
     .then(()=>{
         response_express.success(res)
     })
