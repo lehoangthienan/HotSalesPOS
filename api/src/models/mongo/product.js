@@ -13,6 +13,10 @@ var ProductSchema = new mongoose.Schema({
         trim: true,
         required: true,
     },
+    type: {
+        type: Number,
+        trim: true,
+    },
     content: {
         type: String,
         trim: true,

@@ -18,7 +18,7 @@ var OrderSchema = new mongoose.Schema({
         trim: true,
         required: false,
     },
-    name_product: {
+    product_name: {
         type: String,
         trim: true,
     },
