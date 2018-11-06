@@ -1,15 +1,6 @@
 var mongoose = require('mongoose');
 var UserSchema = new mongoose.Schema({
-    username: {
-        type: String,
-        trim: true,
-        lowercase: true,
-        index: {
-            unique: true,
-            partialFilterExpression: {username: {$type: 'string'}}
-        }
-    },
-    full_name: {
+    name: {
         type: String,
         trim: true,
     },
@@ -18,7 +9,7 @@ var UserSchema = new mongoose.Schema({
         trim: true,
         lowercase: true,
         index: {
-            unique: true,
+            unique : true,
             partialFilterExpression: {email: {$type: 'string'}}
         }
     },
@@ -26,6 +17,11 @@ var UserSchema = new mongoose.Schema({
         type: String,
         trim: true,
         required: true,
+    },
+    phonenumber: {
+        type: String,
+        trim: true,
+        required: false,
     },
     avatar: {
         type: String,

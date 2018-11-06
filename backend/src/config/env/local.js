@@ -5,7 +5,7 @@ module.exports={
         port: 27017,
         user: "",
         password: "",
-        database: "movie_review",
+        database: "sales_manager",
     }
 };
   
