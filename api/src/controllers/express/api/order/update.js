@@ -1,22 +1,22 @@
 
 var config = require('../../../../config');
 var response_express = require(config.library_dir+'/response').response_express;
-var User = require(config.models_dir + '/mongo/user');
+var Order = require(config.models_dir + '/mongo/order');
 
 module.exports = (req, res)=>{
-    let user_id = req.params.user_id
-    User.findById(user_id)
-    .then(user=>{
-        if (!user) {
-            return Promise.reject("user not exist")
+    let order_id = req.params.order_id
+    Order.findById(order_id)
+    .then(order=>{
+        if (!order) {
+            return Promise.reject("order not exist")
         }
 
-        Object.assign(user, req.body.user)
+        Object.assign(order, req.body.order)
 
-        return user.save()
+        return order.save()
     })
-    .then(user=>{
-        response_express.success(res, user)
+    .then(order=>{
+        response_express.success(res, order)
     })
     .catch(err=>response_express.exception(res, err.message))
 }

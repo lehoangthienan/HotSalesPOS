@@ -1,14 +1,13 @@
 
 var config = require('../../../../config');
 var express = require('express');
-var userRoutes = express.Router();
+var orderRoutes = express.Router();
 
-userRoutes.get("/", require('./findall'))
-userRoutes.post("/", require('./create'))
-userRoutes.delete("/:user_id", require('./delete'))
-userRoutes.put("/:user_id", require('./update'))
-userRoutes.put("/phonenumber/:user_id", require('./updatephonenumber'))
-userRoutes.get("/:user_id", require('./find'))
+orderRoutes.get("/", require('./findall'))
+orderRoutes.post("/", require('./create'))
+orderRoutes.delete("/:order_id", require('./delete'))
+orderRoutes.put("/:order_id", require('./update'))
+orderRoutes.get("/:order_id", require('./find'))
 
 
-module.exports = userRoutes;
+module.exports = orderRoutes;
