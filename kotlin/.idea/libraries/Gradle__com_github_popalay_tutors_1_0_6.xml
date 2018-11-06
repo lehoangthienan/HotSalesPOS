@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.popalay:tutors-1.0.6">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/tutors-1.0.6.aar/55db8719b044c97f57a7b8f8f08a2df5/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/tutors-1.0.6.aar/55db8719b044c97f57a7b8f8f08a2df5/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.popalay/tutors/1.0.6/c4918e34c0d7dfa13768bb881b4b1c3333a0c9b2/tutors-1.0.6-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

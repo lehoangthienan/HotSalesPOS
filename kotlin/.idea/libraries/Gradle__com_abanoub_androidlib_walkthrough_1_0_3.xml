@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: com.abanoub.androidlib:walkthrough-1.0.3">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/walkthrough-1.0.3-release.aar/e2f5f0ba82e340b660ef6bc443eba750/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/walkthrough-1.0.3-release.aar/e2f5f0ba82e340b660ef6bc443eba750/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

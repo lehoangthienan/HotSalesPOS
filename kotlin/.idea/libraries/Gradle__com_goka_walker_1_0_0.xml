@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.goka:walker-1.0.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/walker-1.0.0.aar/4d9f6e134426733837cf8cc6beacad00/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/walker-1.0.0.aar/4d9f6e134426733837cf8cc6beacad00/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.goka/walker/1.0.0/7a8620386be5fe56d9c24869c763f2bcc96eac61/walker-1.0.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

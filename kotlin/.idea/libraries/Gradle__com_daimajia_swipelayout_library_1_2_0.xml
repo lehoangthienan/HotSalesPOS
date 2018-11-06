@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.daimajia.swipelayout:library-1.2.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/library-1.2.0.aar/9343b8a7ff2a92af96b10b07d9fded7e/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/library-1.2.0.aar/9343b8a7ff2a92af96b10b07d9fded7e/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.daimajia.swipelayout/library/1.2.0/b63382dd92f5ccc49758caa83c4462f1da4b57c8/library-1.2.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
