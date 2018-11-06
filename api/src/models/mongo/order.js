@@ -11,11 +11,7 @@ var OrderSchema = new mongoose.Schema({
     email: {
         type: String,
         trim: true,
-        lowercase: true,
-        index: {
-            unique : true,
-            partialFilterExpression: {email: {$type: 'string'}}
-        }
+        lowercase: true
     },
     phone_number: {
         type: String,
