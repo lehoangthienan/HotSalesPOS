@@ -18,7 +18,7 @@ var ProductSchema = new mongoose.Schema({
         trim: true,
         required: false,
     },
-    iamge: {
+    image: {
         type: String,
         trim: true,
     },
