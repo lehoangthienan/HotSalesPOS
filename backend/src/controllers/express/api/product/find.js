@@ -1,15 +1,15 @@
 var config = require('../../../../config');
 var response_express = require(config.library_dir+'/response').response_express;
-var User = require(config.models_dir + '/mongo/user');
+var Product = require(config.models_dir + '/mongo/product');
 
 module.exports = (req, res)=>{
-    let user_id = req.params.user_id
-    User.findOne({_id: user_id})
-    .then(user=>{
-        if (!user) {
-            return Promise.reject("user not exist")
+    let product_id = req.params.product_id
+    Product.findOne({_id: product_id})
+    .then(product=>{
+        if (!product) {
+            return Promise.reject("product not exist")
         }
-        response_express.success(res, user)
+        response_express.success(res, product)
     })
     .catch(err=>response_express.exception(res, err.message))
 }
