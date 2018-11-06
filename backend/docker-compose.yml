@@ -5,7 +5,7 @@ services:
     image: "mongo:4.0"
     restart: always
     environment:
-      MONGO_INITDB_DATABASE: movie_review
+      MONGO_INITDB_DATABASE: salesmanager
     ports:
       - "27017:27017"
     expose:
