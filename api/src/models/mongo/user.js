@@ -18,7 +18,7 @@ var UserSchema = new mongoose.Schema({
         trim: true,
         required: true,
     },
-    phonenumber: {
+    phone_number: {
         type: String,
         trim: true,
         required: false,

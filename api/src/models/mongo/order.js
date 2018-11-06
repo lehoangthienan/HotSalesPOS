@@ -1,6 +1,24 @@
 var mongoose = require('mongoose');
-var ProductSchema = new mongoose.Schema({
-    name: {
+var OrderSchema = new mongoose.Schema({
+    user_id: {
+        type: String,
+        trim: true,
+    },
+    user_name: {
+        type: String,
+        trim: true,
+    },
+    email: {
+        type: String,
+        trim: true,
+        lowercase: true
+    },
+    phone_number: {
+        type: String,
+        trim: true,
+        required: false,
+    },
+    product_name: {
         type: String,
         trim: true,
     },
@@ -13,28 +31,11 @@ var ProductSchema = new mongoose.Schema({
         trim: true,
         required: true,
     },
-    type: {
-        type: Number,
-        trim: true,
-    },
-    content: {
-        type: String,
-        trim: true,
-        required: false,
-    },
     image: {
         type: String,
         trim: true,
     },
-    isWebsite: {
-        type: Boolean,
-        trim: true,
-    },
     owner: {
-        type: String,
-        trim: true,
-    },
-    phone_number: {
         type: String,
         trim: true,
     },
@@ -44,11 +45,11 @@ var ProductSchema = new mongoose.Schema({
     }
 });
 
-ProductSchema.pre('save', next=>{
+OrderSchema.pre('save', next=>{
     if (this.isNew || this.isModified) {
        
     }
     return next();
 });
 
-module.exports = mongoose.model('Product', ProductSchema);
+module.exports = mongoose.model('Order', OrderSchema);
