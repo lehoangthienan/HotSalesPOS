@@ -1,12 +1,16 @@
 
 var config = require('../../../../config');
 var response_express = require(config.library_dir+'/response').response_express;
-var User = require(config.models_dir + '/mongo/user');
+var Order = require(config.models_dir + '/mongo/order');
 
 module.exports = (req, res)=>{
-    User.find({})
-    .then(users=>{
-        response_express.success(res, users)
+    let user_id = req.params.user_id
+    Order.findOne({user_id: user_id})
+    .then(order=>{
+        if (!order) {
+            return Promise.reject("order not exist")
+        }
+        response_express.success(res, order)
     })
     .catch(err=>response_express.exception(res, err.message))
 }

@@ -1,5 +1,9 @@
 var mongoose = require('mongoose');
 var OrderSchema = new mongoose.Schema({
+    user_id: {
+        type: String,
+        trim: true,
+    },
     user_name: {
         type: String,
         trim: true,
