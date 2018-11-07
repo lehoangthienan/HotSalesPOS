@@ -20,9 +20,10 @@ class UserService private constructor(context: Context) {
 
     companion object : ArgumentSingletonHolder<UserService, Context>(::UserService)
 
-    private val apiClient: Retrofit = ApiService.Factory.getRetrofitBuilder(context).baseUrl(ApiEndpoint.BASE_URL).build()
+    private val apiClient: Retrofit =
+        ApiService.Factory.getRetrofitBuilder(context).baseUrl(ApiEndpoint.BASE_URL).build()
 
     private val api: UserApi = apiClient.create(UserApi::class.java)
 
-    
+    fun signInRequest(user: UserRequest) = api.signIn(user)
 }

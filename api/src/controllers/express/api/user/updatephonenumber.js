@@ -5,14 +5,13 @@ var User = require(config.models_dir + '/mongo/user');
 
 module.exports = (req, res)=>{
     let user_id = req.params.user_id
-    User.findById(user_id)
+    User.findOne({_id: user_id})
     .then(user=>{
         if (!user) {
             return Promise.reject("user not exist")
         }
 
         Object.assign(user.phonenumber, req.body.phonenumber)
-
         return user.save()
     })
     .then(user=>{
