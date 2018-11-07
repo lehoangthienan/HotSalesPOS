@@ -3,8 +3,8 @@ var response_express = require(config.library_dir+'/response').response_express;
 var Product = require(config.models_dir + '/mongo/product');
 
 module.exports = (req, res)=>{
-    let product_id = req.params.product_id
-    Product.findOne({_id: product_id})
+    let user_id = req.params.user_id
+    Product.find({user_id: user_id})
     .then(product=>{
         if (!product) {
             return Promise.reject("product not exist")

@@ -30,8 +30,20 @@ var ProductSchema = new mongoose.Schema({
         type: Boolean,
         trim: true,
     },
+    user_id: {
+        type: String,
+        trim: true,
+    },
     owner: {
         type: String,
+        trim: true,
+    },
+    lat: {
+        type: Number,
+        trim: true,
+    },
+    lng: {
+        type: Number,
         trim: true,
     },
     phone_number: {
