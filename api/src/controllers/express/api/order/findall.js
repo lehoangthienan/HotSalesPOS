@@ -5,7 +5,7 @@ var Order = require(config.models_dir + '/mongo/order');
 
 module.exports = (req, res)=>{
     let user_id = req.params.user_id
-    Order.findOne({user_id: user_id})
+    Order.find({user_id: user_id})
     .then(order=>{
         if (!order) {
             return Promise.reject("order not exist")

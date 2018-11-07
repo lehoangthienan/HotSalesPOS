@@ -8,13 +8,24 @@ module.exports = (req, res)=>{
     let miss=lib_common.checkMissParams(res, req.body, ["user"])
     if (miss) return
 
-    lib_password.cryptPassword(req.body.user.password)
-    .then(passwordHash=>{
-        req.body.user.password = passwordHash
-        return User.create(req.body.user)
+    User.findOne({email: req.body.user.email})
+    .then((user)=>{
+        console.log("xxxxxxxxxxxxxx", user, user==null)
+        if(user==null) 
+        {   
+            lib_password.cryptPassword(req.body.user.password)
+            .then(passwordHash=>{
+                req.body.user.password = passwordHash
+                return User.create(req.body.user)
+            })
+            .then(user=>{
+                response_express.success(res, user)
+            })
+            .catch(err=>response_express.exception(res, err.message))
+        }
+        else
+        {
+            response_express.success(res, user)
+        }
     })
-    .then(user=>{
-        response_express.success(res, user)
-    })
-    .catch(err=>response_express.exception(res, err.message))
 }
