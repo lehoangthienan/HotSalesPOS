@@ -10,7 +10,6 @@ module.exports = (req, res)=>{
 
     User.findOne({email: req.body.user.email})
     .then((user)=>{
-        console.log("xxxxxxxxxxxxxx", user, user==null)
         if(user==null) 
         {   
             lib_password.cryptPassword(req.body.user.password)
