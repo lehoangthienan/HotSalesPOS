@@ -1,12 +1,14 @@
-package foundation.dwarves.findfriends.service
+package com.uit.daniel.hotsalesmanager.service
 
 object ApiEndpoint {
 
+    //const val BASE_URL = "http://10.45.177.91:3000/"
     const val BASE_URL = "http://192.168.1.16:3000/"
 
     const val CREATE_USER = "api/users"
     const val DELETE_USER = "api/users/{userId}"
     const val UPDATE_USER = "api/users/{userId}"
+    const val UPDATE_USER_PHONE_NUMBER = "api/users/phonenumber/{userId}"
 
     const val CREATE_PRODUCT = "api/products"
     const val DELETE_PRODUCT = "api/products/{productId}"

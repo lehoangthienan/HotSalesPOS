@@ -1,4 +1,4 @@
-package foundation.dwarves.findfriends.service
+package com.uit.daniel.hotsalesmanager.service
 
 import android.content.Context
 import com.google.gson.GsonBuilder
@@ -24,8 +24,7 @@ interface ApiService {
                 .addInterceptor { chain ->
                     val original = chain.request()
                     val request = original.newBuilder()
-//                                .header("Authorization","Bearer " + SharedPreferencesUtil.getInstance(context).getAccessToken())
-                        //.header("Authorization", "" + SharedPreferencesUtil.getInstance(context).getAccessToken())
+                        .header("Authorization", "" + null)
                         .method(original.method(), original.body())
                         .build()
                     chain.proceed(request)

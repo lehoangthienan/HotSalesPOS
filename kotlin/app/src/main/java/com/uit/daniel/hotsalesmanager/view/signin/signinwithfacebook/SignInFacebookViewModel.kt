@@ -10,8 +10,13 @@ import com.facebook.*
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
 import com.uit.daniel.hotsalesmanager.R
+import com.uit.daniel.hotsalesmanager.data.request.User
+import com.uit.daniel.hotsalesmanager.data.request.UserRequest
+import com.uit.daniel.hotsalesmanager.service.UserService
 import com.uit.daniel.hotsalesmanager.utils.UserManagerUtil
 import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.PublishSubject
 import org.json.JSONObject
 import java.util.*
@@ -33,6 +38,7 @@ interface SignInFacebookViewModelOutputs {
 class SignInFacebookViewModel(context: Context) : SignInFacebookViewModelInputs, SignInFacebookViewModelOutputs {
 
     private var userManagerUtil: UserManagerUtil = UserManagerUtil.getInstance(context)
+    private var userService: UserService = UserService.getInstance(context)
 
     private val checkLogInFinishPublishSubject = PublishSubject.create<Boolean>()
     override fun isLogInFinish(): Observable<Boolean> = checkLogInFinishPublishSubject
@@ -40,6 +46,7 @@ class SignInFacebookViewModel(context: Context) : SignInFacebookViewModelInputs,
     private val checkLoggedFacebookhPublishSubject = PublishSubject.create<Boolean>()
     override fun isLoggedFacebook(): Observable<Boolean> = checkLoggedFacebookhPublishSubject
 
+    @SuppressLint("CheckResult")
     override fun isLoggedInFacebook(context: Activity) {
         val accessToken = AccessToken.getCurrentAccessToken()
         if (accessToken != null) {
@@ -49,18 +56,34 @@ class SignInFacebookViewModel(context: Context) : SignInFacebookViewModelInputs,
                 Log.d("Anle", `object`.toString())
                 if (!getUrlProfilePicture(`object`, context).isEmpty()) {
                     if (!getNameUser(`object`, context).isNullOrEmpty()) {
-                        userManagerUtil.setExtraUserInformation(
-                            userManagerUtil.getUserId(),
+                        val user = User(
                             getNameUser(`object`, context).toString(),
-                            getUrlProfilePicture(`object`, context),
-                            `object`?.getString("id").toString(),
-                            true
+                            `object`?.getString("email").toString(),
+                            "anle",
+                            getUrlProfilePicture(`object`, context)
                         )
-                        userManagerUtil.setUserName(getNameUser(`object`, context).toString())
-                        userManagerUtil.setUserUrlAvatar(getUrlProfilePicture(`object`, context))
+                        val userRequest = UserRequest(user)
+
+                        userService.signInRequest(userRequest)
+                            .subscribeOn(Schedulers.io())
+                            .observeOn(AndroidSchedulers.mainThread())
+                            .subscribe({ userResponse ->
+                                userManagerUtil.setExtraUserInformation(
+                                    userResponse.result!!.id!!,
+                                    userResponse.result!!.name!!,
+                                    userResponse.result!!.avatar!!,
+                                    `object`?.getString("id").toString(),
+                                    true
+                                )
+                                userManagerUtil.setUserName(userResponse.result!!.name!!)
+                                userManagerUtil.setUserUrlAvatar(userResponse.result!!.avatar!!)
+                                checkLoggedFacebookhPublishSubject.onNext(true)
+                            },
+                                { error ->
+                                    Log.e("ERROrsign", error.message.toString())
+                                })
                     }
                 }
-                checkLoggedFacebookhPublishSubject.onNext(true)
             }
             val parameters = Bundle()
             parameters.putString("fields", "id,name,email,location,birthday")
@@ -81,7 +104,7 @@ class SignInFacebookViewModel(context: Context) : SignInFacebookViewModelInputs,
 
         LoginManager.getInstance().registerCallback(callbackManager,
             object : FacebookCallback<LoginResult> {
-                @SuppressLint("HardwareIds")
+                @SuppressLint("HardwareIds", "CheckResult")
                 override fun onSuccess(loginResult: LoginResult) {
                     Log.d("Anle", "onSuccess")
                     val request: GraphRequest = GraphRequest.newMeRequest(
@@ -90,19 +113,36 @@ class SignInFacebookViewModel(context: Context) : SignInFacebookViewModelInputs,
                         Log.d("Anle", `object`.toString())
                         if (!getUrlProfilePicture(`object`, context).isEmpty()) {
                             if (!getNameUser(`object`, context).isNullOrEmpty()) {
-                                userManagerUtil.setExtraUserInformation(
-                                    userManagerUtil.getUserId(),
+
+                                val user = User(
                                     getNameUser(`object`, context).toString(),
-                                    getUrlProfilePicture(`object`, context),
-                                    `object`?.getString("id").toString(),
-                                    true
+                                    `object`?.getString("email").toString(),
+                                    "anle",
+                                    getUrlProfilePicture(`object`, context)
                                 )
-                                userManagerUtil.setUserName(getNameUser(`object`, context).toString())
-                                userManagerUtil.setUserUrlAvatar(getUrlProfilePicture(`object`, context))
+                                val userRequest = UserRequest(user)
+
+                                userService.signInRequest(userRequest)
+                                    .subscribeOn(Schedulers.io())
+                                    .observeOn(AndroidSchedulers.mainThread())
+                                    .subscribe({ userResponse ->
+                                        Log.d("xxx" , userResponse.toString())
+                                        userManagerUtil.setExtraUserInformation(
+                                            userResponse.result!!.id!!,
+                                            userResponse.result!!.name!!,
+                                            userResponse.result!!.avatar!!,
+                                            `object`?.getString("id").toString(),
+                                            true)
+                                        userManagerUtil.setUserName(userResponse.result!!.name!!)
+                                        userManagerUtil.setUserUrlAvatar(userResponse.result!!.avatar!!)
+                                        checkLogInFinishPublishSubject.onNext(true)
+                                    },
+                                        { error ->
+                                            Log.e("ERROrsign", error.message.toString())
+                                        })
                             }
                         }
                     }
-                    checkLogInFinishPublishSubject.onNext(true)
                     val parameters = Bundle()
                     parameters.putString("fields", "id,name,email,location,birthday")
                     request.parameters = parameters
