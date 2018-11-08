@@ -11,7 +11,7 @@ data class UserResponse(
 
     @SerializedName("result")
     @Expose
-    var result: List<UserResult>? = null
+    var result: UserResult? = null
 )
 
 data class UserResult(
