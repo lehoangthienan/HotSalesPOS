@@ -2,6 +2,7 @@ package com.uit.daniel.hotsalesmanager.service
 
 import android.content.Context
 import com.uit.daniel.hotsalesmanager.data.request.PhoneNumberRequest
+import com.uit.daniel.hotsalesmanager.data.request.UserNameRequest
 import com.uit.daniel.hotsalesmanager.data.request.UserRequest
 import com.uit.daniel.hotsalesmanager.data.response.UserResponse
 import com.uit.daniel.hotsalesmanager.utils.ArgumentSingletonHolder
@@ -10,6 +11,7 @@ import retrofit2.Retrofit
 import retrofit2.http.Body
 import retrofit2.http.POST
 import retrofit2.http.PUT
+import retrofit2.http.Path
 
 interface UserApi {
 
@@ -17,10 +19,10 @@ interface UserApi {
     fun signIn(@Body user: UserRequest): Single<UserResponse>
 
     @PUT(ApiEndpoint.UPDATE_USER)
-    fun updatePhoneNumber(@Body phoneNumberRequest: PhoneNumberRequest): Single<UserResponse>
+    fun updatePhoneNumber(@Path("userId") userId: String, @Body phoneNumberRequest: PhoneNumberRequest): Single<UserResponse>
 
     @PUT(ApiEndpoint.UPDATE_USER)
-    fun updateName(@Body phoneNumberRequest: PhoneNumberRequest): Single<UserResponse>
+    fun updateName(@Path("userId") userId: String, @Body userNameRequest: UserNameRequest): Single<UserResponse>
 
 }
 
@@ -35,5 +37,8 @@ class UserService private constructor(context: Context) {
 
     fun signInRequest(user: UserRequest) = api.signIn(user)
 
-    fun updatePhoneNumberRequest(phoneNumberRequest: PhoneNumberRequest) = api.updatePhoneNumber(phoneNumberRequest)
+    fun updatePhoneNumberRequest(userId: String, phoneNumberRequest: PhoneNumberRequest) =
+        api.updatePhoneNumber(userId, phoneNumberRequest)
+
+    fun updateNameRequest(userId: String, userNameRequest: UserNameRequest) = api.updateName(userId, userNameRequest)
 }
