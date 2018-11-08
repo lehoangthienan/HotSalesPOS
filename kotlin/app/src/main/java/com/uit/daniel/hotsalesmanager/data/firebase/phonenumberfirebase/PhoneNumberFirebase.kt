@@ -1,4 +1,4 @@
-package foundation.dwarves.findfriends.data.firebase.phonenumberfirebase
+package com.uit.daniel.hotsalesmanager.data.firebase.phonenumberfirebase
 
 import android.annotation.SuppressLint
 import android.app.Activity

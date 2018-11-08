@@ -12,7 +12,7 @@ data class PhoneNumberRequest(
 
 data class PhoneNumber(
 
-    @SerializedName("phonenumber")
+    @SerializedName("phone_number")
     @Expose
     var phonenumber: String? = null
 
