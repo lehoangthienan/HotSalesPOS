@@ -11,7 +11,7 @@ module.exports = (req, res)=>{
             return Promise.reject("user not exist")
         }
 
-        Object.assign(user.phonenumber, req.body.phonenumber)
+        Object.assign(user, req.body.user)
         return user.save()
     })
     .then(user=>{
