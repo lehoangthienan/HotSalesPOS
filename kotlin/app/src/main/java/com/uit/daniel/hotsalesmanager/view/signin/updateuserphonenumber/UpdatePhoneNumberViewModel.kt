@@ -23,7 +23,7 @@ interface UpdatePhoneNumberViewModelInputs {
     fun setCodeAtPosition6(digit: String)
 
     fun sendConfirmationCode(phoneNumber: String, activity: Activity, context: Context)
-    fun updatePhoneNumberToSever(phoneNumber: String)
+    fun updatePhoneNumberToSever(userId: String, phoneNumber: String)
 }
 
 interface UpdatePhoneNumberViewModelOutputs {
@@ -112,11 +112,11 @@ class UpdatePhoneNumberViewModel(context: Context) : UpdatePhoneNumberViewModelI
     }
 
     @SuppressLint("CheckResult")
-    override fun updatePhoneNumberToSever(phoneNumber: String) {
+    override fun updatePhoneNumberToSever(userId: String, phoneNumber: String) {
         val phoneNumberObject = PhoneNumber(phoneNumber)
         val phoneNumberRequest = PhoneNumberRequest(phoneNumberObject)
 
-        userService.updatePhoneNumberRequest(phoneNumberRequest)
+        userService.updatePhoneNumberRequest(userId, phoneNumberRequest)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ userResponse ->

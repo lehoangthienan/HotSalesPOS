@@ -95,7 +95,7 @@ class UpdatePhoneNumberFragment : android.app.Fragment() {
             Log.d("Anleresult", result.toString())
             if (result) {
                 userManagerUtil.setUserPhoneNumberVerifired(phoneNumber)
-                updatePhoneNumberViewModel.updatePhoneNumberToSever(phoneNumber)
+                updatePhoneNumberViewModel.updatePhoneNumberToSever(userManagerUtil.getUserId(), phoneNumber)
                 startSalesManagerActivity()
             }
         }
