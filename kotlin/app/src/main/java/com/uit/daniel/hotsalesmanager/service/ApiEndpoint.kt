@@ -8,7 +8,6 @@ object ApiEndpoint {
     const val CREATE_USER = "api/users"
     const val DELETE_USER = "api/users/{userId}"
     const val UPDATE_USER = "api/users/{userId}"
-    const val UPDATE_USER_PHONE_NUMBER = "api/users/phonenumber/{userId}"
 
     const val CREATE_PRODUCT = "api/products"
     const val DELETE_PRODUCT = "api/products/{productId}"

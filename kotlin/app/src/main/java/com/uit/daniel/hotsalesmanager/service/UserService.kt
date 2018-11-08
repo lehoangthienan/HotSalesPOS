@@ -16,8 +16,11 @@ interface UserApi {
     @POST(ApiEndpoint.CREATE_USER)
     fun signIn(@Body user: UserRequest): Single<UserResponse>
 
-    @PUT(ApiEndpoint.UPDATE_USER_PHONE_NUMBER)
+    @PUT(ApiEndpoint.UPDATE_USER)
     fun updatePhoneNumber(@Body phoneNumberRequest: PhoneNumberRequest): Single<UserResponse>
+
+    @PUT(ApiEndpoint.UPDATE_USER)
+    fun updateName(@Body phoneNumberRequest: PhoneNumberRequest): Single<UserResponse>
 
 }
 
