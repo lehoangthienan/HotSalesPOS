@@ -126,13 +126,14 @@ class SignInFacebookViewModel(context: Context) : SignInFacebookViewModelInputs,
                                     .subscribeOn(Schedulers.io())
                                     .observeOn(AndroidSchedulers.mainThread())
                                     .subscribe({ userResponse ->
-                                        Log.d("xxx" , userResponse.toString())
+                                        Log.d("xxx", userResponse.toString())
                                         userManagerUtil.setExtraUserInformation(
                                             userResponse.result!!.id!!,
                                             userResponse.result!!.name!!,
                                             userResponse.result!!.avatar!!,
                                             `object`?.getString("id").toString(),
-                                            true)
+                                            true
+                                        )
                                         userManagerUtil.setUserName(userResponse.result!!.name!!)
                                         userManagerUtil.setUserUrlAvatar(userResponse.result!!.avatar!!)
                                         checkLogInFinishPublishSubject.onNext(true)

@@ -3,8 +3,14 @@ package com.uit.daniel.hotsalesmanager.view.signin.updateuserphonenumber
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
-import foundation.dwarves.findfriends.data.firebase.phonenumberfirebase.PhoneNumberFirebase
+import android.util.Log
+import com.uit.daniel.hotsalesmanager.data.firebase.phonenumberfirebase.PhoneNumberFirebase
+import com.uit.daniel.hotsalesmanager.data.request.PhoneNumber
+import com.uit.daniel.hotsalesmanager.data.request.PhoneNumberRequest
+import com.uit.daniel.hotsalesmanager.service.UserService
 import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.PublishSubject
 
 interface UpdatePhoneNumberViewModelInputs {
@@ -17,7 +23,7 @@ interface UpdatePhoneNumberViewModelInputs {
     fun setCodeAtPosition6(digit: String)
 
     fun sendConfirmationCode(phoneNumber: String, activity: Activity, context: Context)
-
+    fun updatePhoneNumberToSever(phoneNumber: String)
 }
 
 interface UpdatePhoneNumberViewModelOutputs {
@@ -28,7 +34,8 @@ interface UpdatePhoneNumberViewModelOutputs {
 
 }
 
-class UpdatePhoneNumberViewModel : UpdatePhoneNumberViewModelInputs, UpdatePhoneNumberViewModelOutputs {
+class UpdatePhoneNumberViewModel(context: Context) : UpdatePhoneNumberViewModelInputs,
+    UpdatePhoneNumberViewModelOutputs {
 
     private var digit1 = ""
     private var digit2 = ""
@@ -36,6 +43,7 @@ class UpdatePhoneNumberViewModel : UpdatePhoneNumberViewModelInputs, UpdatePhone
     private var digit4 = ""
     private var digit5 = ""
     private var digit6 = ""
+    private var userPhoneNumber: String = ""
 
 
     private var verifyPhoneNumberFireBase = PhoneNumberFirebase()
@@ -47,6 +55,8 @@ class UpdatePhoneNumberViewModel : UpdatePhoneNumberViewModelInputs, UpdatePhone
     override fun setConfirmationCodeFocusPosition(): Observable<Int> = setFocusPositionPublicSubject
 
     override fun onValidationResult(): Observable<Boolean> = onValidationResultPublishSubject
+
+    private var userService: UserService = UserService.getInstance(context)
 
     override fun setCodeAtPosition1(digit: String) {
         setFocusPositionPublicSubject.onNext(2)
@@ -93,10 +103,27 @@ class UpdatePhoneNumberViewModel : UpdatePhoneNumberViewModelInputs, UpdatePhone
     }
 
     override fun sendConfirmationCode(phoneNumber: String, activity: Activity, context: Context) {
+        userPhoneNumber = phoneNumber
         verifyPhoneNumberFireBase.sendCodeToPhoneNumber(phoneNumber, activity, context)
     }
 
     private fun getCodeFromDigits(): String {
         return digit1 + digit2 + digit3 + digit4 + digit5 + digit6
+    }
+
+    @SuppressLint("CheckResult")
+    override fun updatePhoneNumberToSever(phoneNumber: String) {
+        val phoneNumberObject = PhoneNumber(phoneNumber)
+        val phoneNumberRequest = PhoneNumberRequest(phoneNumberObject)
+
+        userService.updatePhoneNumberRequest(phoneNumberRequest)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ userResponse ->
+
+            },
+                { error ->
+                    Log.e("ERROrsign", error.message.toString())
+                })
     }
 }
