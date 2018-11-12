@@ -2,14 +2,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+            android:id="@+id/navigation_hot_sales"
+            android:icon="@drawable/ic_house"
+            android:title="@string/title_ot_sales"/>
+
+    <item
             android:id="@+id/navigation_shop"
             android:icon="@drawable/ic_store_white_24dp"
             android:title="@string/title_shop"/>
 
-    <item
-            android:id="@+id/navigation_hot_sales"
-            android:icon="@drawable/ic_house"
-            android:title="@string/title_ot_sales"/>
 
     <item
             android:id="@+id/navigation_cart"
