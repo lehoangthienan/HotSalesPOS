@@ -48,4 +48,10 @@
     <string name="action_finish_address_search"></string>
     <string name="title_acctione">Action</string>
 
+    <string name="title_shop">Shop</string>
+    <string name="title_ot_sales">Hot Sales</string>
+    <string name="title_cart">Cart</string>
+    <string name="title_product">My Product</string>
+    <string name="title_profile">Profile</string>
+
 </resources>
