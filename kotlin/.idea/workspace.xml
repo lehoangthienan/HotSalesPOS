@@ -35,29 +35,7 @@
     </system>
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="UpdateUserProfileFragment.kt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/view/signin/updateuserprofile/UpdateUserProfileFragment.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="630">
-              <caret line="63" column="44" selection-start-line="63" selection-start-column="44" selection-end-line="63" selection-end-column="44" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ProfileFragment.kt" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/view/salesmanager/bottomnavigation/ProfileFragment.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="523">
-              <caret line="90" lean-forward="true" selection-start-line="90" selection-end-line="90" />
-              <folding>
-                <element signature="e#75#1198#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="GradleLocalSettings">
     <option name="myGradleHomes">
@@ -2731,7 +2709,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="47" y="25" width="1873" height="1055" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Android Profiler" />
@@ -2748,7 +2725,7 @@
       <window_info id="Captures" order="2" weight="0.25" />
       <window_info id="Capture Tool" />
       <window_info id="Designer" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24958949" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24958949" />
       <window_info anchor="bottom" id="Build" weight="0.32900432" />
       <window_info anchor="right" id="Gradle" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -2789,13 +2766,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/view/signin/updateuserprofile/UpdateUserProfileFragment.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="63" column="44" selection-start-line="63" selection-start-column="44" selection-end-line="63" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/view/signin/updateuserprofile/UpdateUserProfileActivity.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -2822,11 +2792,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/view/salesmanager/bottomnavigation/ProfileFragment.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="523">
-          <caret line="90" lean-forward="true" selection-start-line="90" selection-end-line="90" />
+        <state relative-caret-position="782">
+          <caret line="274" column="5" selection-start-line="274" selection-start-column="5" selection-end-line="274" selection-end-column="5" />
           <folding>
             <element signature="e#75#1198#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/view/signin/updateuserprofile/UpdateUserProfileFragment.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="752">
+          <caret line="174" column="72" selection-start-line="173" selection-start-column="6" selection-end-line="174" selection-end-column="72" />
         </state>
       </provider>
     </entry>
