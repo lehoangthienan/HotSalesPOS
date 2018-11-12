@@ -1,5 +1,6 @@
 package com.uit.daniel.hotsalesmanager.view.salesmanager
 
+import android.annotation.SuppressLint
 import android.app.Fragment
 import android.content.Context
 import android.content.Intent
@@ -31,6 +32,7 @@ class SalesManagerFragment : Fragment() {
     private lateinit var userManagerUtil: UserManagerUtil
     private var products = ArrayList<Product>()
     private lateinit var productsAdapter: ProductsAdapter
+    private lateinit var salesManagerViewModel: SalesManagerViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_sales_manager, container, false)
@@ -39,11 +41,22 @@ class SalesManagerFragment : Fragment() {
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initFakeData()
+        getProducts()
         addControls()
-        setProductsAdapter()
-        setProductsView()
         addEvents()
+    }
+
+    @SuppressLint("CheckResult")
+    private fun getProducts() {
+        salesManagerViewModel.productsObservable().subscribe { productRespone ->
+            productsAdapter = ProductsAdapter(productRespone, object : ProductsAdapter.OnItemClickedListener {
+                override fun onItemClicked(id: String) {
+                    startProductDetailActivity(id)
+                }
+            })
+            setProductsView()
+        }
+        salesManagerViewModel.products()
     }
 
     private fun setProductsView() {
@@ -53,182 +66,10 @@ class SalesManagerFragment : Fragment() {
         }
     }
 
-    private fun setProductsAdapter() {
-        productsAdapter = ProductsAdapter(products, object : ProductsAdapter.OnItemClickedListener {
-            override fun onItemClicked(id: String) {
-                startProductDetailActivity(id)
-            }
-        })
-    }
-
     private fun startProductDetailActivity(id: String) {
         val intent = Intent(activity, ProductDetailActivity::class.java)
         intent.putExtra("ID", id)
         activity.startActivity(intent)
-    }
-
-    private fun initFakeData() {
-        products.add(
-            Product(
-                "1",
-                "Iphone Xs Max",
-                15000000,
-                50,
-                "https://hoanghamobile.com/tin-tuc/wp-content/uploads/2018/09/danh-gia-iphone-xs-max-12.jpg",
-                "TiKi"
-            )
-        )
-        products.add(
-            Product(
-                "1",
-                "Iphone Xs Max",
-                15000000,
-                50,
-                "https://hoanghamobile.com/tin-tuc/wp-content/uploads/2018/09/danh-gia-iphone-xs-max-12.jpg",
-                "Lazada"
-            )
-        )
-        products.add(
-            Product(
-                "1",
-                "Iphone Xs Max",
-                15000000,
-                50,
-                "https://hoanghamobile.com/tin-tuc/wp-content/uploads/2018/09/danh-gia-iphone-xs-max-12.jpg",
-                "TiKi"
-            )
-        )
-        products.add(
-            Product(
-                "1",
-                "Iphone Xs Max",
-                15000000,
-                50,
-                "https://hoanghamobile.com/tin-tuc/wp-content/uploads/2018/09/danh-gia-iphone-xs-max-12.jpg",
-                "Sendo"
-            )
-        )
-        products.add(
-            Product(
-                "1",
-                "Iphone Xs Max",
-                15000000,
-                50,
-                "https://hoanghamobile.com/tin-tuc/wp-content/uploads/2018/09/danh-gia-iphone-xs-max-12.jpg",
-                "TiKi"
-            )
-        )
-        products.add(
-            Product(
-                "1",
-                "Iphone Xs Max",
-                15000000,
-                50,
-                "https://hoanghamobile.com/tin-tuc/wp-content/uploads/2018/09/danh-gia-iphone-xs-max-12.jpg",
-                "ChoTot"
-            )
-        )
-        products.add(
-            Product(
-                "1",
-                "Iphone Xs Max",
-                15000000,
-                50,
-                "https://hoanghamobile.com/tin-tuc/wp-content/uploads/2018/09/danh-gia-iphone-xs-max-12.jpg",
-                "TiKi"
-            )
-        )
-        products.add(
-            Product(
-                "1",
-                "Iphone Xs Max",
-                15000000,
-                50,
-                "https://hoanghamobile.com/tin-tuc/wp-content/uploads/2018/09/danh-gia-iphone-xs-max-12.jpg",
-                "AnLe"
-            )
-        )
-        products.add(
-            Product(
-                "1",
-                "Iphone Xs Max",
-                15000000,
-                50,
-                "https://hoanghamobile.com/tin-tuc/wp-content/uploads/2018/09/danh-gia-iphone-xs-max-12.jpg",
-                "TiKi"
-            )
-        )
-        products.add(
-            Product(
-                "1",
-                "Iphone Xs Max",
-                15000000,
-                50,
-                "https://hoanghamobile.com/tin-tuc/wp-content/uploads/2018/09/danh-gia-iphone-xs-max-12.jpg",
-                "ChuGiong"
-            )
-        )
-        products.add(
-            Product(
-                "1",
-                "Iphone Xs Max",
-                15000000,
-                50,
-                "https://hoanghamobile.com/tin-tuc/wp-content/uploads/2018/09/danh-gia-iphone-xs-max-12.jpg",
-                "TiKi"
-            )
-        )
-        products.add(
-            Product(
-                "1",
-                "Iphone Xs Max",
-                15000000,
-                50,
-                "https://hoanghamobile.com/tin-tuc/wp-content/uploads/2018/09/danh-gia-iphone-xs-max-12.jpg",
-                "Shopee"
-            )
-        )
-        products.add(
-            Product(
-                "1",
-                "Iphone Xs Max",
-                15000000,
-                50,
-                "https://hoanghamobile.com/tin-tuc/wp-content/uploads/2018/09/danh-gia-iphone-xs-max-12.jpg",
-                "TiKi"
-            )
-        )
-        products.add(
-            Product(
-                "1",
-                "Iphone Xs Max",
-                15000000,
-                50,
-                "https://hoanghamobile.com/tin-tuc/wp-content/uploads/2018/09/danh-gia-iphone-xs-max-12.jpg",
-                "TiKi"
-            )
-        )
-        products.add(
-            Product(
-                "1",
-                "Iphone Xs Max",
-                15000000,
-                50,
-                "https://hoanghamobile.com/tin-tuc/wp-content/uploads/2018/09/danh-gia-iphone-xs-max-12.jpg",
-                "TiKi"
-            )
-        )
-        products.add(
-            Product(
-                "1",
-                "Iphone Xs Max",
-                15000000,
-                50,
-                "https://hoanghamobile.com/tin-tuc/wp-content/uploads/2018/09/danh-gia-iphone-xs-max-12.jpg",
-                "TiKi"
-            )
-        )
-
     }
 
     private fun addEvents() {
@@ -286,7 +127,7 @@ class SalesManagerFragment : Fragment() {
         try {
             setUserImage()
             setUserName()
-            setProductsAdapter()
+            getProducts()
             setProductsView()
         } catch (e: Exception) {
         }
@@ -308,5 +149,6 @@ class SalesManagerFragment : Fragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         userManagerUtil = UserManagerUtil(context)
+        salesManagerViewModel = SalesManagerViewModel(context)
     }
 }
