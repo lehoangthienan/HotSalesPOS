@@ -10,8 +10,8 @@ import android.view.animation.RotateAnimation
 import com.bumptech.glide.Glide
 import com.uit.daniel.hotsalesmanager.data.response.ProductResult
 import com.uit.daniel.hotsalesmanager.utils.PriceUtils
+import com.uit.daniel.hotsalesmanager.utils.getVisibilityView
 import kotlinx.android.synthetic.main.item_products.view.*
-
 
 class ProductsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val priceUtils = PriceUtils()
@@ -22,16 +22,18 @@ class ProductsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     ) {
         loadImage(context, product, itemView)
         loadText(product, itemView)
-        loadAnimationForSale(itemView)
+        loadAnimationForSale(itemView, product)
         addEvents(itemView, onItemClickedListener, product)
     }
 
-    private fun loadAnimationForSale(itemView: View) {
-        val anim = RotateAnimation(0f, 350f, 50f, 50f)
-        anim.interpolator = LinearInterpolator()
-        anim.repeatCount = Animation.INFINITE
-        anim.duration = 700
-        itemView.ivIcHotSale.startAnimation(anim)
+    private fun loadAnimationForSale(itemView: View, product: ProductResult) {
+        if (product.isWebsite!!) {
+            val anim = RotateAnimation(0f, 350f, 50f, 50f)
+            anim.interpolator = LinearInterpolator()
+            anim.repeatCount = Animation.INFINITE
+            anim.duration = 700
+            itemView.ivIcHotSale.startAnimation(anim)
+        } else itemView.ivIcHotSale.visibility = getVisibilityView(false)
     }
 
     private fun addEvents(

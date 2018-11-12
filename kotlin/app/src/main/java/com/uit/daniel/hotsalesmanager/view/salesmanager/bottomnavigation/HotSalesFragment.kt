@@ -127,6 +127,7 @@ class HotSalesFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
+        showProducts()
     }
 
 }
