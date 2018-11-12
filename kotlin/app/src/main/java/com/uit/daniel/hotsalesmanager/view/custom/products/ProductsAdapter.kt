@@ -5,10 +5,10 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.uit.daniel.hotsalesmanager.R
-import com.uit.daniel.hotsalesmanager.data.response.ProductResponse
+import com.uit.daniel.hotsalesmanager.data.response.ProductResult
 
 class ProductsAdapter(
-    private var productResponse: ProductResponse,
+    private var products: ArrayList<ProductResult>,
     private var onItemClickedListener: OnItemClickedListener
 ) : RecyclerView.Adapter<ProductsViewHolder>() {
     private lateinit var context: Context
@@ -20,14 +20,13 @@ class ProductsAdapter(
     }
 
     override fun getItemCount(): Int {
-        return if (productResponse.result == null) 0
-        else productResponse.result!!.size
+        return products.size
     }
 
     override fun onBindViewHolder(holder: ProductsViewHolder, position: Int) {
-        if (productResponse.result != null) holder.bindData(
+        holder.bindData(
             context,
-            productResponse.result!![position],
+            products[position],
             onItemClickedListener
         )
     }

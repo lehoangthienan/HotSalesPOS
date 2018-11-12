@@ -1,37 +1,34 @@
 package com.uit.daniel.hotsalesmanager.view.salesmanager
 
-import android.annotation.SuppressLint
 import android.app.Fragment
 import android.content.Context
 import android.content.Intent
 import android.graphics.PorterDuff
 import android.os.Bundle
+import android.support.design.widget.BottomNavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
-import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.uit.daniel.hotsalesmanager.R
-import com.uit.daniel.hotsalesmanager.data.model.Product
 import com.uit.daniel.hotsalesmanager.utils.Constant.NAME_USER_DEFAULT
 import com.uit.daniel.hotsalesmanager.utils.ToastSnackBar
 import com.uit.daniel.hotsalesmanager.utils.UserManagerUtil
-import com.uit.daniel.hotsalesmanager.view.custom.products.ProductsAdapter
 import com.uit.daniel.hotsalesmanager.view.product.createproduct.CreateProductActivity
 import com.uit.daniel.hotsalesmanager.view.product.productaddedcart.ProductAddedCartActivity
 import com.uit.daniel.hotsalesmanager.view.product.productdetail.ProductDetailActivity
+import com.uit.daniel.hotsalesmanager.view.salesmanager.bottomnavigation.*
 import com.uit.daniel.hotsalesmanager.view.signin.signinwithfacebook.SignInFacebookActivity
 import kotlinx.android.synthetic.main.fragment_sales_manager.*
 import kotlinx.android.synthetic.main.navigation_sales_manager.*
+
 
 class SalesManagerFragment : Fragment() {
 
     private lateinit var drawerToggle: ActionBarDrawerToggle
     private lateinit var userManagerUtil: UserManagerUtil
-    private var products = ArrayList<Product>()
-    private lateinit var productsAdapter: ProductsAdapter
     private lateinit var salesManagerViewModel: SalesManagerViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -41,29 +38,54 @@ class SalesManagerFragment : Fragment() {
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        getProducts()
+        initView()
         addControls()
         addEvents()
     }
 
-    @SuppressLint("CheckResult")
-    private fun getProducts() {
-        salesManagerViewModel.productsObservable().subscribe { productRespone ->
-            productsAdapter = ProductsAdapter(productRespone, object : ProductsAdapter.OnItemClickedListener {
-                override fun onItemClicked(id: String) {
-                    startProductDetailActivity(id)
-                }
-            })
-            setProductsView()
-        }
-        salesManagerViewModel.products()
+    private fun initView() {
+        loadFragment(HotSalesFragment())
     }
 
-    private fun setProductsView() {
-        rvProducts.apply {
-            this.layoutManager = LinearLayoutManager(activity)
-            this.adapter = productsAdapter
+    private val onNavigationItemSelectedListener =
+        BottomNavigationView.OnNavigationItemSelectedListener { item ->
+            val fragment: Fragment
+            when (item.itemId) {
+                R.id.navigation_shop -> {
+                    fragment = ShopFragment()
+                    loadFragment(fragment)
+                    return@OnNavigationItemSelectedListener true
+                }
+                R.id.navigation_my_product -> {
+                    fragment = UserProductFragment()
+                    loadFragment(fragment)
+                    return@OnNavigationItemSelectedListener true
+                }
+                R.id.navigation_cart -> {
+                    fragment = CartFragment()
+                    loadFragment(fragment)
+                    return@OnNavigationItemSelectedListener true
+                }
+                R.id.navigation_profile -> {
+                    fragment = ProfileFragment()
+                    loadFragment(fragment)
+                    return@OnNavigationItemSelectedListener true
+                }
+                R.id.navigation_hot_sales -> {
+                    fragment = HotSalesFragment()
+                    loadFragment(fragment)
+                    return@OnNavigationItemSelectedListener true
+                }
+            }
+
+            false
         }
+
+    private fun loadFragment(fragment: Fragment) {
+        val transaction = fragmentManager.beginTransaction()
+        transaction.replace(R.id.frame_container, fragment)
+        transaction.addToBackStack(null)
+        transaction.commit()
     }
 
     private fun startProductDetailActivity(id: String) {
@@ -90,10 +112,9 @@ class SalesManagerFragment : Fragment() {
             )
             else startCreateProduct()
         }
-        ivShoppingCart.setOnClickListener {
-            startProductAddedCart()
-        }
+        navigation.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
     }
+
 
     private fun startProductAddedCart() {
         val intent = Intent(activity, ProductAddedCartActivity::class.java)
@@ -127,8 +148,6 @@ class SalesManagerFragment : Fragment() {
         try {
             setUserImage()
             setUserName()
-            getProducts()
-            setProductsView()
         } catch (e: Exception) {
         }
     }
