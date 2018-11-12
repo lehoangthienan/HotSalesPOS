@@ -5,10 +5,10 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.uit.daniel.hotsalesmanager.R
-import com.uit.daniel.hotsalesmanager.data.model.Product
+import com.uit.daniel.hotsalesmanager.data.response.ProductResult
 
 class ProductsAdapter(
-    private var products: ArrayList<Product>,
+    private var products: ArrayList<ProductResult>,
     private var onItemClickedListener: OnItemClickedListener
 ) : RecyclerView.Adapter<ProductsViewHolder>() {
     private lateinit var context: Context
@@ -24,7 +24,11 @@ class ProductsAdapter(
     }
 
     override fun onBindViewHolder(holder: ProductsViewHolder, position: Int) {
-        holder.bindData(context, products[position], onItemClickedListener)
+        holder.bindData(
+            context,
+            products[position],
+            onItemClickedListener
+        )
     }
 
     interface OnItemClickedListener {

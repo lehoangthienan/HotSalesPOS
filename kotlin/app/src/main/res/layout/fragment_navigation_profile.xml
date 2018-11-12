@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="526dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            tools:ignore="ScrollViewCount" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintHorizontal_bias="0.0" app:layout_constraintVertical_bias="1.0">
+
+        <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:ignore="ScrollViewSize">
+
+            <android.support.constraint.ConstraintLayout
+                    android:id="@+id/viewEditAvatar"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="44dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                        xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/imgAvatarUpdate"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:src="@drawable/ic_user"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0"/>
+
+                <ImageView
+                        android:id="@+id/imgEditAvatarUpdate"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginBottom="60dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:srcCompat="@drawable/ic_edit_avatar"
+                        tools:ignore="ContentDescription"/>
+
+            </android.support.constraint.ConstraintLayout>
+
+            <RelativeLayout
+                    android:id="@+id/viewUpdateInforProfile"
+                    android:layout_width="280dp"
+                    android:layout_height="193dp"
+                    android:layout_marginTop="44dp"
+                    android:tooltipText="50dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/viewEditAvatar"
+                    tools:ignore="UnusedAttribute">
+
+                <TextView
+                        android:id="@+id/textView23"
+                        android:layout_width="20dp"
+                        android:layout_height="22dp"
+                        android:layout_centerVertical="true"
+                        android:fontFamily="@font/material"
+                        android:text="@string/ic_phone_number_update_user_profile"
+                        android:textColor="@color/colorText"
+                        android:textSize="20sp"/>
+
+                <TextView
+                        android:id="@+id/textView21"
+                        android:layout_width="20dp"
+                        android:layout_height="22dp"
+                        android:fontFamily="@font/material"
+                        android:text="@string/ic_name_update_user_profile"
+                        android:textColor="@color/colorText"
+                        android:textSize="20sp"/>
+
+                <TextView
+                        android:id="@+id/tvNameUpdateUserProfile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="18dp"
+                        android:layout_alignBottom="@+id/textView21"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="28dp"
+                        android:fontFamily="@font/lato_regular"
+                        android:text="@string/title_name_update_user_profile"
+                        android:textColor="@color/colorTextTitle"
+                        android:textSize="12sp"/>
+
+
+                <TextView
+                        android:id="@+id/textView24"
+                        android:layout_width="wrap_content"
+                        android:layout_height="18dp"
+                        android:layout_alignStart="@+id/tvNameUpdateUserProfile"
+                        android:layout_alignBottom="@+id/textView23"
+                        android:fontFamily="@font/lato_regular"
+                        android:text="@string/title_phone_number_update_user_profile"
+                        android:textColor="@color/colorTextTitle"
+                        android:textSize="12sp"/>
+
+                <EditText
+                        android:id="@+id/etName"
+                        android:layout_width="280dp"
+                        android:layout_height="45dp"
+                        android:layout_below="@id/textView21"
+                        android:backgroundTint="@color/colorAccent"
+                        android:ems="10"
+                        android:inputType="textPersonName"
+                        android:textColor="@color/colorText"
+                        tools:ignore="Autofill,LabelFor"/>
+
+                <EditText
+                        android:id="@+id/etPhoneNumber"
+                        android:layout_width="140dp"
+                        android:layout_height="45dp"
+                        android:layout_below="@+id/textView23"
+                        android:layout_alignParentEnd="true"
+                        android:backgroundTint="@color/colorAccent"
+                        android:ems="10"
+                        android:focusable="true"
+                        android:inputType="number"
+                        android:textColor="@color/colorText"
+                        tools:ignore="Autofill,LabelFor,TextFields"/>
+
+                <Spinner
+                        android:id="@+id/spCodeCoutry"
+                        style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                        android:layout_width="140dp"
+                        android:layout_height="45dp"
+                        android:layout_alignBottom="@+id/etPhoneNumber"
+                        android:layerType="software"
+                        android:popupElevation="1dp"
+                        android:scrollbarSize="10dp"/>
+
+            </RelativeLayout>
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>

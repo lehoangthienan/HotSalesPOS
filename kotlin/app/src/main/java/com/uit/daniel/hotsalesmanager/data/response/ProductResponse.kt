@@ -3,7 +3,6 @@ package com.uit.daniel.hotsalesmanager.data.response
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-
 data class ProductResponse(
     @SerializedName("status")
     @Expose
@@ -11,7 +10,7 @@ data class ProductResponse(
 
     @SerializedName("result")
     @Expose
-    var result: ProductResult? = null
+    var result: List<ProductResult>? = null
 
 )
 
@@ -31,7 +30,7 @@ data class ProductResult(
 
     @SerializedName("discount")
     @Expose
-    var discount: String? = null,
+    var discount: Int? = null,
 
     @SerializedName("type")
     @Expose
