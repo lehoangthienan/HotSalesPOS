@@ -46,7 +46,6 @@ class UpdateUserProfileActivity : AppCompatActivity() {
         initView()
         inItBottomSheetDialog()
         initeDialogPermissionStorage()
-        initView()
         addEvents()
     }
 
