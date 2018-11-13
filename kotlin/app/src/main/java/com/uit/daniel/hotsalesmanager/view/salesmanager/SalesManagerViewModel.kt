@@ -86,10 +86,11 @@ class SalesManagerViewModel(context: Context) : SalesManagerViewModelInputs, Sal
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ productsResponse ->
-                userProductsPublishSubject.onNext(productsResponse)
+                deleteProductPublishSubject.onNext(true)
             },
                 { error ->
                     Log.e("ErrorProduct", error.message.toString())
+                    deleteProductPublishSubject.onNext(false)
                 })
     }
 
@@ -99,10 +100,11 @@ class SalesManagerViewModel(context: Context) : SalesManagerViewModelInputs, Sal
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ productsResponse ->
-                userProductsPublishSubject.onNext(productsResponse)
+                updateProductPublishSubject.onNext(true)
             },
                 { error ->
                     Log.e("ErrorProduct", error.message.toString())
+                    updateProductPublishSubject.onNext(false)
                 })
     }
 }
