@@ -36,13 +36,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ProductService.kt" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ProductService.kt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/service/ProductService.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="675">
-              <caret line="45" column="41" lean-forward="true" selection-start-line="45" selection-start-column="41" selection-end-line="45" selection-end-column="41" />
+            <state relative-caret-position="360">
+              <caret line="24" column="78" lean-forward="true" selection-start-line="14" selection-start-column="1" selection-end-line="24" selection-end-column="78" />
               <folding>
                 <element signature="e#48#320#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OrderService.kt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/service/OrderService.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="18" column="19" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
+              <folding>
+                <element signature="e#48#228#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -51,17 +63,8 @@
       <file leaf-file-name="ApiEndpoint.kt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/service/ApiEndpoint.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="55" selection-start-line="13" selection-start-column="46" selection-end-line="13" selection-end-column="55" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserService.kt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/service/UserService.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
-              <caret line="42" column="117" lean-forward="true" selection-start-line="42" selection-end-line="42" selection-end-column="117" />
+            <state relative-caret-position="330">
+              <caret line="22" column="23" selection-start-line="22" selection-start-column="14" selection-end-line="22" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -2528,6 +2531,7 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/view/custom/products/ProductsViewHolder.kt" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/item_products.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/service/ProductService.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/service/OrderService.kt" />
       </list>
     </option>
   </component>
@@ -2935,13 +2939,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/service/OrderService.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/service/UserService.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="465">
@@ -2956,19 +2953,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/service/ApiEndpoint.kt">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/service/ProductService.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="55" selection-start-line="13" selection-start-column="46" selection-end-line="13" selection-end-column="55" />
+        <state relative-caret-position="360">
+          <caret line="24" column="78" lean-forward="true" selection-start-line="14" selection-start-column="1" selection-end-line="24" selection-end-column="78" />
+          <folding>
+            <element signature="e#48#320#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/service/ProductService.kt">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/service/ApiEndpoint.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
-          <caret line="45" column="41" lean-forward="true" selection-start-line="45" selection-start-column="41" selection-end-line="45" selection-end-column="41" />
+        <state relative-caret-position="330">
+          <caret line="22" column="23" selection-start-line="22" selection-start-column="14" selection-end-line="22" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/service/OrderService.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="19" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
           <folding>
-            <element signature="e#48#320#0" expanded="true" />
+            <element signature="e#48#228#0" expanded="true" />
           </folding>
         </state>
       </provider>
