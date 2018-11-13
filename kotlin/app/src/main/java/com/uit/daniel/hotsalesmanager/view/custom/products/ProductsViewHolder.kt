@@ -10,7 +10,6 @@ import android.view.animation.RotateAnimation
 import com.bumptech.glide.Glide
 import com.uit.daniel.hotsalesmanager.data.response.ProductResult
 import com.uit.daniel.hotsalesmanager.utils.PriceUtils
-import com.uit.daniel.hotsalesmanager.utils.getVisibilityView
 import kotlinx.android.synthetic.main.item_products.view.*
 
 class ProductsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -22,18 +21,25 @@ class ProductsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     ) {
         loadImage(context, product, itemView)
         loadText(product, itemView)
-        loadAnimationForSale(itemView, product)
+        loadAnimationForSale(context, itemView, product)
         addEvents(itemView, onItemClickedListener, product)
     }
 
-    private fun loadAnimationForSale(itemView: View, product: ProductResult) {
+    private fun loadAnimationForSale(context: Context, itemView: View, product: ProductResult) {
         if (product.isWebsite!!) {
             val anim = RotateAnimation(0f, 350f, 50f, 50f)
             anim.interpolator = LinearInterpolator()
             anim.repeatCount = Animation.INFINITE
             anim.duration = 700
             itemView.ivIcHotSale.startAnimation(anim)
-        } else itemView.ivIcHotSale.visibility = getVisibilityView(false)
+        } else {
+            itemView.ivIcHotSale.let {
+                Glide.with(context)
+                    .asBitmap()
+                    .load(product.owner?.avatar)
+                    .into(it)
+            }
+        }
     }
 
     private fun addEvents(
@@ -59,7 +65,7 @@ class ProductsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             }
         }!!)
         itemView.tvPercentDiscount.text = product.discount.toString() + "%"
-        itemView.tvBranchName.text = product.owner
+        itemView.tvBranchName.text = product.owner?.name
     }
 
     private fun loadImage(context: Context, product: ProductResult, itemView: View?) {
