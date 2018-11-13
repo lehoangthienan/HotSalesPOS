@@ -14,7 +14,8 @@ object ApiEndpoint {
     const val DELETE_PRODUCT = "api/products/{productId}"
     const val UPDATE_PRODUCT = "api/products/{productId}"
     const val GET_ALL_PRODUCT = "api/products"
-    const val GET_PRODUCT = "api/products/{userId}"
+    const val GET_PRODUCT = "api/products/user/{userId}"
+    const val GET_PRODUCT_ID = "api/products/{productId}"
 
     const val CREATE_ORDER = "api/orders"
     const val DELETE_ORDER = "api/orders/{orderId}"

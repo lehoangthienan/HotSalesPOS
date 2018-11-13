@@ -15,24 +15,29 @@ class UserProductsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
         context: Context,
         product: ProductResult,
         onItemClickedListener: UserProductsAdapter.OnItemClickedListener,
-        onDeleteClickedListener: UserProductsAdapter.OnDeleteClickedListener
+        onDeleteClickedListener: UserProductsAdapter.OnDeleteClickedListener,
+        onUpdateClickedListener: UserProductsAdapter.OnUpdateClickedListener
     ) {
         loadImage(context, product, itemView)
         loadText(product, itemView)
-        addEvents(itemView, onItemClickedListener, product, onDeleteClickedListener)
+        addEvents(itemView, onItemClickedListener, product, onDeleteClickedListener, onUpdateClickedListener)
     }
 
     private fun addEvents(
         itemView: View,
         onItemClickedListener: UserProductsAdapter.OnItemClickedListener,
         product: ProductResult,
-        onDeleteClickedListener: UserProductsAdapter.OnDeleteClickedListener
+        onDeleteClickedListener: UserProductsAdapter.OnDeleteClickedListener,
+        onUpdateClickedListener: UserProductsAdapter.OnUpdateClickedListener
     ) {
         itemView.cvItemProduct.setOnClickListener {
             onItemClickedListener.onItemClicked(product.id.toString())
         }
         itemView.viewDelete.setOnClickListener {
             onDeleteClickedListener.onDeleteClickedListener(product.id.toString())
+        }
+        itemView.viewUpdate.setOnClickListener {
+            onUpdateClickedListener.onUpdateClickedListener(product.id.toString())
         }
     }
 

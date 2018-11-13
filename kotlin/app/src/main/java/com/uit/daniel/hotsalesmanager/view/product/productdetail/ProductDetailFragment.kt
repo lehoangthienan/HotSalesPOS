@@ -11,7 +11,7 @@ import com.bumptech.glide.Glide
 import com.uit.daniel.hotsalesmanager.R
 import com.uit.daniel.hotsalesmanager.data.model.Product
 import com.uit.daniel.hotsalesmanager.utils.PriceUtils
-import com.uit.daniel.hotsalesmanager.view.product.orderproduct.OrderProductActivity
+import com.uit.daniel.hotsalesmanager.view.order.orderproduct.OrderProductActivity
 import kotlinx.android.synthetic.main.fragment_product_detail.*
 
 class ProductDetailFragment : Fragment() {

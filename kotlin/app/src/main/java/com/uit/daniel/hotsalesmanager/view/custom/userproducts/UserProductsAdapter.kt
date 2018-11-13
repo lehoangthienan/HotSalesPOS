@@ -10,7 +10,8 @@ import com.uit.daniel.hotsalesmanager.data.response.ProductResult
 class UserProductsAdapter (
     private var products: ArrayList<ProductResult>,
     private var onItemClickedListener: OnItemClickedListener,
-    private var onDeleteClickedListener: OnDeleteClickedListener
+    private var onDeleteClickedListener: OnDeleteClickedListener,
+    private var onUpdateClickedListener: OnUpdateClickedListener
 ) : RecyclerView.Adapter<UserProductsViewHolder>() {
     private lateinit var context: Context
 
@@ -29,7 +30,8 @@ class UserProductsAdapter (
             context,
             products[position],
             onItemClickedListener,
-            onDeleteClickedListener
+            onDeleteClickedListener,
+            onUpdateClickedListener
         )
     }
 
@@ -39,5 +41,9 @@ class UserProductsAdapter (
 
     interface OnDeleteClickedListener {
         fun onDeleteClickedListener(id: String)
+    }
+
+    interface OnUpdateClickedListener {
+        fun onUpdateClickedListener(id: String)
     }
 }

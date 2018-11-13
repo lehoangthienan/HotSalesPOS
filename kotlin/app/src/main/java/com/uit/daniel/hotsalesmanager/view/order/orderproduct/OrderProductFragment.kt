@@ -1,4 +1,4 @@
-package com.uit.daniel.hotsalesmanager.view.product.orderproduct
+package com.uit.daniel.hotsalesmanager.view.order.orderproduct
 
 import android.app.Fragment
 import android.content.Context

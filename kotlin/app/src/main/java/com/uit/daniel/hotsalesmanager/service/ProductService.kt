@@ -10,7 +10,10 @@ import retrofit2.http.*
 
 interface ProductApi {
     @GET(ApiEndpoint.GET_ALL_PRODUCT)
-    fun pruducts(): Single<ProductResponse>
+    fun products(): Single<ProductResponse>
+
+    @GET(ApiEndpoint.GET_PRODUCT_ID)
+    fun product(@Path("productId") productId: String): Single<ProductResponse>
 
     @GET(ApiEndpoint.GET_PRODUCT)
     fun userProducts(@Path("userId") userId: String): Single<ProductResponse>
@@ -33,7 +36,9 @@ class ProductService private constructor(context: Context) {
 
     private val api: ProductApi = apiClient.create(ProductApi::class.java)
 
-    fun productsRequest() = api.pruducts()
+    fun productsRequest() = api.products()
+
+    fun productRequest(productId: String) = api.product(productId)
 
     fun userProductsRequest(userId: String) = api.userProducts(userId)
 
