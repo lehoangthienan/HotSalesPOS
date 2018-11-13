@@ -17,7 +17,7 @@ class UpdateProductFragment : Fragment() {
     private lateinit var updateProductViewModel: UpdateProductViewModel
     private lateinit var productResponse: ProductResponse
 
-    private var groupId = ""
+    private var productId = ""
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_update_product, container, false)
@@ -48,17 +48,26 @@ class UpdateProductFragment : Fragment() {
             etImageLink.text.toString().isNullOrBlank()
         ) ToastSnackBar.showSnackbar("Please enter full information before proceeding.", view, activity)
         else {
-
+            updateProduct()
         }
     }
-    
+
+    @SuppressLint("CheckResult")
+    private fun updateProduct() {
+        updateProductViewModel.updateProductObservable().subscribe { check ->
+            if (check) activity.finish()
+            else ToastSnackBar.showSnackbar("Update product fail!", view, activity)
+        }
+        updateProductViewModel.updateProduct(productId, productResponse)
+    }
+
     @SuppressLint("CheckResult")
     private fun getProductDetail() {
         updateProductViewModel.productObservable().subscribe { response ->
             productResponse = response
             initView()
         }
-        updateProductViewModel.product(groupId)
+        updateProductViewModel.product(productId)
     }
 
     private fun initView() {
@@ -70,7 +79,7 @@ class UpdateProductFragment : Fragment() {
     }
 
     private fun getProductId() {
-        groupId = activity?.intent?.getStringExtra("ID") ?: ""
+        productId = activity?.intent?.getStringExtra("ID") ?: ""
     }
 
     override fun onAttach(context: Context) {

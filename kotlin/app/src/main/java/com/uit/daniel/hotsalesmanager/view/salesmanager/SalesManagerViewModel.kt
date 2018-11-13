@@ -96,15 +96,15 @@ class SalesManagerViewModel(context: Context) : SalesManagerViewModelInputs, Sal
 
     @SuppressLint("CheckResult")
     override fun updateProduct(productId: String, productRequest: ProductRequest) {
-        productService.updateProductRequest(productId, productRequest)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({ productsResponse ->
-                updateProductPublishSubject.onNext(true)
-            },
-                { error ->
-                    Log.e("ErrorProduct", error.message.toString())
-                    updateProductPublishSubject.onNext(false)
-                })
+//        productService.updateProductRequest(productId, productRequest)
+//            .subscribeOn(Schedulers.io())
+//            .observeOn(AndroidSchedulers.mainThread())
+//            .subscribe({ productsResponse ->
+//                updateProductPublishSubject.onNext(true)
+//            },
+//                { error ->
+//                    Log.e("ErrorProduct", error.message.toString())
+//                    updateProductPublishSubject.onNext(false)
+//                })
     }
 }

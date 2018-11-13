@@ -4,11 +4,11 @@ import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
 
-class ProductRequest {
+data class ProductRequest(
     @SerializedName("product")
     @Expose
     var product: Product? = null
-}
+)
 
 data class Product(
 
@@ -18,15 +18,15 @@ data class Product(
 
     @SerializedName("price")
     @Expose
-    var price: String? = null,
+    var price: Int? = null,
 
     @SerializedName("discount")
     @Expose
-    var discount: String? = null,
+    var discount: Int? = null,
 
     @SerializedName("type")
     @Expose
-    var type: String? = null,
+    var type: Int? = null,
 
     @SerializedName("content")
     @Expose
@@ -42,15 +42,15 @@ data class Product(
 
     @SerializedName("lat")
     @Expose
-    var lat: String? = null,
+    var lat: Double? = null,
 
     @SerializedName("lng")
     @Expose
-    var lng: String? = null,
+    var lng: Double? = null,
 
     @SerializedName("isWebsite")
     @Expose
-    var isWebsite: String? = null,
+    var isWebsite: Boolean? = null,
 
     @SerializedName("phonenumber")
     @Expose

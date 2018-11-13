@@ -3,6 +3,8 @@ package com.uit.daniel.hotsalesmanager.view.product.updateproduct
 import android.annotation.SuppressLint
 import android.content.Context
 import android.util.Log
+import com.uit.daniel.hotsalesmanager.data.request.Product
+import com.uit.daniel.hotsalesmanager.data.request.ProductRequest
 import com.uit.daniel.hotsalesmanager.data.response.ProductResponse
 import com.uit.daniel.hotsalesmanager.service.ProductService
 import io.reactivex.Observable
@@ -11,7 +13,9 @@ import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.PublishSubject
 
 interface UpdateProductViewModelInputs {
+    fun updateProduct(id: String, productResponse: ProductResponse)
 
+    fun updateProductObservable(): Observable<Boolean>
 }
 
 interface UpdateProductViewModelOutputs {
@@ -28,6 +32,11 @@ class UpdateProductViewModel(context: Context) : UpdateProductViewModelInputs, U
 
     override fun productObservable(): Observable<ProductResponse> = productPublishSubject
 
+    private val updateProductPublishSubject = PublishSubject.create<Boolean>()
+
+    override fun updateProductObservable(): Observable<Boolean> = updateProductPublishSubject
+
+
     private var productService: ProductService = ProductService.getInstance(context)
 
     @SuppressLint("CheckResult")
@@ -43,4 +52,31 @@ class UpdateProductViewModel(context: Context) : UpdateProductViewModelInputs, U
                 })
     }
 
+    @SuppressLint("CheckResult")
+    override fun updateProduct(id: String, productResponse: ProductResponse) {
+        val product = Product()
+        product.name = productResponse.result?.get(0)?.name
+        product.price = productResponse.result?.get(0)?.price
+        product.discount = productResponse.result?.get(0)?.discount
+        product.type = productResponse.result?.get(0)?.type
+        product.content = productResponse.result?.get(0)?.content
+        product.image = productResponse.result?.get(0)?.image
+        product.userId = productResponse.result?.get(0)?.owner?.id
+        product.lat = productResponse.result?.get(0)?.lat
+        product.lng = productResponse.result?.get(0)?.lng
+        product.isWebsite = productResponse.result?.get(0)?.isWebsite
+        product.phonenumber = productResponse.result?.get(0)?.owner?.phone_number
+        val productRequest = ProductRequest(product)
+
+        productService.updateProductRequest(id, productRequest)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ productsResponse ->
+                updateProductPublishSubject.onNext(true)
+            },
+                { error ->
+                    Log.e("ErrorProduct", error.message.toString())
+                    updateProductPublishSubject.onNext(false)
+                })
+    }
 }

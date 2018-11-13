@@ -8,6 +8,7 @@ import io.reactivex.Single
 import retrofit2.Retrofit
 import retrofit2.http.*
 
+
 interface ProductApi {
     @GET(ApiEndpoint.GET_ALL_PRODUCT)
     fun products(): Single<ProductResponse>
@@ -19,7 +20,7 @@ interface ProductApi {
     fun userProducts(@Path("userId") userId: String): Single<ProductResponse>
 
     @PUT(ApiEndpoint.UPDATE_PRODUCT)
-    fun updateProduct(@Path("productId") productId: String, productRequest: ProductRequest): Single<ProductResponse>
+    fun updateProduct(@Path("productId") productId: String, @Body productRequest: ProductRequest): Single<ProductResponse>
 
     @DELETE(ApiEndpoint.DELETE_PRODUCT)
     fun deleteProduct(@Path("productId") productId: String): Single<ProductResponse>
