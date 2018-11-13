@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.Fragment
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
@@ -19,10 +20,6 @@ import com.uit.daniel.hotsalesmanager.view.custom.shopproduct.ShopProductAdapter
 import com.uit.daniel.hotsalesmanager.view.product.productdetail.ProductDetailActivity
 import com.uit.daniel.hotsalesmanager.view.salesmanager.SalesManagerViewModel
 import kotlinx.android.synthetic.main.fragment_navigation_shop.*
-import android.R.attr.phoneNumber
-import android.net.Uri
-import android.net.Uri.fromParts
-
 
 
 class ShopFragment : Fragment() {
@@ -59,10 +56,25 @@ class ShopFragment : Fragment() {
                 override fun onCallClickedListener(phoneNumber: String) {
                     call(phoneNumber)
                 }
+            }, object : ShopProductAdapter.OnSmsClickedListener {
+                override fun onSmsClickedListener(phoneNumber: String) {
+                    sms(phoneNumber)
+                }
             })
             setProductsView()
         }
         salesManagerViewModel.products()
+    }
+
+    private fun sms(phoneNumber: String) {
+        val smsIntent = Intent(Intent.ACTION_VIEW)
+        smsIntent.data = Uri.parse("sms:");
+        smsIntent.putExtra("address", phoneNumber)
+        smsIntent.putExtra(
+            "sms_body",
+            "I want to buy the product you are selling. Please tell me if it's still available?"
+        )
+        startActivity(smsIntent)
     }
 
     private fun call(phoneNumber: String) {
@@ -120,6 +132,10 @@ class ShopFragment : Fragment() {
                         override fun onCallClickedListener(phoneNumber: String) {
                             call(phoneNumber)
                         }
+                    }, object : ShopProductAdapter.OnSmsClickedListener {
+                        override fun onSmsClickedListener(phoneNumber: String) {
+                            sms(phoneNumber)
+                        }
                     })
                 setProductsView()
             }
@@ -136,6 +152,10 @@ class ShopFragment : Fragment() {
             }, object : ShopProductAdapter.OnCallClickedListener {
                 override fun onCallClickedListener(phoneNumber: String) {
                     call(phoneNumber)
+                }
+            }, object : ShopProductAdapter.OnSmsClickedListener {
+                override fun onSmsClickedListener(phoneNumber: String) {
+                    sms(phoneNumber)
                 }
             })
         setProductsView()
