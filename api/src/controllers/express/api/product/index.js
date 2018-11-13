@@ -7,7 +7,7 @@ productRoutes.get("/", require('./findall'))
 productRoutes.post("/", require('./create'))
 productRoutes.delete("/:product_id", require('./delete'))
 productRoutes.put("/:product_id", require('./update'))
-productRoutes.get("/:product_id", require('./find'))
+productRoutes.get("/:user_id", require('./find'))
 
 
 module.exports = productRoutes;

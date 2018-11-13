@@ -15,8 +15,14 @@ interface SalesManagerViewModelInputs {
 }
 
 interface SalesManagerViewModelOutputs {
+
     fun products()
+
+    fun userProducts(userId: String)
+
     fun productsObservable(): Observable<ProductResponse>
+
+    fun userProductsObservable(): Observable<ProductResponse>
 }
 
 class SalesManagerViewModel(context: Context) : SalesManagerViewModelInputs, SalesManagerViewModelOutputs {
@@ -24,6 +30,10 @@ class SalesManagerViewModel(context: Context) : SalesManagerViewModelInputs, Sal
     private val productsPublishSubject = PublishSubject.create<ProductResponse>()
 
     override fun productsObservable(): Observable<ProductResponse> = productsPublishSubject
+
+    private val userProductsPublishSubject = PublishSubject.create<ProductResponse>()
+
+    override fun userProductsObservable(): Observable<ProductResponse> = userProductsPublishSubject
 
     private var productService: ProductService = ProductService.getInstance(context)
 
@@ -34,6 +44,19 @@ class SalesManagerViewModel(context: Context) : SalesManagerViewModelInputs, Sal
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ productsResponse ->
                 productsPublishSubject.onNext(productsResponse)
+            },
+                { error ->
+                    Log.e("ErrorProduct", error.message.toString())
+                })
+    }
+
+    @SuppressLint("CheckResult")
+    override fun userProducts(userId: String) {
+        productService.userProductsRequest(userId)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ productsResponse ->
+                userProductsPublishSubject.onNext(productsResponse)
             },
                 { error ->
                     Log.e("ErrorProduct", error.message.toString())

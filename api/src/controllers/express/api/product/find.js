@@ -4,7 +4,8 @@ var Product = require(config.models_dir + '/mongo/product');
 
 module.exports = (req, res)=>{
     let user_id = req.params.user_id
-    Product.find({user_id: user_id})
+    Product.find({owner: user_id})
+    .populate('owner')
     .then(product=>{
         if (!product) {
             return Promise.reject("product not exist")

@@ -36,7 +36,7 @@ data class Product(
     @Expose
     var image: String? = null,
 
-    @SerializedName("user_id")
+    @SerializedName("owner")
     @Expose
     var userId: String? = null,
 
@@ -51,10 +51,6 @@ data class Product(
     @SerializedName("isWebsite")
     @Expose
     var isWebsite: String? = null,
-
-    @SerializedName("owner")
-    @Expose
-    var owner: String? = null,
 
     @SerializedName("phonenumber")
     @Expose

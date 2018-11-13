@@ -1,50 +1,35 @@
-package com.uit.daniel.hotsalesmanager.view.custom.products
+package com.uit.daniel.hotsalesmanager.view.custom.userproducts
 
 import android.annotation.SuppressLint
 import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.View
-import android.view.animation.Animation
-import android.view.animation.LinearInterpolator
-import android.view.animation.RotateAnimation
 import com.bumptech.glide.Glide
 import com.uit.daniel.hotsalesmanager.data.response.ProductResult
 import com.uit.daniel.hotsalesmanager.utils.PriceUtils
+import com.uit.daniel.hotsalesmanager.utils.getVisibilityView
 import kotlinx.android.synthetic.main.item_products.view.*
 
-class ProductsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+class UserProductsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val priceUtils = PriceUtils()
     fun bindData(
         context: Context,
         product: ProductResult,
-        onItemClickedListener: ProductsAdapter.OnItemClickedListener
+        onItemClickedListener: UserProductsAdapter.OnItemClickedListener
     ) {
         loadImage(context, product, itemView)
         loadText(product, itemView)
-        loadAnimationForSale(context, itemView, product)
+        loadAnimationForSale(itemView)
         addEvents(itemView, onItemClickedListener, product)
     }
 
-    private fun loadAnimationForSale(context: Context, itemView: View, product: ProductResult) {
-        if (product.isWebsite!!) {
-            val anim = RotateAnimation(0f, 350f, 50f, 50f)
-            anim.interpolator = LinearInterpolator()
-            anim.repeatCount = Animation.INFINITE
-            anim.duration = 700
-            itemView.ivIcHotSale.startAnimation(anim)
-        } else {
-            itemView.ivIcHotSale.let {
-                Glide.with(context)
-                    .asBitmap()
-                    .load(product.owner?.avatar)
-                    .into(it)
-            }
-        }
+    private fun loadAnimationForSale(itemView: View) {
+        itemView.ivIcHotSale.visibility = getVisibilityView(false)
     }
 
     private fun addEvents(
         itemView: View,
-        onItemClickedListener: ProductsAdapter.OnItemClickedListener,
+        onItemClickedListener: UserProductsAdapter.OnItemClickedListener,
         product: ProductResult
     ) {
         itemView.cvItemProduct.setOnClickListener {
