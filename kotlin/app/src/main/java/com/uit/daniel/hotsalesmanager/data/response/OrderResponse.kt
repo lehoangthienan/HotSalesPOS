@@ -19,25 +19,33 @@ data class OrderResult(
     @Expose
     var id: String? = null,
 
-    @SerializedName("user_id")
+    @SerializedName("product")
     @Expose
-    var userId: String? = null,
+    var product: ProductOrder? = null,
 
-    @SerializedName("user_name")
+    @SerializedName("owner")
     @Expose
-    var userName: String? = null,
+    var owner: Owner? = null,
 
-    @SerializedName("email")
+    @SerializedName("date_created")
     @Expose
-    var email: String? = null,
+    var dateCreated: String? = null,
 
-    @SerializedName("phone_number")
+    @SerializedName("__v")
     @Expose
-    var phoneNumber: String? = null,
+    var v: Int? = null
 
-    @SerializedName("product_name")
+)
+
+data class ProductOrder(
+
+    @SerializedName("_id")
     @Expose
-    var productName: String? = null,
+    var id: String? = null,
+
+    @SerializedName("name")
+    @Expose
+    var name: String? = null,
 
     @SerializedName("price")
     @Expose
@@ -47,6 +55,14 @@ data class OrderResult(
     @Expose
     var discount: String? = null,
 
+    @SerializedName("type")
+    @Expose
+    var type: Int? = null,
+
+    @SerializedName("content")
+    @Expose
+    var content: String? = null,
+
     @SerializedName("image")
     @Expose
     var image: String? = null,
@@ -54,6 +70,18 @@ data class OrderResult(
     @SerializedName("owner")
     @Expose
     var owner: String? = null,
+
+    @SerializedName("lat")
+    @Expose
+    var lat: Float? = null,
+
+    @SerializedName("lng")
+    @Expose
+    var lng: Float? = null,
+
+    @SerializedName("isWebsite")
+    @Expose
+    var isWebsite: Boolean? = null,
 
     @SerializedName("date_created")
     @Expose

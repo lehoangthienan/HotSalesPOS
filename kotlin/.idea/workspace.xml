@@ -36,18 +36,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ProductService.kt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/service/ProductService.kt">
+      <file leaf-file-name="OrderResponse.kt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/data/response/OrderResponse.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state />
+            <state relative-caret-position="1305">
+              <caret line="88" column="4" selection-start-line="88" selection-start-column="4" selection-end-line="88" selection-end-column="4" />
+            </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ApiEndpoint.kt" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/service/ApiEndpoint.kt">
+      <file leaf-file-name="ProductResponse.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/data/response/ProductResponse.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+            <state relative-caret-position="422">
+              <caret line="71" column="1" selection-start-line="71" selection-start-column="1" selection-end-line="71" selection-end-column="1" />
+              <folding>
+                <element signature="e#54#164#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -2507,6 +2512,10 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/view/signin/updateuserprofile/UpdateUserProfileActivity.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/view/salesmanager/SalesManagerActivity.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/view/salesmanager/bottomnavigation/ProfileFragment.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/data/request/OrderRequest.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/data/request/ProductRequest.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/data/response/ProductResponse.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/data/response/OrderResponse.kt" />
       </list>
     </option>
   </component>
@@ -2547,14 +2556,23 @@
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="hotsalesmanager" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="kotlin" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="hotsalesmanager" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+              <item name="request" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="kotlin" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="hotsalesmanager" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+              <item name="response" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -2694,6 +2712,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="47" y="25" width="1873" height="1055" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="Android Profiler" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -2816,15 +2835,46 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/data/request/OrderRequest.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="24" column="1" lean-forward="true" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/data/request/ProductRequest.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="38" column="26" selection-start-line="38" selection-start-column="26" selection-end-line="38" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/service/ApiEndpoint.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="1" lean-forward="true" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/service/ProductService.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/service/ApiEndpoint.kt">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/data/response/ProductResponse.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+        <state relative-caret-position="422">
+          <caret line="71" column="1" selection-start-line="71" selection-start-column="1" selection-end-line="71" selection-end-column="1" />
+          <folding>
+            <element signature="e#54#164#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/data/response/OrderResponse.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1305">
+          <caret line="88" column="4" selection-start-line="88" selection-start-column="4" selection-end-line="88" selection-end-column="4" />
         </state>
       </provider>
     </entry>
