@@ -5,6 +5,7 @@ var Product = require(config.models_dir + '/mongo/product');
 
 module.exports = (req, res)=>{
     Product.find({})
+    .populate('owner')
     .then(products=>{
         response_express.success(res, products)
     })

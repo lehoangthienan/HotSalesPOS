@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 var ProductSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -30,14 +31,7 @@ var ProductSchema = new mongoose.Schema({
         type: Boolean,
         trim: true,
     },
-    user_id: {
-        type: String,
-        trim: true,
-    },
-    owner: {
-        type: String,
-        trim: true,
-    },
+    owner: { type: Schema.Types.ObjectId, ref: 'User' },
     lat: {
         type: Number,
         trim: true,
