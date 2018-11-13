@@ -15,16 +15,21 @@ import com.jakewharton.rxbinding2.widget.RxTextView
 import com.uit.daniel.hotsalesmanager.R
 import com.uit.daniel.hotsalesmanager.data.response.ProductResult
 import com.uit.daniel.hotsalesmanager.utils.ProductManagerUtils
-import com.uit.daniel.hotsalesmanager.view.custom.products.ProductsAdapter
+import com.uit.daniel.hotsalesmanager.view.custom.shopproduct.ShopProductAdapter
 import com.uit.daniel.hotsalesmanager.view.product.productdetail.ProductDetailActivity
 import com.uit.daniel.hotsalesmanager.view.salesmanager.SalesManagerViewModel
 import kotlinx.android.synthetic.main.fragment_navigation_shop.*
+import android.R.attr.phoneNumber
+import android.net.Uri
+import android.net.Uri.fromParts
+
+
 
 class ShopFragment : Fragment() {
 
     private lateinit var salesManagerViewModel: SalesManagerViewModel
     private var positionCategory: Int = 8
-    private lateinit var productsAdapter: ProductsAdapter
+    private lateinit var productsAdapter: ShopProductAdapter
     private var products = ArrayList<ProductResult>()
     private var productManagerUtils = ProductManagerUtils()
 
@@ -46,14 +51,22 @@ class ShopFragment : Fragment() {
         salesManagerViewModel.productsObservable().subscribe { productRespone ->
             products = productManagerUtils.getProductsNotEcommerce(productRespone.result as ArrayList<ProductResult>)
 
-            productsAdapter = ProductsAdapter(products, object : ProductsAdapter.OnItemClickedListener {
+            productsAdapter = ShopProductAdapter(products, object : ShopProductAdapter.OnItemClickedListener {
                 override fun onItemClicked(id: String) {
                     startProductDetailActivity(id)
+                }
+            }, object : ShopProductAdapter.OnCallClickedListener {
+                override fun onCallClickedListener(phoneNumber: String) {
+                    call(phoneNumber)
                 }
             })
             setProductsView()
         }
         salesManagerViewModel.products()
+    }
+
+    private fun call(phoneNumber: String) {
+        startActivity(Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phoneNumber, null)))
     }
 
     private fun startProductDetailActivity(id: String) {
@@ -97,11 +110,15 @@ class ShopFragment : Fragment() {
         RxTextView.textChanges(etSearch).subscribe { key ->
             if (key.isNullOrBlank()) showProducts()
             else {
-                productsAdapter = ProductsAdapter(
+                productsAdapter = ShopProductAdapter(
                     productManagerUtils.fillerProductsForKey(products, key.toString()),
-                    object : ProductsAdapter.OnItemClickedListener {
+                    object : ShopProductAdapter.OnItemClickedListener {
                         override fun onItemClicked(id: String) {
                             startProductDetailActivity(id)
+                        }
+                    }, object : ShopProductAdapter.OnCallClickedListener {
+                        override fun onCallClickedListener(phoneNumber: String) {
+                            call(phoneNumber)
                         }
                     })
                 setProductsView()
@@ -110,11 +127,15 @@ class ShopFragment : Fragment() {
     }
 
     private fun setProducts() {
-        productsAdapter = ProductsAdapter(
+        productsAdapter = ShopProductAdapter(
             productManagerUtils.getProductsForCategory(products, positionCategory),
-            object : ProductsAdapter.OnItemClickedListener {
+            object : ShopProductAdapter.OnItemClickedListener {
                 override fun onItemClicked(id: String) {
                     startProductDetailActivity(id)
+                }
+            }, object : ShopProductAdapter.OnCallClickedListener {
+                override fun onCallClickedListener(phoneNumber: String) {
+                    call(phoneNumber)
                 }
             })
         setProductsView()

@@ -14,7 +14,7 @@ class UserProductsAdapter (
     private lateinit var context: Context
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserProductsViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_products, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_user_product, parent, false)
         context = parent.context
         return UserProductsViewHolder(view)
     }
