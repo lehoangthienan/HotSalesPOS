@@ -127,6 +127,7 @@ class ShopFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
+        showProducts()
     }
 
 }

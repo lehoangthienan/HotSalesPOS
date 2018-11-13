@@ -13,7 +13,7 @@ interface ProductApi {
     fun pruducts(): Single<ProductResponse>
 
     @GET(ApiEndpoint.GET_PRODUCT)
-    fun userPruducts(@Path("userId") userId: String): Single<ProductResponse>
+    fun userProducts(@Path("userId") userId: String): Single<ProductResponse>
 
     @PUT(ApiEndpoint.UPDATE_PRODUCT)
     fun updateProduct(@Path("productId") productId: String, productRequest: ProductRequest): Single<ProductResponse>
@@ -35,7 +35,7 @@ class ProductService private constructor(context: Context) {
 
     fun productsRequest() = api.pruducts()
 
-    fun userPruductsRequest(userId: String) = api.userPruducts(userId)
+    fun userProductsRequest(userId: String) = api.userProducts(userId)
 
     fun updateProductRequest(productId: String, productRequest: ProductRequest) =
         api.updateProduct(productId, productRequest)
