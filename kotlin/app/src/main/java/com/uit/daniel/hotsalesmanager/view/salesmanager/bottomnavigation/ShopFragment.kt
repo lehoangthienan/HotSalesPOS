@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.Fragment
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
@@ -15,16 +16,17 @@ import com.jakewharton.rxbinding2.widget.RxTextView
 import com.uit.daniel.hotsalesmanager.R
 import com.uit.daniel.hotsalesmanager.data.response.ProductResult
 import com.uit.daniel.hotsalesmanager.utils.ProductManagerUtils
-import com.uit.daniel.hotsalesmanager.view.custom.products.ProductsAdapter
+import com.uit.daniel.hotsalesmanager.view.custom.shopproduct.ShopProductAdapter
 import com.uit.daniel.hotsalesmanager.view.product.productdetail.ProductDetailActivity
 import com.uit.daniel.hotsalesmanager.view.salesmanager.SalesManagerViewModel
 import kotlinx.android.synthetic.main.fragment_navigation_shop.*
+
 
 class ShopFragment : Fragment() {
 
     private lateinit var salesManagerViewModel: SalesManagerViewModel
     private var positionCategory: Int = 8
-    private lateinit var productsAdapter: ProductsAdapter
+    private lateinit var productsAdapter: ShopProductAdapter
     private var products = ArrayList<ProductResult>()
     private var productManagerUtils = ProductManagerUtils()
 
@@ -46,14 +48,37 @@ class ShopFragment : Fragment() {
         salesManagerViewModel.productsObservable().subscribe { productRespone ->
             products = productManagerUtils.getProductsNotEcommerce(productRespone.result as ArrayList<ProductResult>)
 
-            productsAdapter = ProductsAdapter(products, object : ProductsAdapter.OnItemClickedListener {
+            productsAdapter = ShopProductAdapter(products, object : ShopProductAdapter.OnItemClickedListener {
                 override fun onItemClicked(id: String) {
                     startProductDetailActivity(id)
+                }
+            }, object : ShopProductAdapter.OnCallClickedListener {
+                override fun onCallClickedListener(phoneNumber: String) {
+                    call(phoneNumber)
+                }
+            }, object : ShopProductAdapter.OnSmsClickedListener {
+                override fun onSmsClickedListener(phoneNumber: String) {
+                    sms(phoneNumber)
                 }
             })
             setProductsView()
         }
         salesManagerViewModel.products()
+    }
+
+    private fun sms(phoneNumber: String) {
+        val smsIntent = Intent(Intent.ACTION_VIEW)
+        smsIntent.data = Uri.parse("sms:");
+        smsIntent.putExtra("address", phoneNumber)
+        smsIntent.putExtra(
+            "sms_body",
+            "I want to buy the product you are selling. Please tell me if it's still available?"
+        )
+        startActivity(smsIntent)
+    }
+
+    private fun call(phoneNumber: String) {
+        startActivity(Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phoneNumber, null)))
     }
 
     private fun startProductDetailActivity(id: String) {
@@ -97,11 +122,19 @@ class ShopFragment : Fragment() {
         RxTextView.textChanges(etSearch).subscribe { key ->
             if (key.isNullOrBlank()) showProducts()
             else {
-                productsAdapter = ProductsAdapter(
+                productsAdapter = ShopProductAdapter(
                     productManagerUtils.fillerProductsForKey(products, key.toString()),
-                    object : ProductsAdapter.OnItemClickedListener {
+                    object : ShopProductAdapter.OnItemClickedListener {
                         override fun onItemClicked(id: String) {
                             startProductDetailActivity(id)
+                        }
+                    }, object : ShopProductAdapter.OnCallClickedListener {
+                        override fun onCallClickedListener(phoneNumber: String) {
+                            call(phoneNumber)
+                        }
+                    }, object : ShopProductAdapter.OnSmsClickedListener {
+                        override fun onSmsClickedListener(phoneNumber: String) {
+                            sms(phoneNumber)
                         }
                     })
                 setProductsView()
@@ -110,11 +143,19 @@ class ShopFragment : Fragment() {
     }
 
     private fun setProducts() {
-        productsAdapter = ProductsAdapter(
+        productsAdapter = ShopProductAdapter(
             productManagerUtils.getProductsForCategory(products, positionCategory),
-            object : ProductsAdapter.OnItemClickedListener {
+            object : ShopProductAdapter.OnItemClickedListener {
                 override fun onItemClicked(id: String) {
                     startProductDetailActivity(id)
+                }
+            }, object : ShopProductAdapter.OnCallClickedListener {
+                override fun onCallClickedListener(phoneNumber: String) {
+                    call(phoneNumber)
+                }
+            }, object : ShopProductAdapter.OnSmsClickedListener {
+                override fun onSmsClickedListener(phoneNumber: String) {
+                    sms(phoneNumber)
                 }
             })
         setProductsView()

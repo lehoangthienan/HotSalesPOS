@@ -9,12 +9,14 @@ import com.uit.daniel.hotsalesmanager.data.response.ProductResult
 
 class UserProductsAdapter (
     private var products: ArrayList<ProductResult>,
-    private var onItemClickedListener: OnItemClickedListener
+    private var onItemClickedListener: OnItemClickedListener,
+    private var onDeleteClickedListener: OnDeleteClickedListener,
+    private var onUpdateClickedListener: OnUpdateClickedListener
 ) : RecyclerView.Adapter<UserProductsViewHolder>() {
     private lateinit var context: Context
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserProductsViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_products, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_user_product, parent, false)
         context = parent.context
         return UserProductsViewHolder(view)
     }
@@ -27,11 +29,21 @@ class UserProductsAdapter (
         holder.bindData(
             context,
             products[position],
-            onItemClickedListener
+            onItemClickedListener,
+            onDeleteClickedListener,
+            onUpdateClickedListener
         )
     }
 
     interface OnItemClickedListener {
         fun onItemClicked(id: String)
+    }
+
+    interface OnDeleteClickedListener {
+        fun onDeleteClickedListener(id: String)
+    }
+
+    interface OnUpdateClickedListener {
+        fun onUpdateClickedListener(id: String)
     }
 }

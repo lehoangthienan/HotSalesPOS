@@ -1,4 +1,4 @@
-package com.uit.daniel.hotsalesmanager.view.product.orderproduct
+package com.uit.daniel.hotsalesmanager.view.order.orderproduct
 
 interface OrderProductViewModelInputs {
 

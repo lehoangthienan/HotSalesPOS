@@ -7,33 +7,37 @@ import android.view.View
 import com.bumptech.glide.Glide
 import com.uit.daniel.hotsalesmanager.data.response.ProductResult
 import com.uit.daniel.hotsalesmanager.utils.PriceUtils
-import com.uit.daniel.hotsalesmanager.utils.getVisibilityView
-import kotlinx.android.synthetic.main.item_products.view.*
+import kotlinx.android.synthetic.main.item_user_product.view.*
 
 class UserProductsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val priceUtils = PriceUtils()
     fun bindData(
         context: Context,
         product: ProductResult,
-        onItemClickedListener: UserProductsAdapter.OnItemClickedListener
+        onItemClickedListener: UserProductsAdapter.OnItemClickedListener,
+        onDeleteClickedListener: UserProductsAdapter.OnDeleteClickedListener,
+        onUpdateClickedListener: UserProductsAdapter.OnUpdateClickedListener
     ) {
         loadImage(context, product, itemView)
         loadText(product, itemView)
-        loadAnimationForSale(itemView)
-        addEvents(itemView, onItemClickedListener, product)
-    }
-
-    private fun loadAnimationForSale(itemView: View) {
-        itemView.ivIcHotSale.visibility = getVisibilityView(false)
+        addEvents(itemView, onItemClickedListener, product, onDeleteClickedListener, onUpdateClickedListener)
     }
 
     private fun addEvents(
         itemView: View,
         onItemClickedListener: UserProductsAdapter.OnItemClickedListener,
-        product: ProductResult
+        product: ProductResult,
+        onDeleteClickedListener: UserProductsAdapter.OnDeleteClickedListener,
+        onUpdateClickedListener: UserProductsAdapter.OnUpdateClickedListener
     ) {
         itemView.cvItemProduct.setOnClickListener {
             onItemClickedListener.onItemClicked(product.id.toString())
+        }
+        itemView.viewDelete.setOnClickListener {
+            onDeleteClickedListener.onDeleteClickedListener(product.id.toString())
+        }
+        itemView.viewUpdate.setOnClickListener {
+            onUpdateClickedListener.onUpdateClickedListener(product.id.toString())
         }
     }
 

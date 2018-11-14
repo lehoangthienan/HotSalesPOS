@@ -89,6 +89,10 @@ data class Owner(
     @Expose
     var name: String? = null,
 
+    @SerializedName("phone_number")
+    @Expose
+    var phone_number: String? = null,
+
     @SerializedName("password")
     @Expose
     var password: String? = null,

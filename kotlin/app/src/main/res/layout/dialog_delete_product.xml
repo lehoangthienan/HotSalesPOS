@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
+                                             android:layout_width="280dp"
+                                             android:layout_height="161dp"
+                                             android:background="@drawable/drawable_dialog"
+                                             android:orientation="vertical">
+
+    <TextView
+            android:id="@+id/tv1"
+            android:layout_width="239dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/lato_regular"
+            android:text="Are you sure you want to delete this product?"
+            android:textColor="@color/colorText"
+            android:textSize="14sp"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.52"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+            android:id="@+id/tvCancel"
+            android:layout_width="95dp"
+            android:layout_height="36dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="8dp"
+            android:background="?selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:fontFamily="@font/lato_regular"
+            android:gravity="center"
+            android:text="CANCEL"
+            android:textColor="#FF4A4A4A"
+            app:layout_constraintEnd_toStartOf="@+id/tvAccept"
+            app:layout_constraintTop_toBottomOf="@+id/tv1"
+            android:focusable="true"/>
+
+    <TextView
+            android:id="@+id/tvAccept"
+            android:layout_width="94dp"
+            android:layout_height="36dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/buttonloginfacebook"
+            android:clickable="true"
+            android:fontFamily="@font/lato_regular"
+            android:foreground="?selectableItemBackgroundBorderless"
+            android:gravity="center"
+            android:text="OK"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFFFF"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv1"
+            android:focusable="true"/>
+
+</android.support.constraint.ConstraintLayout>

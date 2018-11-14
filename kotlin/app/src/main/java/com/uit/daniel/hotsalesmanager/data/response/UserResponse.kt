@@ -36,6 +36,10 @@ data class UserResult(
     @Expose
     var password: String? = null,
 
+    @SerializedName("phone_number")
+    @Expose
+    var phone_number: String? = null,
+
     @SerializedName("avatar")
     @Expose
     var avatar: String? = null,

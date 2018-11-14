@@ -8,15 +8,19 @@ import io.reactivex.Single
 import retrofit2.Retrofit
 import retrofit2.http.*
 
+
 interface ProductApi {
     @GET(ApiEndpoint.GET_ALL_PRODUCT)
-    fun pruducts(): Single<ProductResponse>
+    fun products(): Single<ProductResponse>
+
+    @GET(ApiEndpoint.GET_PRODUCT_ID)
+    fun product(@Path("productId") productId: String): Single<ProductResponse>
 
     @GET(ApiEndpoint.GET_PRODUCT)
     fun userProducts(@Path("userId") userId: String): Single<ProductResponse>
 
     @PUT(ApiEndpoint.UPDATE_PRODUCT)
-    fun updateProduct(@Path("productId") productId: String, productRequest: ProductRequest): Single<ProductResponse>
+    fun updateProduct(@Path("productId") productId: String, @Body productRequest: ProductRequest): Single<ProductResponse>
 
     @DELETE(ApiEndpoint.DELETE_PRODUCT)
     fun deleteProduct(@Path("productId") productId: String): Single<ProductResponse>
@@ -33,7 +37,9 @@ class ProductService private constructor(context: Context) {
 
     private val api: ProductApi = apiClient.create(ProductApi::class.java)
 
-    fun productsRequest() = api.pruducts()
+    fun productsRequest() = api.products()
+
+    fun productRequest(productId: String) = api.product(productId)
 
     fun userProductsRequest(userId: String) = api.userProducts(userId)
 
