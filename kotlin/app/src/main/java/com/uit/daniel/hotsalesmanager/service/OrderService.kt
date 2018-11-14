@@ -13,13 +13,13 @@ interface OrderApi {
     fun orders(@Path("userId") userId: String): Single<OrderResponse>
 
     @PUT(ApiEndpoint.UPDATE_ORDER)
-    fun updateOrder(@Path("orderId") orderId: String, orderRequest: OrderRequest): Single<OrderResponse>
+    fun updateOrder(@Path("orderId") orderId: String, @Body orderRequest: OrderRequest): Single<OrderResponse>
 
     @DELETE(ApiEndpoint.DELETE_ORDER)
     fun deleteOrder(@Path("orderId") orderId: String): Single<OrderResponse>
 
     @POST(ApiEndpoint.CREATE_ORDER)
-    fun createOrder(orderRequest: OrderRequest): Single<OrderResponse>
+    fun createOrder(@Body orderRequest: OrderRequest): Single<OrderResponse>
 }
 
 class OrderService private constructor(context: Context) {

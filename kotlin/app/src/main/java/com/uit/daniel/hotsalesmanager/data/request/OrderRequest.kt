@@ -20,6 +20,18 @@ data class Order(
 
     @SerializedName("product")
     @Expose
-    var productId: String? = null
+    var productId: String? = null,
+
+    @SerializedName("name")
+    @Expose
+    var name: String? = null,
+
+    @SerializedName("address")
+    @Expose
+    var address: String? = null,
+
+    @SerializedName("phonenumber")
+    @Expose
+    var phonenumber: String? = null
 
 )

@@ -155,6 +155,7 @@ class ProfileFragment : Fragment() {
         }
     }
 
+    @SuppressLint("CheckResult")
     private fun addEvents() {
         viewEditAvatar.setOnClickListener {
             setPermission()
