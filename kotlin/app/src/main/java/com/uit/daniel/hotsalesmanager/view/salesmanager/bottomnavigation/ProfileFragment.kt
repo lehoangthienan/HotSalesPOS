@@ -1,6 +1,7 @@
 package com.uit.daniel.hotsalesmanager.view.salesmanager.bottomnavigation
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.app.Dialog
 import android.app.Fragment
 import android.content.Context
@@ -28,6 +29,7 @@ import com.uit.daniel.hotsalesmanager.view.custom.countrycode.Country
 import com.uit.daniel.hotsalesmanager.view.custom.countrycode.CustomAdapter
 import com.uit.daniel.hotsalesmanager.view.custom.countrycode.listCodeCountry
 import com.uit.daniel.hotsalesmanager.view.salesmanager.SalesManagerViewModel
+import com.uit.daniel.hotsalesmanager.view.signin.updateuserphonenumber.UpdatePhoneNumberActivity
 import com.uit.daniel.hotsalesmanager.view.signin.updateuserprofile.UpdateUserProfileViewModel
 import kotlinx.android.synthetic.main.dialog_permissin_read_write_storage.*
 import kotlinx.android.synthetic.main.fragment_navigation_profile.*
@@ -71,6 +73,12 @@ class ProfileFragment : Fragment() {
         initView()
         addEvents()
 
+    }
+
+    private fun startConfirmPhoneNumberActivity() {
+        getCodeCountryPhoneNumber()
+        val intent = Intent(activity, UpdatePhoneNumberActivity::class.java)
+        startActivity(intent)
     }
 
     private fun getCodeCountryPhoneNumber() {
@@ -151,6 +159,29 @@ class ProfileFragment : Fragment() {
         viewEditAvatar.setOnClickListener {
             setPermission()
         }
+        tvUpdate.setOnClickListener {
+            updateUserName()
+            updateUserPhoneNumber()
+        }
+    }
+
+    private fun updateUserPhoneNumber() {
+        if (!etPhoneNumber.text.toString().isNullOrBlank() && etPhoneNumber.text.toString() != userManagerUtil.getUserPhoneNumberVerifired()) {
+            startConfirmPhoneNumberActivity()
+        }
+    }
+
+    @SuppressLint("CheckResult")
+    private fun updateUserName() {
+        updateUserProfileViewModel.isUpdateUserNameToSever().subscribe { check ->
+            if (check) {
+                userManagerUtil.setUserName(etName.text.toString())
+            }
+        }
+        if (etName.text.toString() != userManagerUtil.getUserName() || etName.text.toString() != "Hot Sales") updateUserProfileViewModel.updateUserNameToSever(
+            userManagerUtil.getUserId(),
+            etName.text.toString()
+        )
     }
 
     private fun setPermission() {
