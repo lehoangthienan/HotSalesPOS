@@ -2,6 +2,7 @@ package com.uit.daniel.hotsalesmanager.data.response
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
+import java.util.*
 
 data class OrderResponse(
     @SerializedName("status")
@@ -10,7 +11,7 @@ data class OrderResponse(
 
     @SerializedName("result")
     @Expose
-    var result: List<OrderResult>? = null
+    var result: ArrayList<OrderResult>? = null
 )
 
 data class OrderResult(
@@ -18,6 +19,18 @@ data class OrderResult(
     @SerializedName("_id")
     @Expose
     var id: String? = null,
+
+    @SerializedName("name")
+    @Expose
+    var name: String? = null,
+
+    @SerializedName("address")
+    @Expose
+    var address: String? = null,
+
+    @SerializedName("phonenumber")
+    @Expose
+    var phonenumber: String? = null,
 
     @SerializedName("product")
     @Expose
@@ -53,7 +66,7 @@ data class ProductOrder(
 
     @SerializedName("discount")
     @Expose
-    var discount: String? = null,
+    var discount: Int? = null,
 
     @SerializedName("type")
     @Expose
@@ -73,11 +86,11 @@ data class ProductOrder(
 
     @SerializedName("lat")
     @Expose
-    var lat: Float? = null,
+    var lat: Double? = null,
 
     @SerializedName("lng")
     @Expose
-    var lng: Float? = null,
+    var lng: Double? = null,
 
     @SerializedName("isWebsite")
     @Expose
@@ -85,7 +98,7 @@ data class ProductOrder(
 
     @SerializedName("date_created")
     @Expose
-    var dateCreated: String? = null,
+    var dateCreated: Date? = null,
 
     @SerializedName("__v")
     @Expose
