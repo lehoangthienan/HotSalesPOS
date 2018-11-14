@@ -58,7 +58,16 @@ class UpdateProductFragment : Fragment() {
             if (check) activity.finish()
             else ToastSnackBar.showSnackbar("Update product fail!", view, activity)
         }
+        setProductResponse()
         updateProductViewModel.updateProduct(productId, productResponse)
+    }
+
+    private fun setProductResponse() {
+        productResponse.result!![0].name = etName.text.toString()
+        productResponse.result!![0].price =  etPrice.text.toString().toInt()
+        productResponse.result!![0].discount = etDiscount.text.toString().toInt()
+        productResponse.result!![0].content = etContent.text.toString()
+        productResponse.result!![0].image = etImageLink.text.toString()
     }
 
     @SuppressLint("CheckResult")
