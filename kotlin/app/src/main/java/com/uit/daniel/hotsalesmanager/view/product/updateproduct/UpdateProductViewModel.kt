@@ -36,7 +36,6 @@ class UpdateProductViewModel(context: Context) : UpdateProductViewModelInputs, U
 
     override fun updateProductObservable(): Observable<Boolean> = updateProductPublishSubject
 
-
     private var productService: ProductService = ProductService.getInstance(context)
 
     @SuppressLint("CheckResult")

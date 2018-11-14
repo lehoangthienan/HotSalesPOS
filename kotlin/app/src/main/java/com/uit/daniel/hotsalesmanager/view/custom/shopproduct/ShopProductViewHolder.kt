@@ -7,6 +7,7 @@ import android.view.View
 import android.view.animation.Animation
 import android.view.animation.LinearInterpolator
 import android.view.animation.RotateAnimation
+import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.uit.daniel.hotsalesmanager.data.response.ProductResult
 import com.uit.daniel.hotsalesmanager.utils.PriceUtils
@@ -24,7 +25,7 @@ class ShopProductViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) 
         loadImage(context, product, itemView)
         loadText(product, itemView)
         loadAnimationForSale(context, itemView, product)
-        addEvents(itemView, onItemClickedListener, onCallClickedListener, product, onSmsClickedListener)
+        addEvents(itemView, onItemClickedListener, onCallClickedListener, product, onSmsClickedListener, context)
     }
 
     private fun loadAnimationForSale(context: Context, itemView: View, product: ProductResult) {
@@ -49,20 +50,28 @@ class ShopProductViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) 
         onItemClickedListener: ShopProductAdapter.OnItemClickedListener,
         onCallClickedListener: ShopProductAdapter.OnCallClickedListener,
         product: ProductResult,
-        onSmsClickedListener: ShopProductAdapter.OnSmsClickedListener
+        onSmsClickedListener: ShopProductAdapter.OnSmsClickedListener,
+        context: Context
     ) {
         itemView.viewItemProduct.setOnClickListener {
             onItemClickedListener.onItemClicked(product.id.toString())
         }
         itemView.viewCall.setOnClickListener {
-            //            onCallClickedListener.onCallClickedListener(product.owner?.phone_number!!)
-            onCallClickedListener.onCallClickedListener("123123123123")
+            if (product.owner?.phone_number.isNullOrBlank()) Toast.makeText(
+                context,
+                "The seller does not leave the contact phone number.",
+                Toast.LENGTH_LONG
+            ).show()
+            else onCallClickedListener.onCallClickedListener(product.owner?.phone_number!!)
 
         }
         itemView.viewSms.setOnClickListener {
-            //            onCallClickedListener.onCallClickedListener(product.owner?.phone_number!!)
-            onSmsClickedListener.onSmsClickedListener("123123123123")
-
+            if (product.owner?.phone_number.isNullOrBlank()) Toast.makeText(
+                context,
+                "The seller does not leave the contact phone number.",
+                Toast.LENGTH_LONG
+            ).show()
+            else onSmsClickedListener.onSmsClickedListener(product.owner?.phone_number!!)
         }
     }
 
