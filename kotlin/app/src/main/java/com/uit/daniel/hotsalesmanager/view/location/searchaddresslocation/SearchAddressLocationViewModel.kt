@@ -1,4 +1,4 @@
-package com.uit.daniel.hotsalesmanager.view.product.searchaddresslocation
+package com.uit.daniel.hotsalesmanager.view.location.searchaddresslocation
 
 interface SearchAddressLocationViewModelInputs {
 

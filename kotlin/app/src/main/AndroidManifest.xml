@@ -75,7 +75,7 @@
                 android:theme="@style/AppThemeMain">
         </activity>
         <activity
-                android:name=".view.product.searchaddresslocation.SearchAddressLocationActivity"
+                android:name="com.uit.daniel.hotsalesmanager.view.location.searchaddresslocation.SearchAddressLocationActivity"
                 android:theme="@style/AppThemeMain">
         </activity>
         <activity

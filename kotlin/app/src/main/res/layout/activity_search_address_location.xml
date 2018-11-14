@@ -5,11 +5,11 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".view.product.searchaddresslocation.SearchAddressLocationActivity">
+        tools:context=".view.location.searchaddresslocation.SearchAddressLocationActivity">
 
     <fragment
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:name="com.uit.daniel.hotsalesmanager.view.product.searchaddresslocation.SearchAddressLocationFragment"
+            android:name="com.uit.daniel.hotsalesmanager.view.location.searchaddresslocation.SearchAddressLocationFragment"
             android:id="@+id/fragment6"/>
 </LinearLayout>
