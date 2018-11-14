@@ -26,7 +26,7 @@ interface ProductApi {
     fun deleteProduct(@Path("productId") productId: String): Single<ProductResponse>
 
     @POST(ApiEndpoint.CREATE_PRODUCT)
-    fun createProduct(productRequest: ProductRequest): Single<ProductResponse>
+    fun createProduct(@Body productRequest: ProductRequest): Single<ProductResponse>
 }
 
 class ProductService private constructor(context: Context) {

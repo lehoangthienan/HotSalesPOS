@@ -26,4 +26,6 @@ object Constant {
     const val REQUEST_GALLERY = 1
     const val REQUEST_LOCATION = 1
     const val REQUEST_ALARM = 1
+    const val LAT = "LAT"
+    const val LNG = "LNG"
 }

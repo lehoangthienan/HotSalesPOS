@@ -19,12 +19,12 @@ class ShopProductViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) 
         product: ProductResult,
         onItemClickedListener: ShopProductAdapter.OnItemClickedListener,
         onCallClickedListener: ShopProductAdapter.OnCallClickedListener,
-        onSmsClickedListener : ShopProductAdapter.OnSmsClickedListener
+        onSmsClickedListener: ShopProductAdapter.OnSmsClickedListener
     ) {
         loadImage(context, product, itemView)
         loadText(product, itemView)
         loadAnimationForSale(context, itemView, product)
-        addEvents(itemView, onItemClickedListener, onCallClickedListener, product,onSmsClickedListener)
+        addEvents(itemView, onItemClickedListener, onCallClickedListener, product, onSmsClickedListener)
     }
 
     private fun loadAnimationForSale(context: Context, itemView: View, product: ProductResult) {
@@ -49,13 +49,13 @@ class ShopProductViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) 
         onItemClickedListener: ShopProductAdapter.OnItemClickedListener,
         onCallClickedListener: ShopProductAdapter.OnCallClickedListener,
         product: ProductResult,
-        onSmsClickedListener : ShopProductAdapter.OnSmsClickedListener
+        onSmsClickedListener: ShopProductAdapter.OnSmsClickedListener
     ) {
-        itemView.cvItemProduct.setOnClickListener {
+        itemView.viewItemProduct.setOnClickListener {
             onItemClickedListener.onItemClicked(product.id.toString())
         }
         itemView.viewCall.setOnClickListener {
-//            onCallClickedListener.onCallClickedListener(product.owner?.phone_number!!)
+            //            onCallClickedListener.onCallClickedListener(product.owner?.phone_number!!)
             onCallClickedListener.onCallClickedListener("123123123123")
 
         }

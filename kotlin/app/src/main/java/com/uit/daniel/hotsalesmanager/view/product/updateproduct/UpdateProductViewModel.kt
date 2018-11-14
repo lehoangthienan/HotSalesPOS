@@ -67,7 +67,6 @@ class UpdateProductViewModel(context: Context) : UpdateProductViewModelInputs, U
         product.isWebsite = productResponse.result?.get(0)?.isWebsite
         product.phonenumber = productResponse.result?.get(0)?.owner?.phone_number
         val productRequest = ProductRequest(product)
-        Log.d("xxx", productRequest.toString())
         productService.updateProductRequest(id, productRequest)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

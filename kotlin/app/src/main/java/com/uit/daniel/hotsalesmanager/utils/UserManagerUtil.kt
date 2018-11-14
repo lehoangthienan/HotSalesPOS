@@ -50,6 +50,26 @@ class UserManagerUtil constructor(var context: Context) {
         editor.apply()
     }
 
+    fun setLat(lat: Double) {
+        val editor = sharedPrefsExtraUserInformation.edit()
+        editor.putString(Constant.LAT, lat.toString())
+        editor.apply()
+    }
+
+    fun setLng(lng: Double) {
+        val editor = sharedPrefsExtraUserInformation.edit()
+        editor.putString(Constant.LNG, lng.toString())
+        editor.apply()
+    }
+
+    fun getLat(): Double {
+        return sharedPrefsExtraUserInformation.getString(Constant.LAT, "0.0").toDouble()
+    }
+
+    fun getLng(): Double {
+        return sharedPrefsExtraUserInformation.getString(Constant.LNG, "0.0").toDouble()
+    }
+
     fun getCheck(): Boolean {
         return sharedPrefsExtraUserInformation.getBoolean(Constant.CHECK_SIGNINFB, true)
     }

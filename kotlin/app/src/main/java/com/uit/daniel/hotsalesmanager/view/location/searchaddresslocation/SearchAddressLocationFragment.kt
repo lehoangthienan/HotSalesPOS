@@ -1,4 +1,4 @@
-package com.uit.daniel.hotsalesmanager.view.product.searchaddresslocation
+package com.uit.daniel.hotsalesmanager.view.location.searchaddresslocation
 
 import android.content.Context
 import android.location.Geocoder
@@ -145,6 +145,7 @@ class SearchAddressLocationFragment : BaseFragment(), OnMapReadyCallback {
                     isAutoCompleteLocation = true
                     latLng = place.latLng
                     assignToMap()
+                    setLatLngForShareF(place.latLng)
                 }
 
                 places?.release()
@@ -153,6 +154,15 @@ class SearchAddressLocationFragment : BaseFragment(), OnMapReadyCallback {
         }
         cancel.setOnClickListener {
             actAddressSearch.setText("")
+        }
+    }
+
+    private fun setLatLngForShareF(latLng: LatLng?) {
+        if (latLng != null) {
+            userManagerUtil.setLat(latLng.latitude)
+        }
+        if (latLng != null) {
+            userManagerUtil.setLng(latLng.longitude)
         }
     }
 
@@ -220,6 +230,10 @@ class SearchAddressLocationFragment : BaseFragment(), OnMapReadyCallback {
 
     private fun setMarkerWhenTouch() {
         gmap.setOnMapClickListener { point ->
+
+            userManagerUtil.setLat(point.latitude)
+            userManagerUtil.setLng(point.longitude)
+
             gmap.clear()
             val geocoder = Geocoder(activity, Locale.getDefault())
             val marker = MarkerOptions()
