@@ -6,7 +6,7 @@ import java.text.DecimalFormatSymbols
 class PriceUtils {
 
     fun priceDiscount(percent: Int, price: Int): Int {
-        return price * (100 - percent) / 100
+        return price * percent / 100
     }
 
     fun setStringMoney(price: Int): String {

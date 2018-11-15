@@ -163,7 +163,7 @@
 
                 <TextView
                         android:id="@+id/tvPriceDiscount"
-                        android:layout_width="70dp"
+                        android:layout_width="75dp"
                         android:layout_height="20dp"
                         android:text="đ 4,000,000"
                         android:background="@drawable/dashed"
@@ -190,11 +190,11 @@
                         android:layout_marginTop="55dp"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        android:layout_marginStart="170dp"/>
+                        android:layout_marginStart="175dp"/>
 
                 <TextView
                         android:id="@+id/tvBranchName"
-                        android:layout_width="100dp"
+                        android:layout_width="150dp"
                         android:layout_height="20dp"
                         android:text="TiKi"
                         android:ellipsize="end"
