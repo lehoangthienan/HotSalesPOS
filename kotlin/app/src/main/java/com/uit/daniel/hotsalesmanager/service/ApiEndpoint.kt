@@ -22,5 +22,6 @@ object ApiEndpoint {
     const val UPDATE_ORDER = "api/orders/{orderId}"
     const val GET_ALL_ORDER = "api/orders"
     const val GET_ORDER = "api/orders/user/{userId}"
+    const val GET_ORDER_ID = "api/orders/{orderId}"
 
 }

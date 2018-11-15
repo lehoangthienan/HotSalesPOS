@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.Dialog
 import android.app.Fragment
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -15,6 +16,7 @@ import com.uit.daniel.hotsalesmanager.R
 import com.uit.daniel.hotsalesmanager.utils.ToastSnackBar
 import com.uit.daniel.hotsalesmanager.utils.UserManagerUtil
 import com.uit.daniel.hotsalesmanager.view.custom.orders.OrderAdapter
+import com.uit.daniel.hotsalesmanager.view.order.updateorder.UpdateOrderActivity
 import com.uit.daniel.hotsalesmanager.view.salesmanager.SalesManagerViewModel
 import kotlinx.android.synthetic.main.dialog_delete_product.*
 import kotlinx.android.synthetic.main.fragment_navigation_cart.*
@@ -93,13 +95,17 @@ class CartFragment : Fragment() {
     }
 
     private fun startOrderDetailActivity(id: String) {
-
+        val intent = Intent(activity, UpdateOrderActivity::class.java)
+        intent.putExtra("ID", id)
+        intent.putExtra("isUpdate", false)
+        activity.startActivity(intent)
     }
 
     private fun startUpdateUserOrderActivity(id: String) {
-//        val intent = Intent(activity, UpdateProductActivity::class.java)
-//        intent.putExtra("ID", id)
-//        activity.startActivity(intent)
+        val intent = Intent(activity, UpdateOrderActivity::class.java)
+        intent.putExtra("ID", id)
+        intent.putExtra("isUpdate", true)
+        activity.startActivity(intent)
     }
 
 

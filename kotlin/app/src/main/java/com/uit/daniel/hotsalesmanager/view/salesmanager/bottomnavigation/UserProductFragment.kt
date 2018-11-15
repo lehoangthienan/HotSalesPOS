@@ -106,9 +106,9 @@ class UserProductFragment : Fragment() {
     }
 
     private fun startProductDetailActivity(id: String) {
-        val intent = Intent(activity, ProductDetailActivity::class.java)
-        intent.putExtra("ID", id)
-        activity.startActivity(intent)
+//        val intent = Intent(activity, ProductDetailActivity::class.java)
+//        intent.putExtra("ID", id)
+//        activity.startActivity(intent)
     }
 
     private fun setProductsView() {

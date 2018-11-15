@@ -12,6 +12,9 @@ interface OrderApi {
     @GET(ApiEndpoint.GET_ORDER)
     fun orders(@Path("userId") userId: String): Single<OrderResponse>
 
+    @GET(ApiEndpoint.GET_ORDER_ID)
+    fun order(@Path("orderId") orderId: String): Single<OrderResponse>
+
     @PUT(ApiEndpoint.UPDATE_ORDER)
     fun updateOrder(@Path("orderId") orderId: String, @Body orderRequest: OrderRequest): Single<OrderResponse>
 
@@ -31,6 +34,8 @@ class OrderService private constructor(context: Context) {
     private val api: OrderApi = apiClient.create(OrderApi::class.java)
 
     fun ordersRequest(userId: String) = api.orders(userId)
+
+    fun orderRequest(orderId: String) = api.order(orderId)
 
     fun updateOrderRequest(orderId: String, orderRequest: OrderRequest) =
         api.updateOrder(orderId, orderRequest)

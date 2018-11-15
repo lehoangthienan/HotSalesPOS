@@ -7,13 +7,9 @@
         android:layout_height="105dp">
 
     <android.support.v7.widget.CardView
-            android:id="@+id/cvItemProduct"
             android:layout_width="match_parent"
             android:layout_height="96dp"
-            android:layout_marginBottom="8dp"
-            android:clickable="true"
-            android:focusable="true"
-            android:foreground="?android:attr/selectableItemBackground">
+            android:layout_marginBottom="8dp">
 
         <com.daimajia.swipe.SwipeLayout
                 android:id="@+id/slItem"
@@ -110,7 +106,11 @@
             </LinearLayout>
 
             <android.support.constraint.ConstraintLayout
+                    android:id="@+id/cvItemProduct"
                     android:layout_width="match_parent"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
                     android:layout_height="96dp">
 
                 <ImageView
