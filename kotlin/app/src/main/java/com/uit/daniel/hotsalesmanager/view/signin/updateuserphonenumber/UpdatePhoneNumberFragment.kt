@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.fragment_update_phone_number.*
 
 class UpdatePhoneNumberFragment : android.app.Fragment() {
 
-    private val updatePhoneNumberViewModel = UpdatePhoneNumberViewModel()
+    private lateinit var updatePhoneNumberViewModel: UpdatePhoneNumberViewModel
     private var phoneNumber: String = ""
     private lateinit var userManagerUtil: UserManagerUtil
 
@@ -95,6 +95,7 @@ class UpdatePhoneNumberFragment : android.app.Fragment() {
             Log.d("Anleresult", result.toString())
             if (result) {
                 userManagerUtil.setUserPhoneNumberVerifired(phoneNumber)
+                updatePhoneNumberViewModel.updatePhoneNumberToSever(userManagerUtil.getUserId(), phoneNumber)
                 startSalesManagerActivity()
             }
         }
@@ -188,5 +189,6 @@ class UpdatePhoneNumberFragment : android.app.Fragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         userManagerUtil = UserManagerUtil.getInstance(context)
+        updatePhoneNumberViewModel = UpdatePhoneNumberViewModel(context)
     }
 }

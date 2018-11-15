@@ -75,18 +75,30 @@
                 android:theme="@style/AppThemeMain">
         </activity>
         <activity
-                android:name=".view.product.searchaddresslocation.SearchAddressLocationActivity"
+                android:name=".view.location.searchaddresslocation.SearchAddressLocationActivity"
                 android:theme="@style/AppThemeMain">
         </activity>
         <activity
-                android:name=".view.product.orderproduct.OrderProductActivity"
+                android:name=".view.order.orderproduct.OrderProductActivity"
                 android:theme="@style/AppThemeMain">
         </activity>
         <activity
                 android:name=".view.product.createproduct.CreateProductActivity"
                 android:theme="@style/AppThemeMain">
         </activity>
-        <activity android:name=".view.product.productaddedcart.ProductAddedCartActivity"
+        <activity
+                android:name=".view.product.productaddedcart.ProductAddedCartActivity"
+                android:theme="@style/AppThemeMain">
+        </activity>
+        <activity
+                android:name=".view.product.updateproduct.UpdateProductActivity"
+                android:theme="@style/AppThemeMain">
+        </activity>
+        <activity
+                android:name=".view.order.updateorder.UpdateOrderActivity"
+                android:theme="@style/AppThemeMain">
+        </activity>
+        <activity android:name=".view.product.productlocation.ProductLocationActivity"
                   android:theme="@style/AppThemeMain">
         </activity>
     </application>

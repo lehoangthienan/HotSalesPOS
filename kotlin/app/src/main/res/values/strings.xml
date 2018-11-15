@@ -48,4 +48,21 @@
     <string name="action_finish_address_search"></string>
     <string name="title_acctione">Action</string>
 
+    <string name="title_shop">Shop</string>
+    <string name="title_ot_sales">Hot Sales</string>
+    <string name="title_cart">Cart</string>
+    <string name="title_product">My Product</string>
+    <string name="title_profile">Profile</string>
+
+    <string-array name="categorys">
+        <item>House</item>
+        <item>Motorcycles And Cars</item>
+        <item>Electronice Device</item>
+        <item>Mother And Baby</item>
+        <item>Interior And Exterior</item>
+        <item>Fashion</item>
+        <item>Sport</item>
+        <item>Pet</item>
+    </string-array>
+
 </resources>

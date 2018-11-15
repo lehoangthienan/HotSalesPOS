@@ -26,7 +26,7 @@ class SignInFacebookFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         checkLogInSuccessFacebook()
-        checkLoggedIn()
+        //checkLoggedIn()
         addEvents()
     }
 
@@ -59,6 +59,7 @@ class SignInFacebookFragment : Fragment() {
     @SuppressLint("CheckResult")
     private fun checkLoggedIn() {
         signInFacebookViewModel.isLoggedFacebook().subscribe { check ->
+            if (check) startUpdateUserProfileActivity()
         }
         signInFacebookViewModel.isLoggedInFacebook(activity)
     }

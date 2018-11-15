@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+            android:id="@+id/house"
+            android:title="House" tools:ignore="HardcodedText"/>
+
+    <item
+            android:id="@+id/moto"
+            android:title="Motorcycles And Cars" tools:ignore="HardcodedText"/>
+
+    <item
+            android:id="@+id/electric"
+            android:title="Electronice Device" tools:ignore="HardcodedText"/>
+
+    <item
+            android:id="@+id/mother"
+            android:title="Mother And Baby" tools:ignore="HardcodedText"/>
+
+    <item
+            android:id="@+id/inter"
+            android:title="Interior And Exterior" tools:ignore="HardcodedText"/>
+
+    <item
+            android:id="@+id/fashtion"
+            android:title="Fashion" tools:ignore="HardcodedText"/>
+
+    <item
+            android:id="@+id/sport"
+            android:title="Sport" tools:ignore="HardcodedText"/>
+
+    <item
+            android:id="@+id/pet"
+            android:title="Pet" tools:ignore="HardcodedText"/>
+
+    <item
+            android:id="@+id/all"
+            android:title="All" tools:ignore="HardcodedText"/>
+
+</menu>

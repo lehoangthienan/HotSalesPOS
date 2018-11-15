@@ -5,11 +5,11 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".view.product.orderproduct.OrderProductActivity">
+        tools:context=".view.order.orderproduct.OrderProductActivity">
 
     <fragment
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:name="com.uit.daniel.hotsalesmanager.view.product.orderproduct.OrderProductFragment"
+            android:name="com.uit.daniel.hotsalesmanager.view.order.orderproduct.OrderProductFragment"
             android:id="@+id/fragment7"/>
 </LinearLayout>

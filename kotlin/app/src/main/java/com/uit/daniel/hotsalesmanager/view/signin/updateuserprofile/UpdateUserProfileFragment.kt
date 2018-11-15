@@ -1,5 +1,6 @@
 package com.uit.daniel.hotsalesmanager.view.signin.updateuserprofile
 
+import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
@@ -32,6 +33,7 @@ class UpdateUserProfileFragment : android.app.Fragment() {
     private var urlAvatarUser: String = ""
     private var check: Boolean = false
     private lateinit var dlNotInputPhoneNumber: Dialog
+    private lateinit var updateUserProfileViewModel: UpdateUserProfileViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_update_user_profile, container, false)
@@ -103,13 +105,20 @@ class UpdateUserProfileFragment : android.app.Fragment() {
         }
     }
 
+    @SuppressLint("CheckResult")
     private fun addEvents() {
         tvCheckFinish.setOnClickListener {
             if (etPhoneNumber.text.toString().isNullOrBlank()) {
                 dlNotInputPhoneNumber.show()
             } else {
                 getCodeCountryPhoneNumber()
-                startConfirmPhoneNumberActivity()
+                updateUserProfileViewModel.isUpdateUserNameToSever().subscribe { check ->
+                    if (check) {
+                        userManagerUtil.setUserName(etName.text.toString())
+                        startConfirmPhoneNumberActivity()
+                    }
+                }
+                updateUserProfileViewModel.updateUserNameToSever(userManagerUtil.getUserId(), etName.text.toString())
             }
         }
         dlNotInputPhoneNumber.btUpdate.setOnClickListener {
@@ -163,6 +172,6 @@ class UpdateUserProfileFragment : android.app.Fragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         userManagerUtil = UserManagerUtil.getInstance(context)
+        updateUserProfileViewModel = UpdateUserProfileViewModel(context)
     }
-
 }

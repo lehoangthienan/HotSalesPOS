@@ -15,4 +15,6 @@
     <color name="silver">#bdbdbd</color>
     <color name="colorCeriseRed">#e13f5e</color>
     <color name="grey_notification">#979797</color>
+    <color name="bgBottomNavigation">#FF3499CC</color>
+    <color name="colorBackgroundOfSwipeLayout">#FFF1F1F1</color>
 </resources>
