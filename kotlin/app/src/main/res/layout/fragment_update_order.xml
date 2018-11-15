@@ -24,7 +24,27 @@
                 app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                    android:id="@+id/textView26"
+                    android:id="@+id/tvFinish"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="16dp"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:fontFamily="@font/material"
+                    android:gravity="center"
+                    android:text="@string/action_finish_address_search"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:ignore="KeyboardInaccessibleWidget" app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginBottom="8dp" android:layout_marginTop="8dp"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                    android:id="@+id/tvTitleName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
@@ -37,25 +57,6 @@
                     app:layout_constraintHorizontal_bias="0.502"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"/>
-
-            <TextView
-                    android:id="@+id/tvCheckFinish"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="16dp"
-                    android:background="?selectableItemBackgroundBorderless"
-                    android:fontFamily="@font/material"
-                    android:gravity="center"
-                    android:text=""
-                    android:clickable="true"
-                    android:textColor="@color/white"
-                    android:textSize="24sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
-                    android:layout_marginBottom="8dp"/>
 
             <TextView
                     android:id="@+id/tvBack"
