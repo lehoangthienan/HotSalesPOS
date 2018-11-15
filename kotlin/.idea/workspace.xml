@@ -45,7 +45,7 @@
     </system>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -76,7 +76,6 @@
       <find>etAddress</find>
       <find>locationUtils</find>
       <find>product</find>
-      <find>ivAddLocation</find>
     </findStrings>
   </component>
   <component name="GradleLocalSettings">
@@ -2582,7 +2581,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="47" />
     <option name="y" value="25" />
     <option name="width" value="1400" />
@@ -2596,8 +2595,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane" />
-      <pane id="PackagesPane" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -2777,6 +2774,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="ProjectPane" />
       <pane id="Scope">
         <subPane subId="Project Files">
           <expand>
@@ -2793,6 +2791,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2933,7 +2932,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="47" y="25" width="1873" height="1055" extended-state="7" />
+    <frame x="47" y="25" width="1873" height="1055" extended-state="6" />
     <layout>
       <window_info anchor="bottom" id="Android Profiler" order="7" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -2942,23 +2941,23 @@
       <window_info id="Build Variants" order="2" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.500821" side_tool="true" weight="0.5151515" />
-      <window_info anchor="right" id="Preview" order="5" weight="0.3125342" />
-      <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info active="true" anchor="bottom" id="Logcat" order="7" sideWeight="0.49917898" visible="true" weight="0.5151515" />
+      <window_info anchor="bottom" id="Logcat" order="7" sideWeight="0.49917898" weight="0.5151515" />
       <window_info id="Captures" order="2" weight="0.24958949" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21455939" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21455939" />
       <window_info anchor="bottom" id="Build" order="7" weight="0.32900432" />
       <window_info anchor="right" id="Gradle" order="6" weight="0.32950193" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Device File Explorer" order="8" side_tool="true" weight="0.32950193" />
       <window_info anchor="right" id="Theme Preview" order="7" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Preview" order="5" weight="0.3125342" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -3015,9 +3014,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="660">
           <caret line="44" column="53" selection-start-line="44" selection-start-column="53" selection-end-line="44" selection-end-column="53" />
-          <folding>
-            <element signature="e#2795#2831#0" expanded="true" />
-          </folding>
         </state>
       </provider>
       <provider editor-type-id="android-designer2">
@@ -3069,12 +3065,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="640">
           <caret line="94" column="54" selection-start-line="94" selection-start-column="54" selection-end-line="94" selection-end-column="54" />
-          <folding>
-            <element signature="e#6018#6063#0" expanded="true" />
-            <element signature="e#6457#6494#0" expanded="true" />
-            <element signature="e#7103#7143#0" expanded="true" />
-            <element signature="e#7705#7753#0" expanded="true" />
-          </folding>
         </state>
       </provider>
       <provider editor-type-id="android-designer2">
@@ -3219,9 +3209,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1020">
           <caret line="89" column="29" lean-forward="true" selection-start-line="89" selection-start-column="29" selection-end-line="89" selection-end-column="29" />
-          <folding>
-            <element signature="e#54#164#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3346,9 +3333,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="17" column="27" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
-          <folding>
-            <element signature="e#48#353#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3370,9 +3354,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
           <caret line="51" selection-start-line="51" selection-end-line="51" />
-          <folding>
-            <element signature="e#54#164#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3405,8 +3386,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/view/order/updateorder/UpdateOrderFragment.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="118" column="38" selection-start-line="118" selection-start-column="38" selection-end-line="118" selection-end-column="38" />
+        <state relative-caret-position="767">
+          <caret line="149" column="5" selection-start-line="149" selection-start-column="5" selection-end-line="149" selection-end-column="5" />
         </state>
       </provider>
     </entry>
