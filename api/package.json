@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "ENV=local node src/index.js",
+    "start": "ENV=hotsalessever node src/index.js",
     "local-db": "docker-compose up -d",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
