@@ -1,9 +1,9 @@
 ## HotSalesManager
 
--App to show all product hot sales from website
--User can sale all product
+# App to show all product hot sales from website
+[*] User can sale all product
 
-App used : 
+# App used : 
 ```
 - MVVM
 - Google Api
