@@ -40,6 +40,7 @@ class SignInFacebookFragment : Fragment() {
     private fun startUpdateUserProfileActivity() {
         val intent = Intent(activity, UpdateUserProfileActivity::class.java)
         startActivity(intent)
+        activity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
     }
 
     private fun addEvents() {
@@ -48,6 +49,7 @@ class SignInFacebookFragment : Fragment() {
         }
         tvBack.setOnClickListener {
             activity.finish()
+            activity.overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
         }
     }
 

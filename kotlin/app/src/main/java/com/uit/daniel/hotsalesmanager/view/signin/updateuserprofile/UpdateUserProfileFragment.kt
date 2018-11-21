@@ -127,15 +127,18 @@ class UpdateUserProfileFragment : android.app.Fragment() {
         dlNotInputPhoneNumber.btSkip.setOnClickListener {
             dlNotInputPhoneNumber.dismiss()
             activity.finish()
+            activity.overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
         }
         tvBack.setOnClickListener {
             activity.finish()
+            activity.overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
         }
     }
 
     private fun startConfirmPhoneNumberActivity() {
         val intent = Intent(activity, UpdatePhoneNumberActivity::class.java)
         startActivity(intent)
+        activity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
     }
 
     private fun getCodeCountryPhoneNumber() {

@@ -92,6 +92,7 @@ class UpdateOrderFragment : Fragment() {
     private fun addEvents() {
         tvBack.setOnClickListener {
             activity.finish()
+            activity.overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
         }
         tvFinish.setOnClickListener {
             isFullInformation()
@@ -121,6 +122,7 @@ class UpdateOrderFragment : Fragment() {
             if (check) {
                 userManagerUtil.setAddressLocation("")
                 activity.finish()
+                activity.overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
             }
         }
 

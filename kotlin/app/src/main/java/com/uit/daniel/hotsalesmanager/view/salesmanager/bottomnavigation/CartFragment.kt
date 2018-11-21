@@ -100,6 +100,7 @@ class CartFragment : Fragment() {
         intent.putExtra("ID", id)
         intent.putExtra("isUpdate", false)
         activity.startActivity(intent)
+        activity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
     }
 
     private fun startUpdateUserOrderActivity(id: String) {
@@ -107,6 +108,7 @@ class CartFragment : Fragment() {
         intent.putExtra("ID", id)
         intent.putExtra("isUpdate", true)
         activity.startActivity(intent)
+        activity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
     }
 
 

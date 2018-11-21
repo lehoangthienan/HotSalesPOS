@@ -16,6 +16,7 @@ import com.jakewharton.rxbinding2.widget.RxTextView
 import com.uit.daniel.hotsalesmanager.R
 import com.uit.daniel.hotsalesmanager.data.response.ProductResult
 import com.uit.daniel.hotsalesmanager.utils.ProductManagerUtils
+import com.uit.daniel.hotsalesmanager.utils.getVisibilityView
 import com.uit.daniel.hotsalesmanager.view.custom.shopproduct.ShopProductAdapter
 import com.uit.daniel.hotsalesmanager.view.product.productdetail.ProductDetailActivity
 import com.uit.daniel.hotsalesmanager.view.salesmanager.SalesManagerViewModel
@@ -88,6 +89,7 @@ class ShopFragment : Fragment() {
         val intent = Intent(activity, ProductDetailActivity::class.java)
         intent.putExtra("ID", id)
         activity.startActivity(intent)
+        activity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
     }
 
     private fun setProductsView() {
@@ -95,6 +97,7 @@ class ShopFragment : Fragment() {
             rvProducts.apply {
                 this.layoutManager = LinearLayoutManager(activity)
                 this.adapter = productsAdapter
+                progressBarAddLocation.visibility = getVisibilityView(false)
             }
         } catch (e: Exception) {
         }

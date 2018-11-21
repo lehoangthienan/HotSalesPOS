@@ -32,6 +32,7 @@ class CreateProductFragment : Fragment() {
     private fun addEvents() {
         tvBack.setOnClickListener {
             activity.finish()
+            activity.overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
         }
         tvCheckFinish.setOnClickListener {
             isFullField()
@@ -44,6 +45,7 @@ class CreateProductFragment : Fragment() {
     private fun startSearchLocationActivity() {
         val intent = Intent(activity, SearchAddressLocationActivity::class.java)
         activity.startActivity(intent)
+        activity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
     }
 
     @SuppressLint("CheckResult")
@@ -65,6 +67,7 @@ class CreateProductFragment : Fragment() {
             if (check) {
                 setLatLagOfProduct()
                 activity.finish()
+                activity.overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
             }
         }
         createGroupViewModel.createProduct(

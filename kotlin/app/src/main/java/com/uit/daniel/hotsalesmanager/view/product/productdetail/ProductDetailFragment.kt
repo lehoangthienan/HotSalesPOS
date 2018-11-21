@@ -82,6 +82,7 @@ class ProductDetailFragment : Fragment() {
     private fun addEvents() {
         tvBack.setOnClickListener {
             activity.finish()
+            activity.overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
         }
         btOrder.setOnClickListener {
             startOrderActivity()
@@ -97,6 +98,7 @@ class ProductDetailFragment : Fragment() {
             intent.putExtra("LAT", lat)
             intent.putExtra("LNG", lng)
             activity.startActivity(intent)
+            activity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
         } else ToastSnackBar.showSnackbar("The product you just selected has no location", view, activity)
     }
 

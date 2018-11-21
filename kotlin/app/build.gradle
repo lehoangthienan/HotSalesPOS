@@ -148,6 +148,7 @@ dependencies {
 
     implementation 'org.greenrobot:eventbus:3.1.1'
     implementation 'jp.wasabeef:recyclerview-animators:2.3.0'
+    implementation 'com.github.ybq:Android-SpinKit:1.2.0'
 }
 
 

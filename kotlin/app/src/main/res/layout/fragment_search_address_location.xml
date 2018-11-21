@@ -129,12 +129,13 @@
 
     </RelativeLayout>
 
-    <ProgressBar
+    <com.github.ybq.android.spinkit.SpinKitView
             android:id="@+id/progressBarAddLocation"
-            style="?android:attr/progressBarStyle"
+            style="@style/SpinKitView.Large.WanderingCubes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"/>
+            android:layout_centerInParent="true"
+            app:SpinKit_Color="@color/colorAccent" />
 
 
 </RelativeLayout>

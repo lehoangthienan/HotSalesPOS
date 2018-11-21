@@ -15,6 +15,7 @@ import com.uit.daniel.hotsalesmanager.base.BaseFragment
 import com.uit.daniel.hotsalesmanager.utils.getVisibilityView
 import kotlinx.android.synthetic.main.fragment_product_location.*
 
+
 class ProductLocationFragment : BaseFragment(), OnMapReadyCallback {
 
     private lateinit var gmap: GoogleMap
@@ -35,6 +36,7 @@ class ProductLocationFragment : BaseFragment(), OnMapReadyCallback {
     private fun addEvents() {
         tvBackAddressSearch.setOnClickListener {
             activity?.finish()
+            activity?.overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
         }
     }
 

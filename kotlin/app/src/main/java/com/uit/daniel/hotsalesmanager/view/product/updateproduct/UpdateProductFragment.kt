@@ -34,6 +34,7 @@ class UpdateProductFragment : Fragment() {
     private fun addEvents() {
         tvBack.setOnClickListener {
             activity.finish()
+            activity.overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
         }
         tvCheckFinish.setOnClickListener {
             isFullField()
@@ -55,7 +56,10 @@ class UpdateProductFragment : Fragment() {
     @SuppressLint("CheckResult")
     private fun updateProduct() {
         updateProductViewModel.updateProductObservable().subscribe { check ->
-            if (check) activity.finish()
+            if (check){
+                activity.finish()
+                activity.overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
+            }
             else ToastSnackBar.showSnackbar("Update product fail!", view, activity)
         }
         setProductResponse()

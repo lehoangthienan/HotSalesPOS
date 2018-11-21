@@ -119,16 +119,19 @@ class SalesManagerFragment : Fragment() {
     private fun startProductAddedCart() {
         val intent = Intent(activity, ProductAddedCartActivity::class.java)
         activity.startActivity(intent)
+        activity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
     }
 
     private fun startCreateProduct() {
         val intent = Intent(activity, CreateProductActivity::class.java)
         activity.startActivity(intent)
+        activity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
     }
 
     private fun startLogInWithFacebookActivity() {
         val intent = Intent(activity, SignInFacebookActivity::class.java)
         startActivity(intent)
+        activity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
     }
 
     private fun addControls() {

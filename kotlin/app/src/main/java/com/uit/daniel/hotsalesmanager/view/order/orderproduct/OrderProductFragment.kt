@@ -45,7 +45,9 @@ class OrderProductFragment : Fragment() {
             startSearchLocationActivity()
         }
         tvBack.setOnClickListener {
+            userManagerUtil.setAddressLocation("")
             activity.finish()
+            activity.overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
         }
         tvCheckFinish.setOnClickListener {
             isFullInformation()
@@ -67,6 +69,7 @@ class OrderProductFragment : Fragment() {
             if (check) {
                 userManagerUtil.setAddressLocation("")
                 activity.finish()
+                activity.overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
             }
         }
         orderProductViewModel.createOrder(

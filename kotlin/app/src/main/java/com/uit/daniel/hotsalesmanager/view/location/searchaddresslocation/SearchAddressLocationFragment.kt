@@ -79,9 +79,11 @@ class SearchAddressLocationFragment : BaseFragment(), OnMapReadyCallback {
         tvFinishAddressSearch.setOnClickListener {
             if (!actAddressSearch.text.toString().isNullOrBlank()) userManagerUtil.setAddressLocation(actAddressSearch.text.toString())
             activity?.finish()
+            activity?.overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
         }
         tvBackAddressSearch.setOnClickListener {
             activity?.finish()
+            activity?.overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
         }
     }
 

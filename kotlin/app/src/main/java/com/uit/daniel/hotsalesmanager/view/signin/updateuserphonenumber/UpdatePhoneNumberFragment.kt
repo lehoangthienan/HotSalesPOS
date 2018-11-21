@@ -54,6 +54,7 @@ class UpdatePhoneNumberFragment : android.app.Fragment() {
         }
         tvBack?.setOnClickListener {
             activity.finish()
+            activity.overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
         }
         RxTextView.textChanges(edtCheckNumber1).subscribe { text ->
             updatePhoneNumberViewModel.setCodeAtPosition1(text.toString())
@@ -179,6 +180,7 @@ class UpdatePhoneNumberFragment : android.app.Fragment() {
     private fun startSalesManagerActivity() {
         val intent = Intent(activity, SalesManagerActivity::class.java)
         startActivity(intent)
+        activity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
     }
 
     private fun resendConfirmationCodeAndUpdateView() {
