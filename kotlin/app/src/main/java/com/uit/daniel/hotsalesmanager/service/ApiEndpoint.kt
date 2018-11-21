@@ -2,9 +2,7 @@ package com.uit.daniel.hotsalesmanager.service
 
 object ApiEndpoint {
 
-    //const val BASE_URL = "http://10.45.177.91:3000/"
-    const val BASE_URL = "http://192.168.1.16:3000/"
-    //const val BASE_URL = "http://172.20.10.5:3000/"
+    const val BASE_URL = "https://hotsalespos.herokuapp.com/"
 
     const val CREATE_USER = "api/users"
     const val DELETE_USER = "api/users/{userId}"
