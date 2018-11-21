@@ -1,7 +1,9 @@
 ## HotSalesManager
 
 # App to show all product hot sales from website
-[*] User can sale all product
+
+[x] User can sale all product
+[x] User can order all product
 
 # App used : 
 ```
