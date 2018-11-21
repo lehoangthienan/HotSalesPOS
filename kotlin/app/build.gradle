@@ -141,14 +141,14 @@ dependencies {
 
     implementation "com.github.angads25:toggle:$toggleVertion"
 
-    implementation 'com.github.pulse-id:CustomAutoCompleteLocation:v1.0'
-    implementation 'com.jpardogo.materialtabstrip:library:1.1.1'
-    implementation "com.daimajia.swipelayout:library:1.2.0@aar"
-    implementation 'io.branch.sdk.android:library:2.19.5'
+    implementation "com.github.pulse-id:CustomAutoCompleteLocation:$customAutoCompleteLocationVertion"
+    implementation "com.jpardogo.materialtabstrip:library:$materialtabstripVertion"
+    implementation "com.daimajia.swipelayout:library:$swipelayoutVertion"
+    implementation "io.branch.sdk.android:library:$androidSdkVertion"
 
-    implementation 'org.greenrobot:eventbus:3.1.1'
-    implementation 'jp.wasabeef:recyclerview-animators:2.3.0'
-    implementation 'com.github.ybq:Android-SpinKit:1.2.0'
+    implementation "org.greenrobot:eventbus:$greenrobotEventbusVertion"
+    implementation "jp.wasabeef:recyclerview-animators:$recyclerviewAnimatorsVertion"
+    implementation "com.github.ybq:Android-SpinKit:$spinKitVertion"
 }
 
 

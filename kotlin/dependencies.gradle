@@ -1,4 +1,3 @@
-
 ext {
     versionMajor = 0
     versionMinor = 0
@@ -15,19 +14,19 @@ ext {
 
     androidSupportVertion = '28.0.0'
     retrofitVersion = '2.4.0'
-    rxkotlinVersion= '2.2.0'
-    rxjavaVersion= '2.1.12'
-    rxandroidVersion= '2.0.2'
-    rxbindingVersion= '2.1.1'
+    rxkotlinVersion = '2.2.0'
+    rxjavaVersion = '2.1.12'
+    rxandroidVersion = '2.0.2'
+    rxbindingVersion = '2.1.1'
 
-    extensionsVersion= '1.1.1'
-    interceptorVersion= '3.10.0'
+    extensionsVersion = '1.1.1'
+    interceptorVersion = '3.10.0'
 
-    glideVersion= '4.8.0'
-    jodaTimeVersion= '2.10'
+    glideVersion = '4.8.0'
+    jodaTimeVersion = '2.10'
 
-    ankoVersion= '0.10.5'
-    placeServicesVersion= '16.0.0'
+    ankoVersion = '0.10.5'
+    placeServicesVersion = '16.0.0'
 
     roomVersion = '1.1.1'
     shimmerVersion = 'v1.3'
@@ -66,4 +65,12 @@ ext {
     espressoVertion = '3.0.2'
 
     androidTestVertion = '1.0.2'
+
+    customAutoCompleteLocationVertion = 'v1.0'
+    materialtabstripVertion = '1.1.1'
+    swipelayoutVertion = '1.2.0@aar'
+    androidSdkVertion = '2.19.5'
+    greenrobotEventbusVertion = '3.1.1'
+    recyclerviewAnimatorsVertion = '2.3.0'
+    spinKitVertion = '1.2.0'
 }

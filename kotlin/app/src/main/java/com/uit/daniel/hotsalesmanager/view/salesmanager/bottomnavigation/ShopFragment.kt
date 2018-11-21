@@ -98,6 +98,7 @@ class ShopFragment : Fragment() {
                 this.layoutManager = LinearLayoutManager(activity)
                 this.adapter = productsAdapter
                 progressBarAddLocation.visibility = getVisibilityView(false)
+                swipeContainer.isRefreshing = false
             }
         } catch (e: Exception) {
         }
@@ -148,6 +149,9 @@ class ShopFragment : Fragment() {
                     })
                 setProductsView()
             }
+        }
+        swipeContainer.setOnRefreshListener {
+            showProducts()
         }
     }
 

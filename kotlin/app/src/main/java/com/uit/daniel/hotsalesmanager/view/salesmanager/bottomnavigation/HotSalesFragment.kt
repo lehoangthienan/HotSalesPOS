@@ -73,6 +73,7 @@ class HotSalesFragment : Fragment() {
                 this.adapter = productsAdapter
             }
             progressBarAddLocation.visibility = getVisibilityView(false)
+            swipeContainer.isRefreshing = false
         } catch (e: Exception) {
         }
     }
@@ -114,6 +115,9 @@ class HotSalesFragment : Fragment() {
                     })
                 setProductsView()
             }
+        }
+        swipeContainer.setOnRefreshListener {
+            showProducts()
         }
     }
 
