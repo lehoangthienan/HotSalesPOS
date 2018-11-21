@@ -2,8 +2,8 @@
 
 # App to show all product hot sales from website
 
-[x] User can sale all product
-[x] User can order all product
+- User can sale all product
+- User can order all product
 
 # App used : 
 ```
