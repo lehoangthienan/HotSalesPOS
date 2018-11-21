@@ -54,6 +54,11 @@ class OrderProductFragment : Fragment() {
         }
     }
 
+    private fun setLatLagOfProduct() {
+        userManagerUtil.setLat(0.0)
+        userManagerUtil.setLng(0.0)
+    }
+
     private fun isFullInformation() {
         if (etName.text.toString().isNullOrBlank() || etAddress.text.toString().isNullOrBlank() || etPhoneNumber.text.toString().isNullOrBlank()) ToastSnackBar.showSnackbar(
             "Please enter your personal details!",
@@ -67,6 +72,7 @@ class OrderProductFragment : Fragment() {
     private fun createOrderToSever() {
         orderProductViewModel.createOrderObservable().subscribe { check ->
             if (check) {
+                setLatLagOfProduct()
                 userManagerUtil.setAddressLocation("")
                 activity.finish()
                 activity.overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)

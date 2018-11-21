@@ -102,6 +102,12 @@ class UpdateOrderFragment : Fragment() {
         }
     }
 
+    private fun setLatLagOfProduct() {
+        userManagerUtil.setLat(0.0)
+        userManagerUtil.setLng(0.0)
+    }
+
+
     private fun startSearchLocationActivity() {
         val intent = Intent(activity, SearchAddressLocationActivity::class.java)
         activity.startActivity(intent)
@@ -120,6 +126,7 @@ class UpdateOrderFragment : Fragment() {
     private fun updateOrderToSever() {
         updateOrderViewModel.updateOrderObservable().subscribe { check ->
             if (check) {
+                setLatLagOfProduct()
                 userManagerUtil.setAddressLocation("")
                 activity.finish()
                 activity.overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)

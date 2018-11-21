@@ -54,7 +54,10 @@ class UpdateOrderViewModel(context: Context) : UpdateOrderViewModelInputs, Updat
 
     @SuppressLint("CheckResult")
     override fun updateOrder(orderid: String, productId: String, name: String, address: String, phoneNumber: String) {
-        val order = Order(userManagerUtil.getUserId(),productId , name, address, phoneNumber)
+        val order = Order(
+            userManagerUtil.getUserId(), productId, name, address, userManagerUtil.getLat(),
+            userManagerUtil.getLng(), phoneNumber
+        )
         val orderRequest = OrderRequest(order)
 
         orderService.updateOrderRequest(orderid, orderRequest)
