@@ -18,7 +18,6 @@ import com.uit.daniel.hotsalesmanager.utils.ProductManagerUtils
 import com.uit.daniel.hotsalesmanager.utils.ToastSnackBar
 import com.uit.daniel.hotsalesmanager.utils.UserManagerUtil
 import com.uit.daniel.hotsalesmanager.view.custom.userproducts.UserProductsAdapter
-import com.uit.daniel.hotsalesmanager.view.product.productdetail.ProductDetailActivity
 import com.uit.daniel.hotsalesmanager.view.product.updateproduct.UpdateProductActivity
 import com.uit.daniel.hotsalesmanager.view.salesmanager.SalesManagerViewModel
 import kotlinx.android.synthetic.main.dialog_delete_product.*
@@ -74,27 +73,30 @@ class UserProductFragment : Fragment() {
     @SuppressLint("CheckResult")
     private fun showProducts() {
         salesManagerViewModel.userProductsObservable().subscribe { productRespone ->
-            products = productManagerUtils.getProductsNotEcommerce(productRespone.result as ArrayList<ProductResult>)
+            if (productRespone.result != null) {
+                products =
+                        productManagerUtils.getProductsNotEcommerce(productRespone.result as ArrayList<ProductResult>)
 
-            userProductsAdapter = UserProductsAdapter(
-                products,
-                object : UserProductsAdapter.OnItemClickedListener {
-                    override fun onItemClicked(id: String) {
-                        startProductDetailActivity(id)
-                    }
-                }, object : UserProductsAdapter.OnDeleteClickedListener {
-                    override fun onDeleteClickedListener(id: String) {
-                        productIdDelete = id
-                        dlDelete.show()
-                    }
+                userProductsAdapter = UserProductsAdapter(
+                    products,
+                    object : UserProductsAdapter.OnItemClickedListener {
+                        override fun onItemClicked(id: String) {
+                            startProductDetailActivity(id)
+                        }
+                    }, object : UserProductsAdapter.OnDeleteClickedListener {
+                        override fun onDeleteClickedListener(id: String) {
+                            productIdDelete = id
+                            dlDelete.show()
+                        }
 
-                }, object : UserProductsAdapter.OnUpdateClickedListener {
-                    override fun onUpdateClickedListener(id: String) {
-                        startUpdateUserProductActivity(id)
-                    }
+                    }, object : UserProductsAdapter.OnUpdateClickedListener {
+                        override fun onUpdateClickedListener(id: String) {
+                            startUpdateUserProductActivity(id)
+                        }
 
-                })
-            setProductsView()
+                    })
+                setProductsView()
+            }
         }
         salesManagerViewModel.userProducts(userManagerUtil.getUserId())
     }

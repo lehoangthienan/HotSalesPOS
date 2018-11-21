@@ -11,10 +11,10 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.uit.daniel.hotsalesmanager.R
 import com.uit.daniel.hotsalesmanager.utils.Constant.NAME_USER_DEFAULT
-import com.uit.daniel.hotsalesmanager.utils.ToastSnackBar
 import com.uit.daniel.hotsalesmanager.utils.UserManagerUtil
 import com.uit.daniel.hotsalesmanager.view.product.createproduct.CreateProductActivity
 import com.uit.daniel.hotsalesmanager.view.product.productaddedcart.ProductAddedCartActivity
@@ -105,11 +105,11 @@ class SalesManagerFragment : Fragment() {
             startLogInWithFacebookActivity()
         }
         fabAddProduct.setOnClickListener {
-            if (tvUserName.text.toString() == NAME_USER_DEFAULT) ToastSnackBar.showSnackbar(
+            if (tvUserName.text.toString() == NAME_USER_DEFAULT) Toast.makeText(
+                activity,
                 "Please sign in before doing this.",
-                view,
-                activity
-            )
+                Toast.LENGTH_LONG
+            ).show()
             else startCreateProduct()
         }
         navigation.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)

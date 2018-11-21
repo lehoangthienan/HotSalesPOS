@@ -70,26 +70,27 @@ class CartFragment : Fragment() {
     @SuppressLint("CheckResult")
     private fun showOrders() {
         salesManagerViewModel.ordersObservable().subscribe { orderResponse ->
+            if (orderResponse.result != null) {
+                orderAdapter = OrderAdapter(
+                    orderResponse.result,
+                    object : OrderAdapter.OnItemClickedListener {
+                        override fun onItemClicked(id: String) {
+                            startOrderDetailActivity(id)
+                        }
+                    }, object : OrderAdapter.OnDeleteClickedListener {
+                        override fun onDeleteClickedListener(id: String) {
+                            orderIdDelete = id
+                            dlDelete.show()
+                        }
 
-            orderAdapter = OrderAdapter(
-                orderResponse.result,
-                object : OrderAdapter.OnItemClickedListener {
-                    override fun onItemClicked(id: String) {
-                        startOrderDetailActivity(id)
-                    }
-                }, object : OrderAdapter.OnDeleteClickedListener {
-                    override fun onDeleteClickedListener(id: String) {
-                        orderIdDelete = id
-                        dlDelete.show()
-                    }
+                    }, object : OrderAdapter.OnUpdateClickedListener {
+                        override fun onUpdateClickedListener(id: String) {
+                            startUpdateUserOrderActivity(id)
+                        }
 
-                }, object : OrderAdapter.OnUpdateClickedListener {
-                    override fun onUpdateClickedListener(id: String) {
-                        startUpdateUserOrderActivity(id)
-                    }
-
-                })
-            setOrdersView()
+                    })
+                setOrdersView()
+            }
         }
         salesManagerViewModel.orders()
     }

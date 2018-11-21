@@ -46,22 +46,25 @@ class ShopFragment : Fragment() {
     @SuppressLint("CheckResult")
     private fun showProducts() {
         salesManagerViewModel.productsObservable().subscribe { productRespone ->
-            products = productManagerUtils.getProductsNotEcommerce(productRespone.result as ArrayList<ProductResult>)
+            if (productRespone.result != null) {
+                products =
+                        productManagerUtils.getProductsNotEcommerce(productRespone.result as ArrayList<ProductResult>)
 
-            productsAdapter = ShopProductAdapter(products, object : ShopProductAdapter.OnItemClickedListener {
-                override fun onItemClicked(id: String) {
-                    startProductDetailActivity(id)
-                }
-            }, object : ShopProductAdapter.OnCallClickedListener {
-                override fun onCallClickedListener(phoneNumber: String) {
-                    call(phoneNumber)
-                }
-            }, object : ShopProductAdapter.OnSmsClickedListener {
-                override fun onSmsClickedListener(phoneNumber: String) {
-                    sms(phoneNumber)
-                }
-            })
-            setProductsView()
+                productsAdapter = ShopProductAdapter(products, object : ShopProductAdapter.OnItemClickedListener {
+                    override fun onItemClicked(id: String) {
+                        startProductDetailActivity(id)
+                    }
+                }, object : ShopProductAdapter.OnCallClickedListener {
+                    override fun onCallClickedListener(phoneNumber: String) {
+                        call(phoneNumber)
+                    }
+                }, object : ShopProductAdapter.OnSmsClickedListener {
+                    override fun onSmsClickedListener(phoneNumber: String) {
+                        sms(phoneNumber)
+                    }
+                })
+                setProductsView()
+            }
         }
         salesManagerViewModel.products()
     }
@@ -88,9 +91,12 @@ class ShopFragment : Fragment() {
     }
 
     private fun setProductsView() {
-        rvProducts.apply {
-            this.layoutManager = LinearLayoutManager(activity)
-            this.adapter = productsAdapter
+        try {
+            rvProducts.apply {
+                this.layoutManager = LinearLayoutManager(activity)
+                this.adapter = productsAdapter
+            }
+        } catch (e: Exception) {
         }
     }
 

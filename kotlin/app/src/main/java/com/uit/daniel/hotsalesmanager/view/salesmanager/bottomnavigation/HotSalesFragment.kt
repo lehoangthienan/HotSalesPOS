@@ -44,14 +44,16 @@ class HotSalesFragment : Fragment() {
     @SuppressLint("CheckResult")
     private fun showProducts() {
         salesManagerViewModel.productsObservable().subscribe { productRespone ->
-            products = productManagerUtils.getProductsEcommerce(productRespone.result as ArrayList<ProductResult>)
+            if (productRespone.result != null) {
+                products = productManagerUtils.getProductsEcommerce(productRespone.result as ArrayList<ProductResult>)
 
-            productsAdapter = ProductsAdapter(products, object : ProductsAdapter.OnItemClickedListener {
-                override fun onItemClicked(id: String) {
-                    startProductDetailActivity(id)
-                }
-            })
-            setProductsView()
+                productsAdapter = ProductsAdapter(products, object : ProductsAdapter.OnItemClickedListener {
+                    override fun onItemClicked(id: String) {
+                        startProductDetailActivity(id)
+                    }
+                })
+                setProductsView()
+            }
         }
         salesManagerViewModel.products()
     }
@@ -63,9 +65,12 @@ class HotSalesFragment : Fragment() {
     }
 
     private fun setProductsView() {
-        rvProducts.apply {
-            this.layoutManager = LinearLayoutManager(activity)
-            this.adapter = productsAdapter
+        try {
+            rvProducts.apply {
+                this.layoutManager = LinearLayoutManager(activity)
+                this.adapter = productsAdapter
+            }
+        } catch (e: Exception) {
         }
     }
 
