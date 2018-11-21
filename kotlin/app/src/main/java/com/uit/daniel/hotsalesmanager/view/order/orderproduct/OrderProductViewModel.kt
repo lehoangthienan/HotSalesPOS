@@ -58,7 +58,15 @@ class OrderProductViewModel(context: Context) : OrderProductViewModelInputs, Ord
 
     @SuppressLint("CheckResult")
     override fun createOrder(productId: String, name: String, address: String, phonenumber: String) {
-        val order = Order(userManagerUtil.getUserId(), productId, name, address, phonenumber)
+        val order = Order(
+            userManagerUtil.getUserId(),
+            productId,
+            name,
+            address,
+            userManagerUtil.getLat(),
+            userManagerUtil.getLng(),
+            phonenumber
+        )
         val orderRequest = OrderRequest(order)
 
         orderService.createOrderRequest(orderRequest)
