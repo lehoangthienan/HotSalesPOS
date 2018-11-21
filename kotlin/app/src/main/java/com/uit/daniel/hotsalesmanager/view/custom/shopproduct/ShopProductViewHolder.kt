@@ -71,7 +71,12 @@ class ShopProductViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) 
                 "The seller does not leave the contact phone number.",
                 Toast.LENGTH_LONG
             ).show()
-            else onSmsClickedListener.onSmsClickedListener(product.owner?.phone_number!!)
+            else product.name?.let { it1 ->
+                onSmsClickedListener.onSmsClickedListener(
+                    it1,
+                    product.owner?.phone_number!!
+                )
+            }
         }
     }
 

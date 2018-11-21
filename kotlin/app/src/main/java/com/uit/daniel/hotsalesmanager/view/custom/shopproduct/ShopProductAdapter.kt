@@ -44,6 +44,6 @@ class ShopProductAdapter(
     }
 
     interface OnSmsClickedListener {
-        fun onSmsClickedListener(phoneNumber: String)
+        fun onSmsClickedListener(productName: String ,phoneNumber: String)
     }
 }

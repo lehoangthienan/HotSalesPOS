@@ -36,11 +36,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ProductService.kt" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/service/ProductService.kt">
+      <file leaf-file-name="ShopFragment.kt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/view/salesmanager/bottomnavigation/ShopFragment.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="314">
-              <caret line="32" column="39" selection-start-line="32" selection-start-column="39" selection-end-line="32" selection-end-column="39" />
+            <state relative-caret-position="656">
+              <caret line="164" column="17" selection-start-line="164" selection-start-column="17" selection-end-line="164" selection-end-column="17" />
+              <folding>
+                <element signature="e#75#987#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -2502,13 +2505,15 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/view/salesmanager/SalesManagerViewModel.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/view/salesmanager/bottomnavigation/UserProductFragment.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/view/salesmanager/bottomnavigation/CartFragment.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/view/salesmanager/bottomnavigation/ShopFragment.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/view/salesmanager/bottomnavigation/HotSalesFragment.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/view/salesmanager/SalesManagerFragment.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/service/ApiEndpoint.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/service/ProductService.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/view/salesmanager/bottomnavigation/UserProductFragment.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/view/salesmanager/bottomnavigation/CartFragment.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/view/custom/shopproduct/ShopProductAdapter.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/view/custom/shopproduct/ShopProductViewHolder.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/view/salesmanager/bottomnavigation/ShopFragment.kt" />
       </list>
     </option>
   </component>
@@ -2788,34 +2793,10 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/view/salesmanager/bottomnavigation/UserProductFragment.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="75" column="48" lean-forward="true" selection-start-line="75" selection-start-column="9" selection-end-line="75" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/view/salesmanager/SalesManagerViewModel.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
           <caret line="83" selection-start-line="83" selection-end-line="83" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/view/salesmanager/bottomnavigation/CartFragment.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="91" column="31" selection-start-line="91" selection-start-column="31" selection-end-line="91" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/view/salesmanager/bottomnavigation/ShopFragment.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="95" column="13" selection-start-line="95" selection-start-column="13" selection-end-line="95" selection-end-column="13" />
-          <folding>
-            <element signature="e#75#987#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2863,8 +2844,49 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/service/ProductService.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="32" column="39" selection-start-line="32" selection-start-column="39" selection-end-line="32" selection-end-column="39" />
+        <state relative-caret-position="786">
+          <caret line="63" column="81" selection-start-line="63" selection-start-column="81" selection-end-line="63" selection-end-column="81" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/view/salesmanager/bottomnavigation/CartFragment.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="101" column="38" lean-forward="true" selection-start-line="101" selection-start-column="38" selection-end-line="101" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/view/salesmanager/bottomnavigation/UserProductFragment.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="120" column="13" selection-start-line="120" selection-start-column="13" selection-end-line="120" selection-end-column="13" />
+          <folding>
+            <element signature="e#75#1144#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/view/custom/shopproduct/ShopProductViewHolder.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="74" column="34" selection-start-line="74" selection-start-column="34" selection-end-line="74" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/view/custom/shopproduct/ShopProductAdapter.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="28" column="19" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/view/salesmanager/bottomnavigation/ShopFragment.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="656">
+          <caret line="164" column="17" selection-start-line="164" selection-start-column="17" selection-end-line="164" selection-end-column="17" />
+          <folding>
+            <element signature="e#75#987#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

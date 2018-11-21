@@ -114,9 +114,12 @@ class UserProductFragment : Fragment() {
     }
 
     private fun setProductsView() {
-        rvProducts.apply {
-            this.layoutManager = LinearLayoutManager(activity)
-            this.adapter = userProductsAdapter
+        try {
+            rvProducts.apply {
+                this.layoutManager = LinearLayoutManager(activity)
+                this.adapter = userProductsAdapter
+            }
+        } catch (e: Exception) {
         }
     }
 

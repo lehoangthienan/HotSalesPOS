@@ -59,8 +59,8 @@ class ShopFragment : Fragment() {
                         call(phoneNumber)
                     }
                 }, object : ShopProductAdapter.OnSmsClickedListener {
-                    override fun onSmsClickedListener(phoneNumber: String) {
-                        sms(phoneNumber)
+                    override fun onSmsClickedListener(productName: String, phoneNumber: String) {
+                        sms(productName, phoneNumber)
                     }
                 })
                 setProductsView()
@@ -69,13 +69,13 @@ class ShopFragment : Fragment() {
         salesManagerViewModel.products()
     }
 
-    private fun sms(phoneNumber: String) {
+    private fun sms(productName: String, phoneNumber: String) {
         val smsIntent = Intent(Intent.ACTION_VIEW)
         smsIntent.data = Uri.parse("sms:");
         smsIntent.putExtra("address", phoneNumber)
         smsIntent.putExtra(
             "sms_body",
-            "I want to buy the product you are selling. Please tell me if it's still available?"
+            "I want to buy $productName you are selling. Please tell me if it's still available?"
         )
         startActivity(smsIntent)
     }
@@ -139,8 +139,8 @@ class ShopFragment : Fragment() {
                             call(phoneNumber)
                         }
                     }, object : ShopProductAdapter.OnSmsClickedListener {
-                        override fun onSmsClickedListener(phoneNumber: String) {
-                            sms(phoneNumber)
+                        override fun onSmsClickedListener(productName: String, phoneNumber: String) {
+                            sms(productName, phoneNumber)
                         }
                     })
                 setProductsView()
@@ -160,8 +160,8 @@ class ShopFragment : Fragment() {
                     call(phoneNumber)
                 }
             }, object : ShopProductAdapter.OnSmsClickedListener {
-                override fun onSmsClickedListener(phoneNumber: String) {
-                    sms(phoneNumber)
+                override fun onSmsClickedListener(productName: String, phoneNumber: String) {
+                    sms(productName, phoneNumber)
                 }
             })
         setProductsView()

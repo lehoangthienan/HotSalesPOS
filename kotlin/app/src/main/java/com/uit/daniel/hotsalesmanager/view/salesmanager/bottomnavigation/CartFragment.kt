@@ -111,9 +111,12 @@ class CartFragment : Fragment() {
 
 
     private fun setOrdersView() {
-        rvProducts.apply {
-            this.layoutManager = LinearLayoutManager(activity)
-            this.adapter = orderAdapter
+        try {
+            rvProducts.apply {
+                this.layoutManager = LinearLayoutManager(activity)
+                this.adapter = orderAdapter
+            }
+        } catch (e: Exception) {
         }
     }
 
