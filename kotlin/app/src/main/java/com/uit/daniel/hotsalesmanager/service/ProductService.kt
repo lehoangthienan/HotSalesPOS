@@ -5,6 +5,7 @@ import com.uit.daniel.hotsalesmanager.data.request.ProductRequest
 import com.uit.daniel.hotsalesmanager.data.response.ProductResponse
 import com.uit.daniel.hotsalesmanager.utils.ArgumentSingletonHolder
 import io.reactivex.Single
+import okhttp3.MultipartBody
 import retrofit2.Retrofit
 import retrofit2.http.*
 
@@ -27,6 +28,15 @@ interface ProductApi {
 
     @POST(ApiEndpoint.CREATE_PRODUCT)
     fun createProduct(@Body productRequest: ProductRequest): Single<ProductResponse>
+
+    @POST(ApiEndpoint.CREATE_PRODUCT)
+    fun createProductWithImage(@Part image: MultipartBody.Part, @Body productRequest: ProductRequest): Single<ProductResponse>
+
+    @PUT(ApiEndpoint.UPDATE_PRODUCT)
+    fun updateProductWithImage(@Path("productId") productId: String, @Part image: MultipartBody.Part, @Body productRequest: ProductRequest): Single<ProductResponse>
+
+    @PUT(ApiEndpoint.UPDATE_PRODUCT)
+    fun updateProductImage(@Path("productId") productId: String, @Part image: MultipartBody.Part): Single<ProductResponse>
 }
 
 class ProductService private constructor(context: Context) {
@@ -50,5 +60,8 @@ class ProductService private constructor(context: Context) {
 
     fun createProductRequest(productRequest: ProductRequest) =
         api.createProduct(productRequest)
+
+    fun updateProductImageRequest(productId: String, image: MultipartBody.Part) =
+        api.updateProductImage(productId, image)
 
 }
