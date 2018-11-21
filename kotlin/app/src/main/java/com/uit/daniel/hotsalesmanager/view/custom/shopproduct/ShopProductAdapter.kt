@@ -28,7 +28,7 @@ class ShopProductAdapter(
     override fun onBindViewHolder(holder: ShopProductViewHolder, position: Int) {
         holder.bindData(
             context,
-            products[position],
+            products[products.size - position - 1],
             onItemClickedListener,
             onCallClickedListener,
             onSmsClickedListener
@@ -44,6 +44,6 @@ class ShopProductAdapter(
     }
 
     interface OnSmsClickedListener {
-        fun onSmsClickedListener(productName: String ,phoneNumber: String)
+        fun onSmsClickedListener(productName: String, phoneNumber: String)
     }
 }

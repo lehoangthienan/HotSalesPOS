@@ -30,7 +30,7 @@ class OrderAdapter(
         if (orders != null) {
             holder.bindData(
                 context,
-                orders!![position],
+                orders!![orders!!.size - 1 - position],
                 onItemClickedListener,
                 onDeleteClickedListener,
                 onUpdateClickedListener

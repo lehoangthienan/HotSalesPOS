@@ -26,7 +26,7 @@ class ProductsAdapter(
     override fun onBindViewHolder(holder: ProductsViewHolder, position: Int) {
         holder.bindData(
             context,
-            products[position],
+            products[products.size - position - 1],
             onItemClickedListener
         )
     }

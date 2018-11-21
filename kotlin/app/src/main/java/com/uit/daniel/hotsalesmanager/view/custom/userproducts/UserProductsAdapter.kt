@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import com.uit.daniel.hotsalesmanager.R
 import com.uit.daniel.hotsalesmanager.data.response.ProductResult
 
-class UserProductsAdapter (
+class UserProductsAdapter(
     private var products: ArrayList<ProductResult>,
     private var onItemClickedListener: OnItemClickedListener,
     private var onDeleteClickedListener: OnDeleteClickedListener,
@@ -28,7 +28,7 @@ class UserProductsAdapter (
     override fun onBindViewHolder(holder: UserProductsViewHolder, position: Int) {
         holder.bindData(
             context,
-            products[position],
+            products[products.size - 1 - position],
             onItemClickedListener,
             onDeleteClickedListener,
             onUpdateClickedListener
