@@ -11,6 +11,10 @@ var OrderSchema = new mongoose.Schema({
         type: String,
         trim: true,
     },
+    ownernameproduct: {
+        type: String,
+        trim: true,
+    },
     lat: {
         type: Number,
         trim: true,

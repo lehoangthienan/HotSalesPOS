@@ -67,7 +67,7 @@ class UpdateOrderFragment : Fragment() {
             }
         }!!)
         tvPercentDiscount.text = orderResponse.result?.get(0)?.product?.discount.toString() + "%"
-        tvBranchName.text = orderResponse.result?.get(0)?.owner?.name
+        tvBranchName.text = orderResponse.result?.get(0)?.ownernameproduct
 
         try {
             ivProduct?.let {
@@ -149,7 +149,8 @@ class UpdateOrderFragment : Fragment() {
             productId,
             etName.text.toString(),
             etAddress.text.toString(),
-            etPhoneNumber.text.toString()
+            etPhoneNumber.text.toString(),
+            tvBranchName.text.toString()
         )
     }
 

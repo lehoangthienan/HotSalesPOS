@@ -28,6 +28,10 @@ data class OrderResult(
     @Expose
     var address: String? = null,
 
+    @SerializedName("ownernameproduct")
+    @Expose
+    var ownernameproduct: String? = null,
+
     @SerializedName("lat")
     @Expose
     var lat: Double? = null,

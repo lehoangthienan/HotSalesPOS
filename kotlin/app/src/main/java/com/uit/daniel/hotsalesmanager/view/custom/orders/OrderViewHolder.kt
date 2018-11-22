@@ -54,7 +54,7 @@ class OrderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             }
         }!!)
         itemView.tvPercentDiscount.text = orderResult.product?.discount.toString() + "%"
-        itemView.tvBranchName.text = orderResult.owner?.name
+        itemView.tvBranchName.text = orderResult.ownernameproduct
     }
 
     private fun loadImage(context: Context, orderResult: OrderResult, itemView: View?) {

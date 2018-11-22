@@ -16,7 +16,7 @@ import io.reactivex.subjects.PublishSubject
 
 interface OrderProductViewModelInputs {
 
-    fun createOrder(productId: String, name: String, address: String, phonenumber: String)
+    fun createOrder(productId: String, name: String, address: String, phonenumber: String, ownernameproduct: String)
 
     fun createOrderObservable(): Observable<Boolean>
 }
@@ -57,12 +57,19 @@ class OrderProductViewModel(context: Context) : OrderProductViewModelInputs, Ord
     }
 
     @SuppressLint("CheckResult")
-    override fun createOrder(productId: String, name: String, address: String, phonenumber: String) {
+    override fun createOrder(
+        productId: String,
+        name: String,
+        address: String,
+        phonenumber: String,
+        ownernameproduct: String
+    ) {
         val order = Order(
             userManagerUtil.getUserId(),
             productId,
             name,
             address,
+            ownernameproduct,
             userManagerUtil.getLat(),
             userManagerUtil.getLng(),
             phonenumber

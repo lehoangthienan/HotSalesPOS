@@ -14,7 +14,14 @@ import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.PublishSubject
 
 interface UpdateOrderViewModelInputs {
-    fun updateOrder(orderid: String, productId: String, name: String, address: String, phoneNumber: String)
+    fun updateOrder(
+        orderid: String,
+        productId: String,
+        name: String,
+        address: String,
+        phoneNumber: String,
+        ownernameproduct: String
+    )
 
     fun updateOrderObservable(): Observable<Boolean>
 }
@@ -53,9 +60,16 @@ class UpdateOrderViewModel(context: Context) : UpdateOrderViewModelInputs, Updat
     }
 
     @SuppressLint("CheckResult")
-    override fun updateOrder(orderid: String, productId: String, name: String, address: String, phoneNumber: String) {
+    override fun updateOrder(
+        orderid: String,
+        productId: String,
+        name: String,
+        address: String,
+        phoneNumber: String,
+        ownernameproduct: String
+    ) {
         val order = Order(
-            userManagerUtil.getUserId(), productId, name, address, userManagerUtil.getLat(),
+            userManagerUtil.getUserId(), productId, name, address, ownernameproduct, userManagerUtil.getLat(),
             userManagerUtil.getLng(), phoneNumber
         )
         val orderRequest = OrderRequest(order)
