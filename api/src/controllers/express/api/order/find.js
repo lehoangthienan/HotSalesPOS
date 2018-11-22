@@ -3,8 +3,8 @@ var response_express = require(config.library_dir+'/response').response_express;
 var Order = require(config.models_dir + '/mongo/order');
 
 module.exports = (req, res)=>{
-    let order_id = req.params.order_id
-    Order.find({_id: order_id})
+    let product_id = req.params.product_id
+    Order.find({product: product_id})
     .populate('owner')
     .populate('product')
     .then(order=>{
