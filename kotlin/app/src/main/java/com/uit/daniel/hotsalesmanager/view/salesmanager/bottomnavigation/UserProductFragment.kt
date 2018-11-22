@@ -17,6 +17,7 @@ import com.uit.daniel.hotsalesmanager.data.response.ProductResult
 import com.uit.daniel.hotsalesmanager.utils.ProductManagerUtils
 import com.uit.daniel.hotsalesmanager.utils.ToastSnackBar
 import com.uit.daniel.hotsalesmanager.utils.UserManagerUtil
+import com.uit.daniel.hotsalesmanager.utils.getVisibilityView
 import com.uit.daniel.hotsalesmanager.view.custom.userproducts.UserProductsAdapter
 import com.uit.daniel.hotsalesmanager.view.product.updateproduct.UpdateProductActivity
 import com.uit.daniel.hotsalesmanager.view.salesmanager.SalesManagerViewModel
@@ -53,6 +54,9 @@ class UserProductFragment : Fragment() {
         dlDelete.tvAccept.setOnClickListener {
             salesManagerViewModel.deleteProduct(productIdDelete)
             dlDelete.dismiss()
+        }
+        swipeContainer.setOnRefreshListener {
+            showProducts()
         }
     }
 
@@ -96,6 +100,9 @@ class UserProductFragment : Fragment() {
 
                     })
                 setProductsView()
+            }else {
+                progressBarAddLocation.visibility = getVisibilityView(false)
+                swipeContainer.isRefreshing = false
             }
         }
         salesManagerViewModel.userProducts(userManagerUtil.getUserId())
@@ -120,6 +127,8 @@ class UserProductFragment : Fragment() {
                 this.layoutManager = LinearLayoutManager(activity)
                 this.adapter = userProductsAdapter
             }
+            progressBarAddLocation.visibility = getVisibilityView(false)
+            swipeContainer.isRefreshing = false
         } catch (e: Exception) {
         }
     }

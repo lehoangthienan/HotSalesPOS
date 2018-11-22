@@ -16,6 +16,7 @@ import com.uit.daniel.hotsalesmanager.utils.ToastSnackBar
 import com.uit.daniel.hotsalesmanager.utils.UserManagerUtil
 import com.uit.daniel.hotsalesmanager.utils.getVisibilityView
 import com.uit.daniel.hotsalesmanager.view.location.searchaddresslocation.SearchAddressLocationActivity
+import com.uit.daniel.hotsalesmanager.view.product.productdetail.ProductDetailActivity
 import kotlinx.android.synthetic.main.fragment_update_order.*
 
 class UpdateOrderFragment : Fragment() {
@@ -100,6 +101,16 @@ class UpdateOrderFragment : Fragment() {
         ivAddLocation.setOnClickListener {
             startSearchLocationActivity()
         }
+        cvItemProduct.setOnClickListener {
+            startProductDetailActivity()
+        }
+    }
+
+    private fun startProductDetailActivity() {
+        val intent = Intent(activity, ProductDetailActivity::class.java)
+        intent.putExtra("ID", productId)
+        activity.startActivity(intent)
+        activity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
     }
 
     private fun setLatLagOfProduct() {

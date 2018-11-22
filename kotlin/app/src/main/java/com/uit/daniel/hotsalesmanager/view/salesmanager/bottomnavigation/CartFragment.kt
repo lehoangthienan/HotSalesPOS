@@ -15,6 +15,7 @@ import android.view.ViewGroup
 import com.uit.daniel.hotsalesmanager.R
 import com.uit.daniel.hotsalesmanager.utils.ToastSnackBar
 import com.uit.daniel.hotsalesmanager.utils.UserManagerUtil
+import com.uit.daniel.hotsalesmanager.utils.getVisibilityView
 import com.uit.daniel.hotsalesmanager.view.custom.orders.OrderAdapter
 import com.uit.daniel.hotsalesmanager.view.order.updateorder.UpdateOrderActivity
 import com.uit.daniel.hotsalesmanager.view.salesmanager.SalesManagerViewModel
@@ -50,6 +51,9 @@ class CartFragment : Fragment() {
         dlDelete.tvAccept.setOnClickListener {
             salesManagerViewModel.deleteOrder(orderIdDelete)
             dlDelete.dismiss()
+        }
+        swipeContainer.setOnRefreshListener {
+            showOrders()
         }
     }
 
@@ -90,6 +94,9 @@ class CartFragment : Fragment() {
 
                     })
                 setOrdersView()
+            }else {
+                progressBarAddLocation.visibility = getVisibilityView(false)
+                swipeContainer.isRefreshing = false
             }
         }
         salesManagerViewModel.orders()
@@ -118,6 +125,8 @@ class CartFragment : Fragment() {
                 this.layoutManager = LinearLayoutManager(activity)
                 this.adapter = orderAdapter
             }
+            progressBarAddLocation.visibility = getVisibilityView(false)
+            swipeContainer.isRefreshing = false
         } catch (e: Exception) {
         }
     }
