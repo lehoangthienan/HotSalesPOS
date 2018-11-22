@@ -19,6 +19,7 @@ import com.uit.daniel.hotsalesmanager.utils.ToastSnackBar
 import com.uit.daniel.hotsalesmanager.utils.UserManagerUtil
 import com.uit.daniel.hotsalesmanager.utils.getVisibilityView
 import com.uit.daniel.hotsalesmanager.view.custom.userproducts.UserProductsAdapter
+import com.uit.daniel.hotsalesmanager.view.order.orderuser.OrderUserActivity
 import com.uit.daniel.hotsalesmanager.view.product.updateproduct.UpdateProductActivity
 import com.uit.daniel.hotsalesmanager.view.salesmanager.SalesManagerViewModel
 import kotlinx.android.synthetic.main.dialog_delete_product.*
@@ -100,7 +101,7 @@ class UserProductFragment : Fragment() {
 
                     })
                 setProductsView()
-            }else {
+            } else {
                 progressBarAddLocation.visibility = getVisibilityView(false)
                 swipeContainer.isRefreshing = false
             }
@@ -116,9 +117,9 @@ class UserProductFragment : Fragment() {
     }
 
     private fun startProductDetailActivity(id: String) {
-//        val intent = Intent(activity, ProductDetailActivity::class.java)
-//        intent.putExtra("ID", id)
-//        activity.startActivity(intent)
+        val intent = Intent(activity, OrderUserActivity::class.java)
+        intent.putExtra("ID", id)
+        activity.startActivity(intent)
     }
 
     private fun setProductsView() {
