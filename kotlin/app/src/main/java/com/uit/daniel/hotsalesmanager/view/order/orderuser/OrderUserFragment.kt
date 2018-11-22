@@ -1,4 +1,4 @@
-package com.uit.daniel.hotsalesmanager.view.salesmanager.bottomnavigation
+package com.uit.daniel.hotsalesmanager.view.order.orderuser
 
 import android.annotation.SuppressLint
 import android.app.Dialog
@@ -14,30 +14,28 @@ import android.view.View
 import android.view.ViewGroup
 import com.uit.daniel.hotsalesmanager.R
 import com.uit.daniel.hotsalesmanager.utils.ToastSnackBar
-import com.uit.daniel.hotsalesmanager.utils.UserManagerUtil
 import com.uit.daniel.hotsalesmanager.utils.getVisibilityView
-import com.uit.daniel.hotsalesmanager.view.custom.orders.OrderAdapter
+import com.uit.daniel.hotsalesmanager.view.custom.orderuser.OrderUserAdapter
 import com.uit.daniel.hotsalesmanager.view.order.updateorder.UpdateOrderActivity
-import com.uit.daniel.hotsalesmanager.view.salesmanager.SalesManagerViewModel
 import kotlinx.android.synthetic.main.dialog_delete_product.*
-import kotlinx.android.synthetic.main.fragment_navigation_cart.*
+import kotlinx.android.synthetic.main.fragment_order_user.*
 
-class CartFragment : Fragment() {
+class OrderUserFragment : Fragment() {
 
-    private lateinit var salesManagerViewModel: SalesManagerViewModel
-    private lateinit var userManagerUtil: UserManagerUtil
-    private lateinit var orderAdapter: OrderAdapter
+    private lateinit var orderUserViewModel: OrderUserViewModel
+    private lateinit var orderUserAdapter: OrderUserAdapter
     private lateinit var dlDelete: Dialog
     private var orderIdDelete = ""
-
+    private var productId: String = ""
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_navigation_cart, container, false)
+        return inflater.inflate(R.layout.fragment_order_user, container, false)
     }
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        getProductId()
         initView()
         showOrders()
         deleteOrder()
@@ -49,23 +47,25 @@ class CartFragment : Fragment() {
             dlDelete.dismiss()
         }
         dlDelete.tvAccept.setOnClickListener {
-            salesManagerViewModel.deleteOrder(orderIdDelete)
+            orderUserViewModel.deleteOrder(orderIdDelete)
             dlDelete.dismiss()
         }
         swipeContainer.setOnRefreshListener {
             showOrders()
         }
+        tvBack.setOnClickListener {
+            activity.finish()
+            activity.overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
+        }
     }
 
-    private fun initView() {
-        dlDelete = Dialog(activity)
-        dlDelete.setContentView(R.layout.dialog_delete_product)
-        dlDelete.window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+    private fun getProductId() {
+        productId = activity?.intent?.getStringExtra("ID") ?: ""
     }
 
     @SuppressLint("CheckResult")
     private fun deleteOrder() {
-        salesManagerViewModel.deleteProductObservable().subscribe { check ->
+        orderUserViewModel.deleteOrderObservable().subscribe { check ->
             if (check) showOrders()
             else ToastSnackBar.showSnackbar("Delete product failed!", view, activity)
         }
@@ -73,33 +73,28 @@ class CartFragment : Fragment() {
 
     @SuppressLint("CheckResult")
     private fun showOrders() {
-        salesManagerViewModel.ordersObservable().subscribe { orderResponse ->
+        orderUserViewModel.ordersObservable().subscribe { orderResponse ->
             if (orderResponse.result != null) {
-                orderAdapter = OrderAdapter(
+                orderUserAdapter = OrderUserAdapter(
                     orderResponse.result,
-                    object : OrderAdapter.OnItemClickedListener {
+                    object : OrderUserAdapter.OnItemClickedListener {
                         override fun onItemClicked(id: String) {
                             startOrderDetailActivity(id)
                         }
-                    }, object : OrderAdapter.OnDeleteClickedListener {
+                    }, object : OrderUserAdapter.OnDeleteClickedListener {
                         override fun onDeleteClickedListener(id: String) {
                             orderIdDelete = id
                             dlDelete.show()
                         }
 
-                    }, object : OrderAdapter.OnUpdateClickedListener {
-                        override fun onUpdateClickedListener(id: String) {
-                            startUpdateUserOrderActivity(id)
-                        }
-
                     })
                 setOrdersView()
-            }else {
+            } else {
                 progressBarAddLocation.visibility = getVisibilityView(false)
                 swipeContainer.isRefreshing = false
             }
         }
-        salesManagerViewModel.orders()
+        orderUserViewModel.orders(productId)
     }
 
     private fun startOrderDetailActivity(id: String) {
@@ -110,20 +105,11 @@ class CartFragment : Fragment() {
         activity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
     }
 
-    private fun startUpdateUserOrderActivity(id: String) {
-        val intent = Intent(activity, UpdateOrderActivity::class.java)
-        intent.putExtra("ID", id)
-        intent.putExtra("isUpdate", true)
-        activity.startActivity(intent)
-        activity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
-    }
-
-
     private fun setOrdersView() {
         try {
             rvProducts.apply {
                 this.layoutManager = LinearLayoutManager(activity)
-                this.adapter = orderAdapter
+                this.adapter = orderUserAdapter
             }
             progressBarAddLocation.visibility = getVisibilityView(false)
             swipeContainer.isRefreshing = false
@@ -131,14 +117,14 @@ class CartFragment : Fragment() {
         }
     }
 
+    private fun initView() {
+        dlDelete = Dialog(activity)
+        dlDelete.setContentView(R.layout.dialog_delete_product)
+        dlDelete.window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+    }
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        salesManagerViewModel = SalesManagerViewModel(context)
-        userManagerUtil = UserManagerUtil.getInstance(context)
+        orderUserViewModel = OrderUserViewModel(context)
     }
-
-    override fun onResume() {
-        super.onResume()
-    }
-
 }

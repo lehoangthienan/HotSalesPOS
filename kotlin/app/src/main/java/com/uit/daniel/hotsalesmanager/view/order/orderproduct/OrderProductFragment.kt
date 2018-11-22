@@ -82,7 +82,8 @@ class OrderProductFragment : Fragment() {
             productId,
             etName.text.toString(),
             etAddress.text.toString(),
-            etPhoneNumber.text.toString()
+            etPhoneNumber.text.toString(),
+            tvBranchName.text.toString()
         )
     }
 

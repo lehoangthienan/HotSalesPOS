@@ -1,4 +1,4 @@
-package com.uit.daniel.hotsalesmanager.view.custom.orders
+package com.uit.daniel.hotsalesmanager.view.custom.orderuser
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -7,37 +7,32 @@ import android.view.View
 import com.bumptech.glide.Glide
 import com.uit.daniel.hotsalesmanager.data.response.OrderResult
 import com.uit.daniel.hotsalesmanager.utils.PriceUtils
-import kotlinx.android.synthetic.main.item_user_product.view.*
+import kotlinx.android.synthetic.main.item_order_user.view.*
 
-class OrderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+class OrderUserViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val priceUtils = PriceUtils()
     fun bindData(
         context: Context,
         orderResult: OrderResult,
-        onItemClickedListener: OrderAdapter.OnItemClickedListener,
-        onDeleteClickedListener: OrderAdapter.OnDeleteClickedListener,
-        onUpdateClickedListener: OrderAdapter.OnUpdateClickedListener
+        onItemClickedListener: OrderUserAdapter.OnItemClickedListener,
+        onDeleteClickedListener: OrderUserAdapter.OnDeleteClickedListener
     ) {
         loadImage(context, orderResult, itemView)
         loadText(orderResult, itemView)
-        addEvents(itemView, onItemClickedListener, orderResult, onDeleteClickedListener, onUpdateClickedListener)
+        addEvents(itemView, onItemClickedListener, orderResult, onDeleteClickedListener)
     }
 
     private fun addEvents(
         itemView: View,
-        onItemClickedListener: OrderAdapter.OnItemClickedListener,
+        onItemClickedListener: OrderUserAdapter.OnItemClickedListener,
         orderResult: OrderResult,
-        onDeleteClickedListener: OrderAdapter.OnDeleteClickedListener,
-        onUpdateClickedListener: OrderAdapter.OnUpdateClickedListener
+        onDeleteClickedListener: OrderUserAdapter.OnDeleteClickedListener
     ) {
         itemView.cvItemProduct.setOnClickListener {
             onItemClickedListener.onItemClicked(orderResult.id.toString())
         }
         itemView.viewDelete.setOnClickListener {
             onDeleteClickedListener.onDeleteClickedListener(orderResult.id.toString())
-        }
-        itemView.viewUpdate.setOnClickListener {
-            onUpdateClickedListener.onUpdateClickedListener(orderResult.id.toString())
         }
     }
 

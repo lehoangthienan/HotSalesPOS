@@ -106,6 +106,7 @@ class ProductDetailFragment : Fragment() {
         val intent = Intent(activity, OrderProductActivity::class.java)
         intent.putExtra("ID", productId)
         activity.startActivity(intent)
+        activity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
     }
 
     override fun onAttach(context: Context) {

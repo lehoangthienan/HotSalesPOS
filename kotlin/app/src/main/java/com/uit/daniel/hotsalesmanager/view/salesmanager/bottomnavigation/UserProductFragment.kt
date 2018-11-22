@@ -17,7 +17,9 @@ import com.uit.daniel.hotsalesmanager.data.response.ProductResult
 import com.uit.daniel.hotsalesmanager.utils.ProductManagerUtils
 import com.uit.daniel.hotsalesmanager.utils.ToastSnackBar
 import com.uit.daniel.hotsalesmanager.utils.UserManagerUtil
+import com.uit.daniel.hotsalesmanager.utils.getVisibilityView
 import com.uit.daniel.hotsalesmanager.view.custom.userproducts.UserProductsAdapter
+import com.uit.daniel.hotsalesmanager.view.order.orderuser.OrderUserActivity
 import com.uit.daniel.hotsalesmanager.view.product.updateproduct.UpdateProductActivity
 import com.uit.daniel.hotsalesmanager.view.salesmanager.SalesManagerViewModel
 import kotlinx.android.synthetic.main.dialog_delete_product.*
@@ -53,6 +55,9 @@ class UserProductFragment : Fragment() {
         dlDelete.tvAccept.setOnClickListener {
             salesManagerViewModel.deleteProduct(productIdDelete)
             dlDelete.dismiss()
+        }
+        swipeContainer.setOnRefreshListener {
+            showProducts()
         }
     }
 
@@ -96,6 +101,9 @@ class UserProductFragment : Fragment() {
 
                     })
                 setProductsView()
+            } else {
+                progressBarAddLocation.visibility = getVisibilityView(false)
+                swipeContainer.isRefreshing = false
             }
         }
         salesManagerViewModel.userProducts(userManagerUtil.getUserId())
@@ -109,9 +117,9 @@ class UserProductFragment : Fragment() {
     }
 
     private fun startProductDetailActivity(id: String) {
-//        val intent = Intent(activity, ProductDetailActivity::class.java)
-//        intent.putExtra("ID", id)
-//        activity.startActivity(intent)
+        val intent = Intent(activity, OrderUserActivity::class.java)
+        intent.putExtra("ID", id)
+        activity.startActivity(intent)
     }
 
     private fun setProductsView() {
@@ -120,6 +128,8 @@ class UserProductFragment : Fragment() {
                 this.layoutManager = LinearLayoutManager(activity)
                 this.adapter = userProductsAdapter
             }
+            progressBarAddLocation.visibility = getVisibilityView(false)
+            swipeContainer.isRefreshing = false
         } catch (e: Exception) {
         }
     }
