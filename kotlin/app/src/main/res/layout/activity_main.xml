@@ -8,8 +8,10 @@
         tools:context=".MainActivity">
 
     <ImageView android:layout_width="match_parent"
-               android:src="@drawable/backgroup_main_activity_1"
-               android:layout_height="match_parent" android:layout_alignParentStart="true"
+               android:src="@drawable/ic_cityscape"
+               android:layout_marginTop="150dp"
+               android:layout_height="match_parent"
+               android:layout_alignParentStart="true"
                android:layout_alignParentTop="true"/>
 
     <ImageView
