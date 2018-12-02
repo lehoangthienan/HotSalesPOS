@@ -101,6 +101,7 @@ class OrderUserFragment : Fragment() {
         val intent = Intent(activity, UpdateOrderActivity::class.java)
         intent.putExtra("ID", id)
         intent.putExtra("isUpdate", false)
+        intent.putExtra("isDirection", true)
         activity.startActivity(intent)
         activity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
     }
