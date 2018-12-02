@@ -149,6 +149,9 @@ dependencies {
     implementation "org.greenrobot:eventbus:$greenrobotEventbusVertion"
     implementation "jp.wasabeef:recyclerview-animators:$recyclerviewAnimatorsVertion"
     implementation "com.github.ybq:Android-SpinKit:$spinKitVertion"
+
+    implementation "com.facebook.shimmer:shimmer:$shimmerVertion"
+    implementation "me.dm7.barcodescanner:zxing:$barcodescannerVertion"
 }
 
 

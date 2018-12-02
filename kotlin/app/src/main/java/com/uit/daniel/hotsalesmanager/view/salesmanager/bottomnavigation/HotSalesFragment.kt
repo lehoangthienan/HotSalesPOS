@@ -18,6 +18,7 @@ import com.uit.daniel.hotsalesmanager.utils.ProductManagerUtils
 import com.uit.daniel.hotsalesmanager.utils.getVisibilityView
 import com.uit.daniel.hotsalesmanager.view.custom.products.ProductsAdapter
 import com.uit.daniel.hotsalesmanager.view.product.productdetail.ProductDetailActivity
+import com.uit.daniel.hotsalesmanager.view.product.scanproduct.IntroScanActivity
 import com.uit.daniel.hotsalesmanager.view.salesmanager.SalesManagerViewModel
 import kotlinx.android.synthetic.main.fragment_navigation_hot_sales.*
 
@@ -95,6 +96,7 @@ class HotSalesFragment : Fragment() {
                         R.id.sport -> positionCategory = 6
                         R.id.pet -> positionCategory = 7
                         R.id.all -> positionCategory = 8
+                        R.id.scan -> startIntroScan()
                     }
                     setProducts()
                     return true
@@ -119,6 +121,12 @@ class HotSalesFragment : Fragment() {
         swipeContainer.setOnRefreshListener {
             showProducts()
         }
+    }
+
+    private fun startIntroScan() {
+        val intent = Intent(activity, IntroScanActivity::class.java)
+        activity.startActivity(intent)
+        activity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
     }
 
     private fun setProducts() {

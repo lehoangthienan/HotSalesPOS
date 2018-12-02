@@ -14,6 +14,9 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
 
     <application
             android:allowBackup="true"
@@ -102,8 +105,13 @@
                 android:name=".view.product.productlocation.ProductLocationActivity"
                 android:theme="@style/AppThemeMain">
         </activity>
-        <activity android:name=".view.order.orderuser.OrderUserActivity"
-                  android:theme="@style/AppThemeMain">
+        <activity
+                android:name=".view.order.orderuser.OrderUserActivity"
+                android:theme="@style/AppThemeMain">
+        </activity>
+        <activity android:name=".view.product.scanproduct.ScanProductActivity">
+        </activity>
+        <activity android:name=".view.product.scanproduct.IntroScanActivity">
         </activity>
     </application>
 
