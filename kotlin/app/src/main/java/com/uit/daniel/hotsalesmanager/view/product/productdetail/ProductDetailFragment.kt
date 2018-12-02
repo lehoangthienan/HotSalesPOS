@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.Fragment
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -89,6 +90,15 @@ class ProductDetailFragment : Fragment() {
         }
         ivLocation.setOnClickListener {
             startProductLocationActivity()
+        }
+        ivDirection.setOnClickListener {
+            if (lat != 0.0 || lng != 0.0) {
+                val gmmIntentUri = Uri.parse("google.navigation:q=$lat,$lng")
+                val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+                mapIntent.setPackage("com.google.android.apps.maps")
+                startActivity(mapIntent)
+                activity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+            } else ToastSnackBar.showSnackbar("The product you just selected has no location", view, activity)
         }
     }
 

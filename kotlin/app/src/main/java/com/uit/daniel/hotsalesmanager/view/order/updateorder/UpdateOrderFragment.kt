@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.Fragment
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -22,11 +23,14 @@ import kotlinx.android.synthetic.main.fragment_update_order.*
 class UpdateOrderFragment : Fragment() {
 
     private var isUpdate = false
+    private var isDirection = false
     private var orderId = ""
     private var productId = ""
     private lateinit var updateOrderViewModel: UpdateOrderViewModel
     private val priceUtils = PriceUtils()
     private lateinit var userManagerUtil: UserManagerUtil
+    private var lat: Double = 0.0
+    private var lng: Double = 0.0
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_update_order, container, false)
@@ -51,6 +55,12 @@ class UpdateOrderFragment : Fragment() {
 
     @SuppressLint("SetTextI18n")
     private fun initeView(orderResponse: OrderResponse?) {
+
+        if (orderResponse?.result!![0].lat!! != null && orderResponse?.result!![0].lat!! != null) {
+            lat = orderResponse?.result!![0].lat!!
+            lng = orderResponse?.result!![0].lng!!
+        }
+
         productId = orderResponse?.result?.get(0)?.product?.id.toString()
         etName.setText(orderResponse?.result?.get(0)?.name)
         etAddress.setText(orderResponse?.result?.get(0)?.address)
@@ -88,6 +98,9 @@ class UpdateOrderFragment : Fragment() {
             etPhoneNumber.isFocusable = false
             ivAddLocation.isEnabled = false
         }
+        if(!isDirection){
+            ivDirection.visibility = getVisibilityView(false)
+        }
     }
 
     private fun addEvents() {
@@ -103,6 +116,15 @@ class UpdateOrderFragment : Fragment() {
         }
         cvItemProduct.setOnClickListener {
             startProductDetailActivity()
+        }
+        ivDirection.setOnClickListener {
+            if (lat != 0.0 || lng != 0.0) {
+                val gmmIntentUri = Uri.parse("google.navigation:q=$lat,$lng")
+                val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+                mapIntent.setPackage("com.google.android.apps.maps")
+                startActivity(mapIntent)
+                activity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+            } else ToastSnackBar.showSnackbar("The product you just selected has no location", view, activity)
         }
     }
 
@@ -157,6 +179,7 @@ class UpdateOrderFragment : Fragment() {
     private fun getOrderId() {
         orderId = activity?.intent?.getStringExtra("ID") ?: ""
         isUpdate = activity?.intent?.getBooleanExtra("isUpdate", false) ?: false
+        isDirection = activity?.intent?.getBooleanExtra("isDirection", false) ?: false
     }
 
     override fun onAttach(context: Context) {
