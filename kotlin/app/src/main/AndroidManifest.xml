@@ -102,8 +102,13 @@
                 android:name=".view.product.productlocation.ProductLocationActivity"
                 android:theme="@style/AppThemeMain">
         </activity>
-        <activity android:name=".view.order.orderuser.OrderUserActivity"
-                  android:theme="@style/AppThemeMain">
+        <activity
+                android:name=".view.order.orderuser.OrderUserActivity"
+                android:theme="@style/AppThemeMain">
+        </activity>
+        <activity android:name=".view.product.scanproduct.ScanProductActivity">
+        </activity>
+        <activity android:name=".view.product.scanproduct.IntroScanActivity">
         </activity>
     </application>
 
