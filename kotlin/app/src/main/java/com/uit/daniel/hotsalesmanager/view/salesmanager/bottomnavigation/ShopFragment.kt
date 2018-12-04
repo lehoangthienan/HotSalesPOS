@@ -108,7 +108,7 @@ class ShopFragment : Fragment() {
     private fun addEvents() {
         tvCategory.setOnClickListener {
             val popup = PopupMenu(activity, tvCategory)
-            popup.menuInflater.inflate(R.menu.category, popup.menu)
+            popup.menuInflater.inflate(R.menu.categoryseller, popup.menu)
             popup.setOnMenuItemClickListener(object : PopupMenu.OnMenuItemClickListener {
                 override fun onMenuItemClick(item: MenuItem?): Boolean {
                     when (item?.itemId) {
@@ -121,6 +121,9 @@ class ShopFragment : Fragment() {
                         R.id.sport -> positionCategory = 6
                         R.id.pet -> positionCategory = 7
                         R.id.all -> positionCategory = 8
+                        R.id.fivekm -> filter5km()
+                        R.id.tenkm -> filter10km()
+                        R.id.fiteenkm -> filter15km()
                     }
                     setProducts()
                     return true
@@ -153,6 +156,18 @@ class ShopFragment : Fragment() {
         swipeContainer.setOnRefreshListener {
             showProducts()
         }
+    }
+
+    private fun filter5km() {
+
+    }
+
+    private fun filter10km() {
+
+    }
+
+    private fun filter15km() {
+        
     }
 
     private fun setProducts() {

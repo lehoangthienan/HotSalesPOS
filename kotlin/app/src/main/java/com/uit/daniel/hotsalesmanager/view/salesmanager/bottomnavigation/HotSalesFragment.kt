@@ -18,7 +18,6 @@ import com.uit.daniel.hotsalesmanager.utils.ProductManagerUtils
 import com.uit.daniel.hotsalesmanager.utils.getVisibilityView
 import com.uit.daniel.hotsalesmanager.view.custom.products.ProductsAdapter
 import com.uit.daniel.hotsalesmanager.view.product.productdetail.ProductDetailActivity
-import com.uit.daniel.hotsalesmanager.view.product.scanproduct.IntroScanActivity
 import com.uit.daniel.hotsalesmanager.view.salesmanager.SalesManagerViewModel
 import kotlinx.android.synthetic.main.fragment_navigation_hot_sales.*
 
