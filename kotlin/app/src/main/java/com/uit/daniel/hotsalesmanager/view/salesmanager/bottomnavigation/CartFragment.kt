@@ -95,8 +95,12 @@ class CartFragment : Fragment() {
                     })
                 setOrdersView()
             }else {
-                progressBarAddLocation.visibility = getVisibilityView(false)
-                swipeContainer.isRefreshing = false
+                if(progressBarAddLocation!= null){
+                    progressBarAddLocation.visibility = getVisibilityView(false)
+                }
+                if(swipeContainer!=null){
+                    swipeContainer.isRefreshing = false
+                }
             }
         }
         salesManagerViewModel.orders()

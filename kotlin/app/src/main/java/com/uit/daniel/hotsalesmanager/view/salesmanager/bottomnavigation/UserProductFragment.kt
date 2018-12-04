@@ -102,8 +102,12 @@ class UserProductFragment : Fragment() {
                     })
                 setProductsView()
             } else {
-                progressBarAddLocation.visibility = getVisibilityView(false)
-                swipeContainer.isRefreshing = false
+                if (progressBarAddLocation != null) {
+                    progressBarAddLocation.visibility = getVisibilityView(false)
+                }
+                if (swipeContainer != null) {
+                    swipeContainer.isRefreshing = false
+                }
             }
         }
         salesManagerViewModel.userProducts(userManagerUtil.getUserId())

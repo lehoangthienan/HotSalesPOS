@@ -72,8 +72,12 @@ class HotSalesFragment : Fragment() {
                 this.layoutManager = LinearLayoutManager(activity)
                 this.adapter = productsAdapter
             }
-            progressBarAddLocation.visibility = getVisibilityView(false)
-            swipeContainer.isRefreshing = false
+            if(progressBarAddLocation!= null){
+                progressBarAddLocation.visibility = getVisibilityView(false)
+            }
+            if(swipeContainer!=null){
+                swipeContainer.isRefreshing = false
+            }
         } catch (e: Exception) {
         }
     }
