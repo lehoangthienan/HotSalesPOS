@@ -31,4 +31,30 @@
             app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="8dp"
             app:layout_constraintTop_toTopOf="parent" android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <ImageView
+            android:id="@+id/ivIconDefault"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_cart_default"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp" android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <TextView
+            android:id="@+id/tvDefault"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="Please order the product as soon as possible, there are many good price products on our application."
+            android:gravity="center"
+            android:textColor="@color/gray"
+            android:fontFamily="@font/lato_regular"
+            android:layout_marginBottom="172dp"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/ivIconDefault" app:layout_constraintVertical_bias="0.129"
+            android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"/>
+
+
 </android.support.constraint.ConstraintLayout>

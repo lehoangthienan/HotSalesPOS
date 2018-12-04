@@ -19,6 +19,7 @@ import com.uit.daniel.hotsalesmanager.utils.UserManagerUtil
 import com.uit.daniel.hotsalesmanager.view.product.createproduct.CreateProductActivity
 import com.uit.daniel.hotsalesmanager.view.product.productaddedcart.ProductAddedCartActivity
 import com.uit.daniel.hotsalesmanager.view.product.productdetail.ProductDetailActivity
+import com.uit.daniel.hotsalesmanager.view.product.scanproduct.IntroScanActivity
 import com.uit.daniel.hotsalesmanager.view.salesmanager.bottomnavigation.*
 import com.uit.daniel.hotsalesmanager.view.signin.signinwithfacebook.SignInFacebookActivity
 import kotlinx.android.synthetic.main.fragment_sales_manager.*
@@ -113,6 +114,15 @@ class SalesManagerFragment : Fragment() {
             else startCreateProduct()
         }
         navigation.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
+        ivScanqrcode.setOnClickListener {
+            startIntroScan()
+        }
+    }
+
+    private fun startIntroScan() {
+        val intent = Intent(activity, IntroScanActivity::class.java)
+        activity.startActivity(intent)
+        activity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
     }
 
 

@@ -65,6 +65,9 @@ class UserProductFragment : Fragment() {
         dlDelete = Dialog(activity)
         dlDelete.setContentView(R.layout.dialog_delete_product)
         dlDelete.window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+        if(ivIconDefault!= null) ivIconDefault.visibility= getVisibilityView(false)
+        if(tvDefault!= null) tvDefault.visibility= getVisibilityView(false)
     }
 
     @SuppressLint("CheckResult")
@@ -79,6 +82,9 @@ class UserProductFragment : Fragment() {
     private fun showProducts() {
         salesManagerViewModel.userProductsObservable().subscribe { productRespone ->
             if (productRespone.result != null) {
+                if(ivIconDefault!= null) ivIconDefault.visibility= getVisibilityView(false)
+                if(tvDefault!= null) tvDefault.visibility= getVisibilityView(false)
+
                 products =
                         productManagerUtils.getProductsNotEcommerce(productRespone.result as ArrayList<ProductResult>)
 
@@ -102,8 +108,10 @@ class UserProductFragment : Fragment() {
                     })
                 setProductsView()
             } else {
-                progressBarAddLocation.visibility = getVisibilityView(false)
-                swipeContainer.isRefreshing = false
+                if (progressBarAddLocation != null) progressBarAddLocation.visibility = getVisibilityView(false)
+                if (swipeContainer != null) swipeContainer.isRefreshing = false
+                if(ivIconDefault!= null) ivIconDefault.visibility= getVisibilityView(true)
+                if(tvDefault!= null) tvDefault.visibility= getVisibilityView(true)
             }
         }
         salesManagerViewModel.userProducts(userManagerUtil.getUserId())

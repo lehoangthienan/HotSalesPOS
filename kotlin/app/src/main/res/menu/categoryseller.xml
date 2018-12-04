@@ -34,6 +34,18 @@
             android:title="Pet" tools:ignore="HardcodedText"/>
 
     <item
+            android:id="@+id/fivekm"
+            android:title="Radius of 5km" tools:ignore="HardcodedText"/>
+
+    <item
+            android:id="@+id/tenkm"
+            android:title="Radius of 10km" tools:ignore="HardcodedText"/>
+
+    <item
+            android:id="@+id/fiteenkm"
+            android:title="Radius of 15km" tools:ignore="HardcodedText"/>
+
+    <item
             android:id="@+id/all"
             android:title="All" tools:ignore="HardcodedText"/>
 
