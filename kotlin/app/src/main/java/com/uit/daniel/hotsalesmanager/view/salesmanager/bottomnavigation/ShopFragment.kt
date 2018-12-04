@@ -167,7 +167,7 @@ class ShopFragment : Fragment() {
     }
 
     private fun filter15km() {
-        
+
     }
 
     private fun setProducts() {
