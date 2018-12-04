@@ -7,7 +7,7 @@
 - ![#1589F0](https://placehold.it/15/1589F0/000000?text=+) `Made by Daniel`
 
 # App to show all product hot sales from website
-```
+
 - User can sale all product
 - User can order all product
 - Scan prodcut with QRCODE
@@ -16,7 +16,7 @@
 - Get direction in google map from user to seller
 - Get direction in google map from seller to user
 - Sign with facebook
-- Sign with goole account
+- Sign with google account
 - Confirm phone number with firebase
 - Send notification with firebase
 - Show product with category
@@ -26,8 +26,9 @@
 - CRUD prodcut , order , user information
 
 # App used : 
-```
+
 - MVVM
-- Google Api
-- Facebook Sdk
+- Google API
+- Facebook SDK
 - Firebase
+- Google Cloud
