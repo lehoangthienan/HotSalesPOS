@@ -61,6 +61,9 @@ class CartFragment : Fragment() {
         dlDelete = Dialog(activity)
         dlDelete.setContentView(R.layout.dialog_delete_product)
         dlDelete.window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+        if(ivIconDefault!= null) ivIconDefault.visibility= getVisibilityView(false)
+        if(tvDefault!= null) tvDefault.visibility= getVisibilityView(false)
     }
 
     @SuppressLint("CheckResult")
@@ -75,6 +78,9 @@ class CartFragment : Fragment() {
     private fun showOrders() {
         salesManagerViewModel.ordersObservable().subscribe { orderResponse ->
             if (orderResponse.result != null) {
+                if(ivIconDefault!= null) ivIconDefault.visibility= getVisibilityView(false)
+                if(tvDefault!= null) tvDefault.visibility= getVisibilityView(false)
+
                 orderAdapter = OrderAdapter(
                     orderResponse.result,
                     object : OrderAdapter.OnItemClickedListener {
@@ -95,12 +101,10 @@ class CartFragment : Fragment() {
                     })
                 setOrdersView()
             }else {
-                if(progressBarAddLocation!= null){
-                    progressBarAddLocation.visibility = getVisibilityView(false)
-                }
-                if(swipeContainer!=null){
-                    swipeContainer.isRefreshing = false
-                }
+                if (progressBarAddLocation != null) progressBarAddLocation.visibility = getVisibilityView(false)
+                if (swipeContainer != null) swipeContainer.isRefreshing = false
+                if(ivIconDefault!= null) ivIconDefault.visibility= getVisibilityView(true)
+                if(tvDefault!= null) tvDefault.visibility= getVisibilityView(true)
             }
         }
         salesManagerViewModel.orders()

@@ -13,7 +13,6 @@ import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.ActionBar
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import com.tbruyelle.rxpermissions2.RxPermissions
 import com.uit.daniel.hotsalesmanager.R
 import com.uit.daniel.hotsalesmanager.utils.UserManagerUtil
@@ -29,13 +28,6 @@ class SalesManagerActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sales_manager)
-
-        var locationManager: LocationManager = getSystemService(LOCATION_SERVICE) as LocationManager
-
-        locationManager.requestLocationUpdates(
-            LocationManager.GPS_PROVIDER, 1,
-            1f, locationListener
-        )
 
         initData()
         initView()
@@ -69,6 +61,12 @@ class SalesManagerActivity : AppCompatActivity() {
 
         val permissionLocation = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
         if (permissionLocation == PackageManager.PERMISSION_GRANTED) {
+            var locationManager: LocationManager = getSystemService(LOCATION_SERVICE) as LocationManager
+
+            locationManager.requestLocationUpdates(
+                LocationManager.GPS_PROVIDER, 1,
+                1f, locationListener
+            )
         } else {
             dialogPermissionLocation.show()
             dialogPermissionLocation.tvAccept.setOnClickListener {
@@ -77,6 +75,12 @@ class SalesManagerActivity : AppCompatActivity() {
                     .request(Manifest.permission.ACCESS_FINE_LOCATION)
                     .subscribe { granted ->
                         if (granted) {
+                            var locationManager: LocationManager = getSystemService(LOCATION_SERVICE) as LocationManager
+
+                            locationManager.requestLocationUpdates(
+                                LocationManager.GPS_PROVIDER, 1,
+                                1f, locationListener
+                            )
                         } else {
                         }
                     }
