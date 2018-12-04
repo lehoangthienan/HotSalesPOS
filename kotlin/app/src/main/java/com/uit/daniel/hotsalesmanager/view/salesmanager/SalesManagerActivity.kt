@@ -1,42 +1,57 @@
 package com.uit.daniel.hotsalesmanager.view.salesmanager
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.pm.PackageManager
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.location.Location
 import android.location.LocationListener
+import android.location.LocationManager
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.ActionBar
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import com.tbruyelle.rxpermissions2.RxPermissions
 import com.uit.daniel.hotsalesmanager.R
 import com.uit.daniel.hotsalesmanager.utils.UserManagerUtil
 import kotlinx.android.synthetic.main.dialog_permission_location.*
 
-class SalesManagerActivity : AppCompatActivity(), LocationListener {
+class SalesManagerActivity : AppCompatActivity() {
 
     private val rxPermissionsLocation = RxPermissions(this)
     private lateinit var dialogPermissionLocation: Dialog
     private lateinit var userManagerUtils: UserManagerUtil
 
+    @SuppressLint("MissingPermission")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sales_manager)
 
+        var locationManager: LocationManager = getSystemService(LOCATION_SERVICE) as LocationManager
+
+        locationManager.requestLocationUpdates(
+            LocationManager.GPS_PROVIDER, 1,
+            1f, locationListener
+        )
+
+        initData()
         initView()
         addControls()
         setPermissionLocation()
+    }
+
+    private fun initData() {
+
+        userManagerUtils = UserManagerUtil.getInstance(this@SalesManagerActivity)
     }
 
     private fun addControls() {
         dialogPermissionLocation = Dialog(this)
         dialogPermissionLocation.setContentView(R.layout.dialog_permission_location)
         dialogPermissionLocation.window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-
-        userManagerUtils = UserManagerUtil.getInstance(this@SalesManagerActivity)
     }
 
     private fun initView() {
@@ -72,22 +87,23 @@ class SalesManagerActivity : AppCompatActivity(), LocationListener {
         }
     }
 
-    override fun onLocationChanged(location: Location?) {
-        if (location != null) {
+    private val locationListener = object : LocationListener {
+        override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {
+
+        }
+
+        override fun onProviderEnabled(provider: String?) {
+
+        }
+
+        override fun onProviderDisabled(provider: String?) {
+
+        }
+
+        override fun onLocationChanged(location: Location) {
             userManagerUtils.setLat(location.latitude)
             userManagerUtils.setLng(location.longitude)
         }
     }
 
-    override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {
-
-    }
-
-    override fun onProviderEnabled(provider: String?) {
-
-    }
-
-    override fun onProviderDisabled(provider: String?) {
-
-    }
 }

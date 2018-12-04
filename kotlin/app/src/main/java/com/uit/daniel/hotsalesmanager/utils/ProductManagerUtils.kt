@@ -1,8 +1,13 @@
 package com.uit.daniel.hotsalesmanager.utils
 
+import android.content.Context
+import android.location.Location
+import android.util.Log
 import com.uit.daniel.hotsalesmanager.data.response.ProductResult
 
 class ProductManagerUtils {
+
+    private var locationUtil = LocationUtils.getInstance()
 
     fun getProductsEcommerce(products: ArrayList<ProductResult>): ArrayList<ProductResult> {
         val productsEcommerce = ArrayList<ProductResult>()
@@ -12,6 +17,27 @@ class ProductManagerUtils {
             }
         }
         return productsEcommerce
+    }
+
+    fun getProductsDistance(
+        products: ArrayList<ProductResult>,
+        distance: Int,
+        context: Context
+    ): ArrayList<ProductResult> {
+        val productsDistance = ArrayList<ProductResult>()
+        if (products.isNotEmpty() && products != null) {
+            products.forEach { product ->
+                if (product.lat != null && product.lng != null) {
+                    var location = Location("AddressLocation")
+                    location.latitude = product.lat!!
+                    location.longitude = product.lng!!
+                    if (locationUtil.getDistanceLocation(context, location) <= distance * 1000) productsDistance.add(
+                        product
+                    )
+                }
+            }
+        }
+        return productsDistance
     }
 
     fun getProductsNotEcommerce(products: ArrayList<ProductResult>): ArrayList<ProductResult> {

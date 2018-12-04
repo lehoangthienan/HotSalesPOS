@@ -15,6 +15,7 @@ import android.widget.PopupMenu
 import com.jakewharton.rxbinding2.widget.RxTextView
 import com.uit.daniel.hotsalesmanager.R
 import com.uit.daniel.hotsalesmanager.data.response.ProductResult
+import com.uit.daniel.hotsalesmanager.utils.LocationUtils
 import com.uit.daniel.hotsalesmanager.utils.ProductManagerUtils
 import com.uit.daniel.hotsalesmanager.utils.getVisibilityView
 import com.uit.daniel.hotsalesmanager.view.custom.shopproduct.ShopProductAdapter
@@ -107,27 +108,24 @@ class ShopFragment : Fragment() {
         tvCategory.setOnClickListener {
             val popup = PopupMenu(activity, tvCategory)
             popup.menuInflater.inflate(R.menu.categoryseller, popup.menu)
-            popup.setOnMenuItemClickListener(object : PopupMenu.OnMenuItemClickListener {
-                override fun onMenuItemClick(item: MenuItem?): Boolean {
-                    when (item?.itemId) {
-                        R.id.house -> positionCategory = 0
-                        R.id.moto -> positionCategory = 1
-                        R.id.electric -> positionCategory = 2
-                        R.id.mother -> positionCategory = 3
-                        R.id.inter -> positionCategory = 4
-                        R.id.fashtion -> positionCategory = 5
-                        R.id.sport -> positionCategory = 6
-                        R.id.pet -> positionCategory = 7
-                        R.id.all -> positionCategory = 8
-                        R.id.fivekm -> filter5km()
-                        R.id.tenkm -> filter10km()
-                        R.id.fiteenkm -> filter15km()
-                    }
-                    setProducts()
-                    return true
+            popup.setOnMenuItemClickListener { item ->
+                when (item?.itemId) {
+                    R.id.house -> positionCategory = 0
+                    R.id.moto -> positionCategory = 1
+                    R.id.electric -> positionCategory = 2
+                    R.id.mother -> positionCategory = 3
+                    R.id.inter -> positionCategory = 4
+                    R.id.fashtion -> positionCategory = 5
+                    R.id.sport -> positionCategory = 6
+                    R.id.pet -> positionCategory = 7
+                    R.id.all -> positionCategory = 8
+                    R.id.fivekm -> filter5km()
+                    R.id.tenkm -> filter10km()
+                    R.id.fiteenkm -> filter15km()
                 }
-
-            })
+                setProducts()
+                true
+            }
             popup.show()
         }
         RxTextView.textChanges(etSearch).subscribe { key ->
@@ -157,15 +155,34 @@ class ShopFragment : Fragment() {
     }
 
     private fun filter5km() {
-
+        getProductsWithRadius(5)
     }
 
     private fun filter10km() {
-
+        getProductsWithRadius(10)
     }
 
     private fun filter15km() {
+        getProductsWithRadius(15)
+    }
 
+    private fun getProductsWithRadius(radius: Int){
+        productsAdapter = ShopProductAdapter(
+            productManagerUtils.getProductsDistance(products, radius,activity),
+            object : ShopProductAdapter.OnItemClickedListener {
+                override fun onItemClicked(id: String) {
+                    startProductDetailActivity(id)
+                }
+            }, object : ShopProductAdapter.OnCallClickedListener {
+                override fun onCallClickedListener(phoneNumber: String) {
+                    call(phoneNumber)
+                }
+            }, object : ShopProductAdapter.OnSmsClickedListener {
+                override fun onSmsClickedListener(productName: String, phoneNumber: String) {
+                    sms(productName, phoneNumber)
+                }
+            })
+        setProductsView()
     }
 
     private fun setProducts() {
