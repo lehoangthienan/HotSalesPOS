@@ -37,8 +37,4 @@
             android:id="@+id/all"
             android:title="All" tools:ignore="HardcodedText"/>
 
-    <item
-            android:id="@+id/scan"
-            android:title="Scan QR CODE" tools:ignore="HardcodedText"/>
-
 </menu>

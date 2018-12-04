@@ -96,7 +96,6 @@ class HotSalesFragment : Fragment() {
                         R.id.sport -> positionCategory = 6
                         R.id.pet -> positionCategory = 7
                         R.id.all -> positionCategory = 8
-                        R.id.scan -> startIntroScan()
                     }
                     setProducts()
                     return true
@@ -123,11 +122,6 @@ class HotSalesFragment : Fragment() {
         }
     }
 
-    private fun startIntroScan() {
-        val intent = Intent(activity, IntroScanActivity::class.java)
-        activity.startActivity(intent)
-        activity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
-    }
 
     private fun setProducts() {
         productsAdapter = ProductsAdapter(
