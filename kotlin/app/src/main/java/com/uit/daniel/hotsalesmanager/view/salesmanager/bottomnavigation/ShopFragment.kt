@@ -13,6 +13,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
 import com.jakewharton.rxbinding2.widget.RxTextView
+import com.tbruyelle.rxpermissions2.RxPermissions
 import com.uit.daniel.hotsalesmanager.R
 import com.uit.daniel.hotsalesmanager.data.response.ProductResult
 import com.uit.daniel.hotsalesmanager.utils.ProductManagerUtils
@@ -30,7 +31,6 @@ class ShopFragment : Fragment() {
     private lateinit var productsAdapter: ShopProductAdapter
     private var products = ArrayList<ProductResult>()
     private var productManagerUtils = ProductManagerUtils()
-
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_navigation_shop, container, false)
