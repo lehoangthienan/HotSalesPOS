@@ -100,11 +100,17 @@ class UpdateUserProfileActivity : AppCompatActivity() {
     private fun showBottomSheetDialogUpdateAvatarUser() {
         bottomSheetDialogUpdateAvatarUser.show()
         bottomSheetDialogUpdateAvatarUser.findViewById<RelativeLayout>(R.id.takePhotoFromCamera)?.setOnClickListener {
-            setPermissionCamera()
+            try {
+                setPermissionCamera()
+            } catch (e: Exception) {
+            }
         }
 
         bottomSheetDialogUpdateAvatarUser.findViewById<RelativeLayout>(R.id.takePhotoFromLibrary)?.setOnClickListener {
-            startActivityForResult(intentUtils.intentActionPick(), Constant.REQUEST_GALLERY)
+            try {
+                startActivityForResult(intentUtils.intentActionPick(), Constant.REQUEST_GALLERY)
+            } catch (e: Exception) {
+            }
         }
     }
 
@@ -132,16 +138,22 @@ class UpdateUserProfileActivity : AppCompatActivity() {
     }
 
     private fun startCameraIntent() {
-        val takePictureIntent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-        if (takePictureIntent.resolveActivity(packageManager) != null) {
-            startCameraActivity()
+        try {
+            val takePictureIntent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+            if (takePictureIntent.resolveActivity(packageManager) != null) {
+                startCameraActivity()
+            }
+        } catch (e: Exception) {
         }
     }
 
     private fun startCameraActivity() {
-        val takePictureIntent = Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE)
-        if (takePictureIntent.resolveActivity(this.packageManager) != null) {
-            this.startActivityForResult(takePictureIntent, REQUEST_CAMERA)
+        try {
+            val takePictureIntent = Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE)
+            if (takePictureIntent.resolveActivity(this.packageManager) != null) {
+                this.startActivityForResult(takePictureIntent, REQUEST_CAMERA)
+            }
+        } catch (e: Exception) {
         }
     }
 
@@ -163,9 +175,6 @@ class UpdateUserProfileActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if (progressBarAddLocation != null) progressBarAddLocation.visibility =
-                getVisibilityView(true)
-
         when (requestCode) {
             Constant.REQUEST_GALLERY -> {
                 setImageForGallery(data)
@@ -177,7 +186,15 @@ class UpdateUserProfileActivity : AppCompatActivity() {
     }
 
     private fun setImageForCamera(data: Intent?) {
-        if (data?.extras?.get("data") == null) return
+        if (data?.extras?.get("data") == null){
+            if (progressBarAddLocation != null) progressBarAddLocation.visibility =
+                    getVisibilityView(false)
+            return
+        }
+
+        if (progressBarAddLocation != null) progressBarAddLocation.visibility =
+                getVisibilityView(true)
+
         val bitmap = data.extras?.get("data") as Bitmap
 
         updateImageCameraToSever(bitmap)
@@ -187,6 +204,34 @@ class UpdateUserProfileActivity : AppCompatActivity() {
             .load(bitmap)
             .into(imgAvatarUpdate)
         bottomSheetDialogUpdateAvatarUser.dismiss()
+    }
+
+    private fun setImageForGallery(data: Intent?) {
+        //Get uri from picture choose from gallery
+        if (data?.data == null){
+            if (progressBarAddLocation != null) progressBarAddLocation.visibility =
+                    getVisibilityView(false)
+            return
+        }
+
+        if (progressBarAddLocation != null) progressBarAddLocation.visibility =
+                getVisibilityView(true)
+
+        val uri = data?.data ?:return
+        val projection = arrayOf(android.provider.MediaStore.Images.Media.DATA)
+
+        val cursor = contentResolver.query(uri, projection, null, null, null)
+        cursor.moveToFirst()
+
+        val columnIndex = cursor.getColumnIndex(projection[0])
+        val filepath = cursor.getString(columnIndex)
+        cursor.close()
+
+        val bitmap = BitmapFactory.decodeFile(filepath)
+        imgAvatarUpdate.setImageBitmap(bitmap)
+        bottomSheetDialogUpdateAvatarUser.dismiss()
+
+        updateImageToSever(uri)
     }
 
     private fun updateImageCameraToSever(bitmap: Bitmap) {
@@ -213,25 +258,6 @@ class UpdateUserProfileActivity : AppCompatActivity() {
                 })
             }
         })
-    }
-
-    private fun setImageForGallery(data: Intent?) {
-        //Get uri from picture choose from gallery
-        val uri = data?.data ?: return
-        val projection = arrayOf(android.provider.MediaStore.Images.Media.DATA)
-
-        val cursor = contentResolver.query(uri, projection, null, null, null)
-        cursor.moveToFirst()
-
-        val columnIndex = cursor.getColumnIndex(projection[0])
-        val filepath = cursor.getString(columnIndex)
-        cursor.close()
-
-        val bitmap = BitmapFactory.decodeFile(filepath)
-        imgAvatarUpdate.setImageBitmap(bitmap)
-        bottomSheetDialogUpdateAvatarUser.dismiss()
-
-        updateImageToSever(uri)
     }
 
     private fun updateImageToSever(uri: Uri) {

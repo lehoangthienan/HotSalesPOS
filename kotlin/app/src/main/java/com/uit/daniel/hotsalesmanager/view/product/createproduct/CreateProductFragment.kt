@@ -189,7 +189,15 @@ class CreateProductFragment : Fragment() {
     }
 
     private fun setImageForCamera(data: Intent?) {
-        if (data?.extras?.get("data") == null) return
+        if (data?.extras?.get("data") == null){
+            if (progressBarAddLocation != null) progressBarAddLocation.visibility =
+                    getVisibilityView(false)
+            return
+        }
+
+        if (progressBarAddLocation != null) progressBarAddLocation.visibility =
+                getVisibilityView(true)
+
         val bitmap = data.extras?.get("data") as Bitmap
 
         updateImageCameraToSever(bitmap)
@@ -225,6 +233,15 @@ class CreateProductFragment : Fragment() {
 
     private fun setImageForGallery(data: Intent?) {
         //Get uri from picture choose from gallery
+        if (data?.data == null){
+            if (progressBarAddLocation != null) progressBarAddLocation.visibility =
+                    getVisibilityView(false)
+            return
+        }
+
+        if (progressBarAddLocation != null) progressBarAddLocation.visibility =
+                getVisibilityView(true)
+
         val uri = data?.data ?: return
         val projection = arrayOf(android.provider.MediaStore.Images.Media.DATA)
 

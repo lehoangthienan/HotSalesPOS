@@ -114,6 +114,9 @@ class UpdateProductFragment : Fragment() {
     }
 
     private fun initView() {
+        if (progressBarAddLocation != null) progressBarAddLocation.visibility =
+                getVisibilityView(false)
+
         etName.setText(productResponse.result!![0].name)
         etPrice.setText(productResponse.result!![0].price.toString())
         etDiscount.setText(productResponse.result!![0].discount.toString())
@@ -128,9 +131,6 @@ class UpdateProductFragment : Fragment() {
         } catch (e: Exception) {
         }
         imageUrl = productResponse.result?.get(0)?.image.toString()
-
-        if (progressBarAddLocation != null) progressBarAddLocation.visibility =
-                getVisibilityView(false)
     }
 
     private fun getProductId() {
@@ -203,7 +203,15 @@ class UpdateProductFragment : Fragment() {
     }
 
     private fun setImageForCamera(data: Intent?) {
-        if (data?.extras?.get("data") == null) return
+        if (data?.extras?.get("data") == null){
+            if (progressBarAddLocation != null) progressBarAddLocation.visibility =
+                    getVisibilityView(false)
+            return
+        }
+
+        if (progressBarAddLocation != null) progressBarAddLocation.visibility =
+                getVisibilityView(true)
+
         val bitmap = data.extras?.get("data") as Bitmap
 
         updateImageCameraToSever(bitmap)
@@ -239,6 +247,15 @@ class UpdateProductFragment : Fragment() {
 
     private fun setImageForGallery(data: Intent?) {
         //Get uri from picture choose from gallery
+        if (data?.data == null){
+            if (progressBarAddLocation != null) progressBarAddLocation.visibility =
+                    getVisibilityView(false)
+            return
+        }
+
+        if (progressBarAddLocation != null) progressBarAddLocation.visibility =
+                getVisibilityView(true)
+
         val uri = data?.data ?: return
         val projection = arrayOf(android.provider.MediaStore.Images.Media.DATA)
 
