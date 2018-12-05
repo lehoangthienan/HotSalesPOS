@@ -108,20 +108,19 @@ class ShopFragment : Fragment() {
             popup.menuInflater.inflate(R.menu.categoryseller, popup.menu)
             popup.setOnMenuItemClickListener { item ->
                 when (item?.itemId) {
-                    R.id.house -> positionCategory = 0
-                    R.id.moto -> positionCategory = 1
-                    R.id.electric -> positionCategory = 2
-                    R.id.mother -> positionCategory = 3
-                    R.id.inter -> positionCategory = 4
-                    R.id.fashtion -> positionCategory = 5
-                    R.id.sport -> positionCategory = 6
-                    R.id.pet -> positionCategory = 7
-                    R.id.all -> positionCategory = 8
+                    R.id.house -> setProducts(0)
+                    R.id.moto -> setProducts(1)
+                    R.id.electric -> setProducts(2)
+                    R.id.mother -> setProducts(3)
+                    R.id.inter -> setProducts(4)
+                    R.id.fashtion -> setProducts(5)
+                    R.id.sport -> setProducts(6)
+                    R.id.pet -> setProducts(7)
+                    R.id.all -> setProducts(8)
                     R.id.fivekm -> filter5km()
                     R.id.tenkm -> filter10km()
                     R.id.fiteenkm -> filter15km()
                 }
-                setProducts()
                 true
             }
             popup.show()
@@ -183,7 +182,7 @@ class ShopFragment : Fragment() {
         setProductsView()
     }
 
-    private fun setProducts() {
+    private fun setProducts(positionCategory: Int) {
         productsAdapter = ShopProductAdapter(
             productManagerUtils.getProductsForCategory(products, positionCategory),
             object : ShopProductAdapter.OnItemClickedListener {
