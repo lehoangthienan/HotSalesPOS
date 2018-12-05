@@ -18,6 +18,7 @@ class CreateProductFragment : Fragment() {
 
     private lateinit var createGroupViewModel: CreateGroupViewModel
     private lateinit var userManagerUtil: UserManagerUtil
+    private var imageUrl = ""
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_create_product, container, false)
@@ -40,6 +41,13 @@ class CreateProductFragment : Fragment() {
         tvAddLocation.setOnClickListener {
             startSearchLocationActivity()
         }
+        ivProductImage.setOnClickListener {
+            showBottomDialog()
+        }
+    }
+
+    private fun showBottomDialog() {
+
     }
 
     private fun startSearchLocationActivity() {
@@ -54,11 +62,20 @@ class CreateProductFragment : Fragment() {
             etPrice.text.toString().isNullOrBlank() ||
             etDiscount.text.toString().isNullOrBlank() ||
             etContent.text.toString().isNullOrBlank() ||
-            etImageLink.text.toString().isNullOrBlank()
+            imageUrl.isNullOrBlank()
         ) ToastSnackBar.showSnackbar("Please enter full information before proceeding.", view, activity)
         else {
-            createProduct()
+            isLocation()
         }
+    }
+
+    private fun isLocation() {
+        if (userManagerUtil.getLat() == 0.0 || userManagerUtil.getLng() == 0.0) ToastSnackBar.showSnackbar(
+            "Please input your product location before proceeding.",
+            view,
+            activity
+        )
+        else createProduct()
     }
 
     @SuppressLint("CheckResult")
@@ -76,7 +93,7 @@ class CreateProductFragment : Fragment() {
             etDiscount.text.toString().toInt(),
             spCategory.selectedItemPosition,
             etContent.text.toString(),
-            etImageLink.text.toString()
+            imageUrl
         )
     }
 
