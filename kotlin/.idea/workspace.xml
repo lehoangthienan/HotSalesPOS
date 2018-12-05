@@ -37,29 +37,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="CreateProductFragment.kt" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CreateProductFragment.kt" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/view/product/createproduct/CreateProductFragment.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="290">
-              <caret line="49" selection-start-line="49" selection-end-line="49" />
+            <state relative-caret-position="2816">
+              <caret line="249" column="9" selection-start-line="249" selection-start-column="9" selection-end-line="249" selection-end-column="9" />
+              <folding>
+                <element signature="e#67#1047#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UpdateUserProfileActivity.kt" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/view/signin/updateuserprofile/UpdateUserProfileActivity.kt">
+      <file leaf-file-name="ProfileFragment.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/view/salesmanager/bottomnavigation/ProfileFragment.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="41" column="52" lean-forward="true" selection-start-line="41" selection-start-column="4" selection-end-line="41" selection-end-column="52" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CreateProductActivity.kt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/view/product/createproduct/CreateProductActivity.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="11" selection-start-line="11" selection-end-line="11" />
+            <state relative-caret-position="360">
+              <caret line="58" selection-start-line="58" selection-end-line="59" selection-end-column="90" />
             </state>
           </provider>
         </entry>
@@ -77,6 +71,7 @@
     <findStrings>
       <find>fire</find>
       <find>com.google.zxing:</find>
+      <find>bottomSheetDialogUpdateAvatarUser</find>
     </findStrings>
   </component>
   <component name="GradleLocalSettings">
@@ -2543,8 +2538,8 @@
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/ic_upload_photo.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_create_product.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/view/product/createproduct/CreateProductFragment.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/view/product/createproduct/CreateProductActivity.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/view/product/createproduct/CreateProductFragment.kt" />
       </list>
     </option>
   </component>
@@ -2666,7 +2661,7 @@
               <item name="daniel" type="462c0819:PsiDirectoryNode" />
               <item name="hotsalesmanager" type="462c0819:PsiDirectoryNode" />
               <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="signin" type="462c0819:PsiDirectoryNode" />
+              <item name="salesmanager" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="kotlin" type="1abcf292:AndroidViewProjectNode" />
@@ -2677,8 +2672,8 @@
               <item name="daniel" type="462c0819:PsiDirectoryNode" />
               <item name="hotsalesmanager" type="462c0819:PsiDirectoryNode" />
               <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="signin" type="462c0819:PsiDirectoryNode" />
-              <item name="updateuserprofile" type="462c0819:PsiDirectoryNode" />
+              <item name="salesmanager" type="462c0819:PsiDirectoryNode" />
+              <item name="bottomnavigation" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="kotlin" type="1abcf292:AndroidViewProjectNode" />
@@ -2958,13 +2953,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/view/salesmanager/bottomnavigation/ProfileFragment.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="426">
-          <caret line="261" column="39" selection-start-line="261" selection-start-column="39" selection-end-line="261" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_product_detail.xml">
       <provider editor-type-id="android-designer2">
         <state />
@@ -3118,24 +3106,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/view/product/createproduct/CreateProductFragment.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="49" selection-start-line="49" selection-end-line="49" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/view/product/createproduct/CreateProductActivity.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        <state relative-caret-position="494">
+          <caret line="74" column="38" lean-forward="true" selection-start-line="74" selection-start-column="38" selection-end-line="74" selection-end-column="38" />
+          <folding>
+            <element signature="e#67#626#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/view/signin/updateuserprofile/UpdateUserProfileActivity.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="41" column="52" lean-forward="true" selection-start-line="41" selection-start-column="4" selection-end-line="41" selection-end-column="52" />
+        <state relative-caret-position="198">
+          <caret line="112" column="45" selection-start-line="112" selection-start-column="45" selection-end-line="112" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/view/salesmanager/bottomnavigation/ProfileFragment.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="58" selection-start-line="58" selection-end-line="59" selection-end-column="90" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/view/product/createproduct/CreateProductFragment.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2816">
+          <caret line="249" column="9" selection-start-line="249" selection-start-column="9" selection-end-line="249" selection-end-column="9" />
+          <folding>
+            <element signature="e#67#1047#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
