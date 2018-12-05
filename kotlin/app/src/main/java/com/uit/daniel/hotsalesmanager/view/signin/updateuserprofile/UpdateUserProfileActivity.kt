@@ -15,9 +15,12 @@ import android.support.design.widget.BottomSheetDialog
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.ActionBar
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.widget.RelativeLayout
 import com.bumptech.glide.Glide
+import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.UploadTask
 import com.tbruyelle.rxpermissions2.RxPermissions
 import com.uit.daniel.hotsalesmanager.R
 import com.uit.daniel.hotsalesmanager.utils.CameraUtils
@@ -27,14 +30,9 @@ import com.uit.daniel.hotsalesmanager.utils.ImageUtils
 import com.uit.daniel.hotsalesmanager.utils.IntentUtils
 import kotlinx.android.synthetic.main.dialog_permissin_read_write_storage.*
 import kotlinx.android.synthetic.main.fragment_update_user_profile.*
+import java.io.ByteArrayOutputStream
 import java.io.File
-import android.widget.Toast
-import com.uit.daniel.hotsalesmanager.MainActivity
-import com.google.android.gms.tasks.OnFailureListener
-import com.google.firebase.storage.UploadTask
-import com.google.android.gms.tasks.OnSuccessListener
-import com.google.firebase.storage.StorageReference
-import java.net.URI
+import java.util.*
 
 
 class UpdateUserProfileActivity : AppCompatActivity() {
@@ -151,8 +149,29 @@ class UpdateUserProfileActivity : AppCompatActivity() {
     }
 
     private fun setImageForCamera(data: Intent?) {
+        Log.d("abcxxx", data?.data.toString())
+
+
+
         if (data?.extras?.get("data") == null) return
         val bitmap = data.extras?.get("data") as Bitmap
+
+        var baos = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
+        var data = baos.toByteArray()
+
+        val childRef = storageRef.child("images/"+UUID.randomUUID().toString())
+        val uploadTask = childRef.putBytes(data)
+        uploadTask.addOnSuccessListener(object : OnSuccessListener<UploadTask.TaskSnapshot> {
+            override fun onSuccess(taskSnapshot: UploadTask.TaskSnapshot?) {
+                childRef.downloadUrl.addOnSuccessListener(object :OnSuccessListener<Uri>{
+                    override fun onSuccess(uri: Uri?) {
+                        Log.d("abcxxx",uri.toString())
+                    }
+                })
+            }
+        })
+
         Glide.with(this)
             .asBitmap()
             .load(bitmap)
@@ -180,11 +199,19 @@ class UpdateUserProfileActivity : AppCompatActivity() {
     }
 
     private fun updateImageToSever(uri: Uri) {
-       if(uri!= null){
-           val childRef = storageRef.child("image.jpg")
-           val uploadTask = childRef.putFile(uri)
-           
-       }
+        if (uri != null) {
+            val childRef = storageRef.child("images/"+UUID.randomUUID().toString())
+            val uploadTask = childRef.putFile(uri)
+            uploadTask.addOnSuccessListener(object : OnSuccessListener<UploadTask.TaskSnapshot> {
+                override fun onSuccess(taskSnapshot: UploadTask.TaskSnapshot?) {
+                    childRef.downloadUrl.addOnSuccessListener(object :OnSuccessListener<Uri>{
+                        override fun onSuccess(uri: Uri?) {
+                            Log.d("abcxxx",uri.toString())
+                        }
+                    })
+                }
+            })
+        }
     }
 
 
