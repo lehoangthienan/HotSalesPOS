@@ -8,6 +8,7 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.support.design.widget.BottomSheetDialog
@@ -16,6 +17,7 @@ import android.support.v7.app.ActionBar
 import android.support.v7.app.AppCompatActivity
 import android.widget.RelativeLayout
 import com.bumptech.glide.Glide
+import com.google.firebase.storage.FirebaseStorage
 import com.tbruyelle.rxpermissions2.RxPermissions
 import com.uit.daniel.hotsalesmanager.R
 import com.uit.daniel.hotsalesmanager.utils.CameraUtils
@@ -26,6 +28,13 @@ import com.uit.daniel.hotsalesmanager.utils.IntentUtils
 import kotlinx.android.synthetic.main.dialog_permissin_read_write_storage.*
 import kotlinx.android.synthetic.main.fragment_update_user_profile.*
 import java.io.File
+import android.widget.Toast
+import com.uit.daniel.hotsalesmanager.MainActivity
+import com.google.android.gms.tasks.OnFailureListener
+import com.google.firebase.storage.UploadTask
+import com.google.android.gms.tasks.OnSuccessListener
+import com.google.firebase.storage.StorageReference
+import java.net.URI
 
 
 class UpdateUserProfileActivity : AppCompatActivity() {
@@ -38,6 +47,8 @@ class UpdateUserProfileActivity : AppCompatActivity() {
     private var imageUtils = ImageUtils()
     private val intentUtils = IntentUtils()
     private val cameraUtils = CameraUtils()
+    var storage = FirebaseStorage.getInstance()
+    var storageRef = storage.getReferenceFromUrl("gs://hotsalesmanager-fef89.appspot.com")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -164,5 +175,17 @@ class UpdateUserProfileActivity : AppCompatActivity() {
         val bitmap = BitmapFactory.decodeFile(filepath)
         imgAvatarUpdate.setImageBitmap(bitmap)
         bottomSheetDialogUpdateAvatarUser.dismiss()
+
+        updateImageToSever(uri)
     }
+
+    private fun updateImageToSever(uri: Uri) {
+       if(uri!= null){
+           val childRef = storageRef.child("image.jpg")
+           val uploadTask = childRef.putFile(uri)
+           
+       }
+    }
+
+
 }
