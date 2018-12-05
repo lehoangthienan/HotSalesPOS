@@ -4,12 +4,15 @@ import android.annotation.SuppressLint
 import android.app.Fragment
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
+import com.google.zxing.BarcodeFormat
+import com.google.zxing.WriterException
 import com.uit.daniel.hotsalesmanager.R
 import com.uit.daniel.hotsalesmanager.data.response.ProductResponse
 import com.uit.daniel.hotsalesmanager.utils.PriceUtils
@@ -17,6 +20,10 @@ import com.uit.daniel.hotsalesmanager.utils.ToastSnackBar
 import com.uit.daniel.hotsalesmanager.view.order.orderproduct.OrderProductActivity
 import com.uit.daniel.hotsalesmanager.view.product.productlocation.ProductLocationActivity
 import kotlinx.android.synthetic.main.fragment_product_detail.*
+import com.google.zxing.MultiFormatWriter
+import com.google.zxing.common.BitMatrix
+import com.journeyapps.barcodescanner.BarcodeEncoder
+
 
 class ProductDetailFragment : Fragment() {
 
@@ -25,6 +32,7 @@ class ProductDetailFragment : Fragment() {
     private lateinit var productDetailViewModel: ProductDetailViewModel
     private var lat: Double = 0.0
     private var lng: Double = 0.0
+    private var multiFormatWriter = MultiFormatWriter()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_product_detail, container, false)
@@ -40,6 +48,21 @@ class ProductDetailFragment : Fragment() {
 
     private fun getProductId() {
         productId = activity?.intent?.getStringExtra("ID") ?: ""
+
+        initQRCODE()
+    }
+
+    private fun initQRCODE() {
+        try {
+            val bitMatrix: BitMatrix? = multiFormatWriter.encode(productId, BarcodeFormat.QR_CODE, 350, 350)
+
+            val barcodeEncoder = BarcodeEncoder()
+            val bm = barcodeEncoder.createBitmap(bitMatrix)
+
+            if(bm != null) {
+                ivQRCODE.setImageBitmap(bm)
+            }
+        } catch (e: WriterException){}
     }
 
     @SuppressLint("CheckResult")
