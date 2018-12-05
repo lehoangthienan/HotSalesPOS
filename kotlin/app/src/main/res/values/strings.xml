@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">HotSalesManager</string>
+    <string name="app_name">Hot Sales</string>
     <string name="facebook_app_id">479938699179203</string>
     <string name="fb_login_protocol_scheme">fb479938699179203</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
