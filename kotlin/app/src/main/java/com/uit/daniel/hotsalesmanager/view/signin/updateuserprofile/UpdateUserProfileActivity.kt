@@ -15,7 +15,6 @@ import android.support.design.widget.BottomSheetDialog
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.ActionBar
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import android.widget.RelativeLayout
 import com.bumptech.glide.Glide
 import com.google.android.gms.tasks.OnSuccessListener
@@ -23,15 +22,14 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.UploadTask
 import com.tbruyelle.rxpermissions2.RxPermissions
 import com.uit.daniel.hotsalesmanager.R
-import com.uit.daniel.hotsalesmanager.utils.CameraUtils
 import com.uit.daniel.hotsalesmanager.utils.Constant
 import com.uit.daniel.hotsalesmanager.utils.Constant.REQUEST_CAMERA
-import com.uit.daniel.hotsalesmanager.utils.ImageUtils
 import com.uit.daniel.hotsalesmanager.utils.IntentUtils
+import com.uit.daniel.hotsalesmanager.utils.UserManagerUtil
 import kotlinx.android.synthetic.main.dialog_permissin_read_write_storage.*
+import kotlinx.android.synthetic.main.dialog_permission_camera.*
 import kotlinx.android.synthetic.main.fragment_update_user_profile.*
 import java.io.ByteArrayOutputStream
-import java.io.File
 import java.util.*
 
 
@@ -40,21 +38,20 @@ class UpdateUserProfileActivity : AppCompatActivity() {
     private val rxPermissionsSTORAGE = RxPermissions(this)
     private lateinit var bottomSheetDialogUpdateAvatarUser: BottomSheetDialog
     private lateinit var dlPermissionStorage: Dialog
-    private var urlUserImage: String = ""
-    private lateinit var photoFile: File
-    private var imageUtils = ImageUtils()
     private val intentUtils = IntentUtils()
-    private val cameraUtils = CameraUtils()
     var storage = FirebaseStorage.getInstance()
     var storageRef = storage.getReferenceFromUrl("gs://hotsalesmanager-fef89.appspot.com")
+    private var updateUserProfileViewModel = UpdateUserProfileViewModel(this@UpdateUserProfileActivity)
+    private var userManagerUtil = UserManagerUtil.getInstance(this@UpdateUserProfileActivity)
+    private val rxPermissionsCAMERA = RxPermissions(this)
+    private lateinit var dialogPermissionCamera: Dialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_update_user_profile)
 
         initView()
-        inItBottomSheetDialog()
-        initeDialogPermissionStorage()
+        addControls()
         addEvents()
     }
 
@@ -99,11 +96,34 @@ class UpdateUserProfileActivity : AppCompatActivity() {
     private fun showBottomSheetDialogUpdateAvatarUser() {
         bottomSheetDialogUpdateAvatarUser.show()
         bottomSheetDialogUpdateAvatarUser.findViewById<RelativeLayout>(R.id.takePhotoFromCamera)?.setOnClickListener {
-            startCameraIntent()
+            setPermissionCamera()
         }
 
         bottomSheetDialogUpdateAvatarUser.findViewById<RelativeLayout>(R.id.takePhotoFromLibrary)?.setOnClickListener {
             startActivityForResult(intentUtils.intentActionPick(), Constant.REQUEST_GALLERY)
+        }
+    }
+
+    private fun setPermissionCamera() {
+        val permissionStorage = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
+        if (permissionStorage == PackageManager.PERMISSION_GRANTED) {
+            startCameraIntent()
+        } else {
+            dialogPermissionCamera.show()
+            dialogPermissionCamera.tvAccept.setOnClickListener {
+                dialogPermissionCamera.dismiss()
+                rxPermissionsCAMERA
+                    .request(Manifest.permission.CAMERA)
+                    .subscribe { granted ->
+                        if (granted) {
+                            startCameraIntent()
+                        } else {
+                        }
+                    }
+            }
+            dialogPermissionCamera.tvCancel.setOnClickListener {
+                dialogPermissionCamera.dismiss()
+            }
         }
     }
 
@@ -122,17 +142,18 @@ class UpdateUserProfileActivity : AppCompatActivity() {
     }
 
 
-    private fun inItBottomSheetDialog() {
+    private fun addControls() {
         bottomSheetDialogUpdateAvatarUser = BottomSheetDialog(this)
         bottomSheetDialogUpdateAvatarUser.setContentView(R.layout.bottomsheetdialog_update_avatar_profile)
         bottomSheetDialogUpdateAvatarUser.window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-    }
 
-
-    private fun initeDialogPermissionStorage() {
         dlPermissionStorage = Dialog(this)
         dlPermissionStorage.setContentView(R.layout.dialog_permissin_read_write_storage)
         dlPermissionStorage.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+        dialogPermissionCamera = Dialog(this)
+        dialogPermissionCamera.setContentView(R.layout.dialog_permission_camera)
+        dialogPermissionCamera.window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -149,34 +170,35 @@ class UpdateUserProfileActivity : AppCompatActivity() {
     }
 
     private fun setImageForCamera(data: Intent?) {
-        Log.d("abcxxx", data?.data.toString())
-
-
-
         if (data?.extras?.get("data") == null) return
         val bitmap = data.extras?.get("data") as Bitmap
 
-        var baos = ByteArrayOutputStream()
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
-        var data = baos.toByteArray()
-
-        val childRef = storageRef.child("images/"+UUID.randomUUID().toString())
-        val uploadTask = childRef.putBytes(data)
-        uploadTask.addOnSuccessListener(object : OnSuccessListener<UploadTask.TaskSnapshot> {
-            override fun onSuccess(taskSnapshot: UploadTask.TaskSnapshot?) {
-                childRef.downloadUrl.addOnSuccessListener(object :OnSuccessListener<Uri>{
-                    override fun onSuccess(uri: Uri?) {
-                        Log.d("abcxxx",uri.toString())
-                    }
-                })
-            }
-        })
+        updateImageCameraToSever(bitmap)
 
         Glide.with(this)
             .asBitmap()
             .load(bitmap)
             .into(imgAvatarUpdate)
         bottomSheetDialogUpdateAvatarUser.dismiss()
+    }
+
+    private fun updateImageCameraToSever(bitmap: Bitmap) {
+        val baos = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
+        val data = baos.toByteArray()
+
+        val childRef = storageRef.child("images/" + UUID.randomUUID().toString())
+        val uploadTask = childRef.putBytes(data)
+        uploadTask.addOnSuccessListener(object : OnSuccessListener<UploadTask.TaskSnapshot> {
+            override fun onSuccess(taskSnapshot: UploadTask.TaskSnapshot?) {
+                childRef.downloadUrl.addOnSuccessListener(object : OnSuccessListener<Uri> {
+                    override fun onSuccess(uri: Uri?) {
+                        updateUserProfileViewModel.updateUserAvatarRequest(userManagerUtil.getUserId(), uri.toString())
+                        userManagerUtil.setUserUrlAvatar(uri.toString())
+                    }
+                })
+            }
+        })
     }
 
     private fun setImageForGallery(data: Intent?) {
@@ -200,19 +222,21 @@ class UpdateUserProfileActivity : AppCompatActivity() {
 
     private fun updateImageToSever(uri: Uri) {
         if (uri != null) {
-            val childRef = storageRef.child("images/"+UUID.randomUUID().toString())
+            val childRef = storageRef.child("images/" + UUID.randomUUID().toString())
             val uploadTask = childRef.putFile(uri)
             uploadTask.addOnSuccessListener(object : OnSuccessListener<UploadTask.TaskSnapshot> {
                 override fun onSuccess(taskSnapshot: UploadTask.TaskSnapshot?) {
-                    childRef.downloadUrl.addOnSuccessListener(object :OnSuccessListener<Uri>{
+                    childRef.downloadUrl.addOnSuccessListener(object : OnSuccessListener<Uri> {
                         override fun onSuccess(uri: Uri?) {
-                            Log.d("abcxxx",uri.toString())
+                            updateUserProfileViewModel.updateUserAvatarRequest(
+                                userManagerUtil.getUserId(),
+                                uri.toString()
+                            )
+                            userManagerUtil.setUserUrlAvatar(uri.toString())
                         }
                     })
                 }
             })
         }
     }
-
-
 }

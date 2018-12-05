@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.dialog_permission_camera.*
 class IntroScanActivity : AppCompatActivity() {
 
     private val rxPermissionsCAMERA = RxPermissions(this)
-    private lateinit var dialogPermissionLocation: Dialog
+    private lateinit var dialogPermissionCamera: Dialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,9 +32,9 @@ class IntroScanActivity : AppCompatActivity() {
     }
 
     private fun addControls() {
-        dialogPermissionLocation = Dialog(this)
-        dialogPermissionLocation.setContentView(R.layout.dialog_permission_camera)
-        dialogPermissionLocation.window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialogPermissionCamera = Dialog(this)
+        dialogPermissionCamera.setContentView(R.layout.dialog_permission_camera)
+        dialogPermissionCamera.window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
     }
 
     @SuppressLint("CheckResult")
@@ -43,19 +43,19 @@ class IntroScanActivity : AppCompatActivity() {
         if (permissionStorage == PackageManager.PERMISSION_GRANTED) {
 
         } else {
-            dialogPermissionLocation.show()
-            dialogPermissionLocation.tvAccept.setOnClickListener {
-                dialogPermissionLocation.dismiss()
+            dialogPermissionCamera.show()
+            dialogPermissionCamera.tvAccept.setOnClickListener {
+                dialogPermissionCamera.dismiss()
                 rxPermissionsCAMERA
-                    .request(Manifest.permission.ACCESS_FINE_LOCATION)
+                    .request(Manifest.permission.CAMERA)
                     .subscribe { granted ->
                         if (granted) {
                         } else {
                         }
                     }
             }
-            dialogPermissionLocation.tvCancel.setOnClickListener {
-                dialogPermissionLocation.dismiss()
+            dialogPermissionCamera.tvCancel.setOnClickListener {
+                dialogPermissionCamera.dismiss()
             }
         }
     }
