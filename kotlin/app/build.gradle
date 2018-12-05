@@ -42,6 +42,8 @@ dependencies {
     implementation "com.google.firebase:firebase-auth:$firebaseAuthVersion"
     implementation "com.google.firebase:firebase-messaging:$firebaseMessagingVersion"
     implementation "com.google.firebase:firebase-invites:$firebaseInviteVersion"
+    implementation "com.google.firebase:firebase-storage:$firebaseInviteVersion"
+
 
 
     testImplementation "com.nhaarman:mockito-kotlin-kt1.1:1.5.0"
