@@ -76,4 +76,5 @@ ext {
 
     shimmerVertion = '0.1.0@aar'
     barcodescannerVertion= '1.9.8'
+    embeddedVertion= '3.2.0@aar'
 }

@@ -8,14 +8,12 @@ import android.net.Uri
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
 import com.jakewharton.rxbinding2.widget.RxTextView
 import com.uit.daniel.hotsalesmanager.R
 import com.uit.daniel.hotsalesmanager.data.response.ProductResult
-import com.uit.daniel.hotsalesmanager.utils.LocationUtils
 import com.uit.daniel.hotsalesmanager.utils.ProductManagerUtils
 import com.uit.daniel.hotsalesmanager.utils.getVisibilityView
 import com.uit.daniel.hotsalesmanager.view.custom.shopproduct.ShopProductAdapter
@@ -110,20 +108,19 @@ class ShopFragment : Fragment() {
             popup.menuInflater.inflate(R.menu.categoryseller, popup.menu)
             popup.setOnMenuItemClickListener { item ->
                 when (item?.itemId) {
-                    R.id.house -> positionCategory = 0
-                    R.id.moto -> positionCategory = 1
-                    R.id.electric -> positionCategory = 2
-                    R.id.mother -> positionCategory = 3
-                    R.id.inter -> positionCategory = 4
-                    R.id.fashtion -> positionCategory = 5
-                    R.id.sport -> positionCategory = 6
-                    R.id.pet -> positionCategory = 7
-                    R.id.all -> positionCategory = 8
+                    R.id.house -> setProducts(0)
+                    R.id.moto -> setProducts(1)
+                    R.id.electric -> setProducts(2)
+                    R.id.mother -> setProducts(3)
+                    R.id.inter -> setProducts(4)
+                    R.id.fashtion -> setProducts(5)
+                    R.id.sport -> setProducts(6)
+                    R.id.pet -> setProducts(7)
+                    R.id.all -> setProducts(8)
                     R.id.fivekm -> filter5km()
                     R.id.tenkm -> filter10km()
                     R.id.fiteenkm -> filter15km()
                 }
-                setProducts()
                 true
             }
             popup.show()
@@ -166,9 +163,9 @@ class ShopFragment : Fragment() {
         getProductsWithRadius(15)
     }
 
-    private fun getProductsWithRadius(radius: Int){
+    private fun getProductsWithRadius(radius: Int) {
         productsAdapter = ShopProductAdapter(
-            productManagerUtils.getProductsDistance(products, radius,activity),
+            productManagerUtils.getProductsDistance(products, radius, activity),
             object : ShopProductAdapter.OnItemClickedListener {
                 override fun onItemClicked(id: String) {
                     startProductDetailActivity(id)
@@ -185,7 +182,7 @@ class ShopFragment : Fragment() {
         setProductsView()
     }
 
-    private fun setProducts() {
+    private fun setProducts(positionCategory: Int) {
         productsAdapter = ShopProductAdapter(
             productManagerUtils.getProductsForCategory(products, positionCategory),
             object : ShopProductAdapter.OnItemClickedListener {

@@ -23,6 +23,7 @@ import com.uit.daniel.hotsalesmanager.view.signin.updateuserphonenumber.UpdatePh
 import kotlinx.android.synthetic.main.dialog_not_input_phone_number.*
 import kotlinx.android.synthetic.main.fragment_update_user_profile.*
 
+
 class UpdateUserProfileFragment : android.app.Fragment() {
 
     private lateinit var userManagerUtil: UserManagerUtil
