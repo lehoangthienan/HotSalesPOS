@@ -37,23 +37,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="CreateProductFragment.kt" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/view/product/createproduct/CreateProductFragment.kt">
+      <file leaf-file-name="UpdateProductFragment.kt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/view/product/updateproduct/UpdateProductFragment.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2816">
-              <caret line="249" column="9" selection-start-line="249" selection-start-column="9" selection-end-line="249" selection-end-column="9" />
-              <folding>
-                <element signature="e#67#1047#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="836">
+              <caret line="105" column="9" lean-forward="true" selection-start-line="105" selection-start-column="9" selection-end-line="105" selection-end-column="9" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProfileFragment.kt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/view/salesmanager/bottomnavigation/ProfileFragment.kt">
+      <file leaf-file-name="CreateProductFragment.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/view/product/createproduct/CreateProductFragment.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="58" selection-start-line="58" selection-end-line="59" selection-end-column="90" />
+            <state relative-caret-position="110">
+              <caret line="33" selection-start-line="33" selection-end-line="37" selection-end-column="90" />
             </state>
           </provider>
         </entry>
@@ -2540,6 +2537,9 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_create_product.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/view/product/createproduct/CreateProductActivity.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/view/product/createproduct/CreateProductFragment.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/view/product/updateproduct/UpdateProductActivity.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_update_product.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/view/product/updateproduct/UpdateProductFragment.kt" />
       </list>
     </option>
   </component>
@@ -2651,6 +2651,42 @@
               <item name="hotsalesmanager" type="462c0819:PsiDirectoryNode" />
               <item name="view" type="462c0819:PsiDirectoryNode" />
               <item name="product" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="kotlin" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="com" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="uit" type="462c0819:PsiDirectoryNode" />
+              <item name="daniel" type="462c0819:PsiDirectoryNode" />
+              <item name="hotsalesmanager" type="462c0819:PsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
+              <item name="product" type="462c0819:PsiDirectoryNode" />
+              <item name="createproduct" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="kotlin" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="com" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="uit" type="462c0819:PsiDirectoryNode" />
+              <item name="daniel" type="462c0819:PsiDirectoryNode" />
+              <item name="hotsalesmanager" type="462c0819:PsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
+              <item name="product" type="462c0819:PsiDirectoryNode" />
+              <item name="productdetail" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="kotlin" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="com" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="uit" type="462c0819:PsiDirectoryNode" />
+              <item name="daniel" type="462c0819:PsiDirectoryNode" />
+              <item name="hotsalesmanager" type="462c0819:PsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
+              <item name="product" type="462c0819:PsiDirectoryNode" />
+              <item name="updateproduct" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="kotlin" type="1abcf292:AndroidViewProjectNode" />
@@ -2963,16 +2999,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/view/product/productdetail/ProductDetailFragment.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="54" column="30" lean-forward="true" selection-start-line="54" selection-start-column="30" selection-end-line="54" selection-end-column="30" />
-          <folding>
-            <element signature="e#67#1068#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dependencies.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="764">
@@ -3081,41 +3107,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_create_product.xml">
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="263" column="12" selection-start-line="263" selection-start-column="12" selection-end-line="263" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_update_product.xml">
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/view/product/updateproduct/UpdateProductFragment.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="22" column="55" selection-start-line="22" selection-start-column="55" selection-end-line="22" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/view/product/createproduct/CreateProductActivity.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="74" column="38" lean-forward="true" selection-start-line="74" selection-start-column="38" selection-end-line="74" selection-end-column="38" />
-          <folding>
-            <element signature="e#67#626#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/view/signin/updateuserprofile/UpdateUserProfileActivity.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
@@ -3125,18 +3116,72 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/view/salesmanager/bottomnavigation/ProfileFragment.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="58" selection-start-line="58" selection-end-line="59" selection-end-column="90" />
+        <state relative-caret-position="102">
+          <caret line="261" column="39" selection-start-line="260" selection-start-column="8" selection-end-line="261" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/view/product/updateproduct/UpdateProductActivity.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="836">
+          <caret line="92" column="5" selection-start-line="92" selection-start-column="5" selection-end-line="92" selection-end-column="5" />
+          <folding>
+            <element signature="e#67#626#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/view/product/createproduct/CreateProductActivity.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="620">
+          <caret line="87" column="5" lean-forward="true" selection-start-line="32" selection-start-column="4" selection-end-line="87" selection-end-column="5" />
+          <folding>
+            <element signature="e#67#626#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_create_product.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="263" column="12" selection-end-line="330" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_update_product.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="406">
+          <caret line="32" column="40" selection-start-line="32" selection-start-column="40" selection-end-line="32" selection-end-column="40" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/view/product/createproduct/CreateProductFragment.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2816">
-          <caret line="249" column="9" selection-start-line="249" selection-start-column="9" selection-end-line="249" selection-end-column="9" />
+        <state relative-caret-position="110">
+          <caret line="33" selection-start-line="33" selection-end-line="37" selection-end-column="90" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/view/product/productdetail/ProductDetailFragment.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="620">
+          <caret line="90" column="9" lean-forward="true" selection-start-line="82" selection-start-column="8" selection-end-line="90" selection-end-column="9" />
           <folding>
-            <element signature="e#67#1047#0" expanded="true" />
+            <element signature="e#67#1068#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/uit/daniel/hotsalesmanager/view/product/updateproduct/UpdateProductFragment.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="836">
+          <caret line="105" column="9" lean-forward="true" selection-start-line="105" selection-start-column="9" selection-end-line="105" selection-end-column="9" />
         </state>
       </provider>
     </entry>
