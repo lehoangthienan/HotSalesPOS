@@ -1,6 +1,7 @@
 package com.uit.daniel.hotsalesmanager.view.signin.updateuserprofile
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -26,6 +27,7 @@ import com.uit.daniel.hotsalesmanager.utils.Constant
 import com.uit.daniel.hotsalesmanager.utils.Constant.REQUEST_CAMERA
 import com.uit.daniel.hotsalesmanager.utils.IntentUtils
 import com.uit.daniel.hotsalesmanager.utils.UserManagerUtil
+import com.uit.daniel.hotsalesmanager.utils.getVisibilityView
 import kotlinx.android.synthetic.main.dialog_permissin_read_write_storage.*
 import kotlinx.android.synthetic.main.dialog_permission_camera.*
 import kotlinx.android.synthetic.main.fragment_update_user_profile.*
@@ -58,6 +60,9 @@ class UpdateUserProfileActivity : AppCompatActivity() {
     private fun initView() {
         val actionBar: ActionBar? = supportActionBar
         actionBar?.hide()
+
+        if (progressBarAddLocation != null) progressBarAddLocation.visibility =
+                getVisibilityView(false)
     }
 
     private fun addEvents() {
@@ -78,7 +83,6 @@ class UpdateUserProfileActivity : AppCompatActivity() {
                     .request(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE)
                     .subscribe { granted ->
                         if (granted) {
-                            //Not permission
                         } else {
                             permissionStorage =
                                     ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
@@ -159,6 +163,9 @@ class UpdateUserProfileActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
+        if (progressBarAddLocation != null) progressBarAddLocation.visibility =
+                getVisibilityView(true)
+
         when (requestCode) {
             Constant.REQUEST_GALLERY -> {
                 setImageForGallery(data)
@@ -192,9 +199,16 @@ class UpdateUserProfileActivity : AppCompatActivity() {
         uploadTask.addOnSuccessListener(object : OnSuccessListener<UploadTask.TaskSnapshot> {
             override fun onSuccess(taskSnapshot: UploadTask.TaskSnapshot?) {
                 childRef.downloadUrl.addOnSuccessListener(object : OnSuccessListener<Uri> {
+                    @SuppressLint("CheckResult")
                     override fun onSuccess(uri: Uri?) {
+                        updateUserProfileViewModel.isUpdateAvatarToSever().subscribe { check ->
+                            if (check) {
+                                userManagerUtil.setUserUrlAvatar(uri.toString())
+                                if (progressBarAddLocation != null) progressBarAddLocation.visibility =
+                                        getVisibilityView(false)
+                            }
+                        }
                         updateUserProfileViewModel.updateUserAvatarRequest(userManagerUtil.getUserId(), uri.toString())
-                        userManagerUtil.setUserUrlAvatar(uri.toString())
                     }
                 })
             }
@@ -227,12 +241,19 @@ class UpdateUserProfileActivity : AppCompatActivity() {
             uploadTask.addOnSuccessListener(object : OnSuccessListener<UploadTask.TaskSnapshot> {
                 override fun onSuccess(taskSnapshot: UploadTask.TaskSnapshot?) {
                     childRef.downloadUrl.addOnSuccessListener(object : OnSuccessListener<Uri> {
+                        @SuppressLint("CheckResult")
                         override fun onSuccess(uri: Uri?) {
+                            updateUserProfileViewModel.isUpdateAvatarToSever().subscribe { check ->
+                                if (check) {
+                                    userManagerUtil.setUserUrlAvatar(uri.toString())
+                                    if (progressBarAddLocation != null) progressBarAddLocation.visibility =
+                                            getVisibilityView(false)
+                                }
+                            }
                             updateUserProfileViewModel.updateUserAvatarRequest(
                                 userManagerUtil.getUserId(),
                                 uri.toString()
                             )
-                            userManagerUtil.setUserUrlAvatar(uri.toString())
                         }
                     })
                 }

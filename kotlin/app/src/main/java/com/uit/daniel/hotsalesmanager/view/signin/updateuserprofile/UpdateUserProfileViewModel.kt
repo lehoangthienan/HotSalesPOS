@@ -19,6 +19,8 @@ interface UpdateUserProfileViewModelInputs {
 
     fun isUpdateUserNameToSever(): Observable<Boolean>
 
+    fun isUpdateAvatarToSever(): Observable<Boolean>
+
     fun updateUserAvatarRequest(userId: String, userAvatar: String)
 
 }
@@ -34,6 +36,9 @@ class UpdateUserProfileViewModel(context: Context) : UpdateUserProfileViewModelI
 
     private val isUpdateUserNameToSeverPublishSubject = PublishSubject.create<Boolean>()
     override fun isUpdateUserNameToSever(): Observable<Boolean> = isUpdateUserNameToSeverPublishSubject
+
+    private val isUpdateAvatarToSeverPublishSubject = PublishSubject.create<Boolean>()
+    override fun isUpdateAvatarToSever(): Observable<Boolean> = isUpdateAvatarToSeverPublishSubject
 
     @SuppressLint("CheckResult")
     override fun updateUserNameToSever(userId: String, userName: String) {
@@ -61,7 +66,7 @@ class UpdateUserProfileViewModel(context: Context) : UpdateUserProfileViewModelI
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ userResponse ->
-                Log.d("userResponse", userResponse.toString())
+                isUpdateAvatarToSeverPublishSubject.onNext(true)
             },
                 { error ->
                     Log.e("ERROrsign", error.message.toString())

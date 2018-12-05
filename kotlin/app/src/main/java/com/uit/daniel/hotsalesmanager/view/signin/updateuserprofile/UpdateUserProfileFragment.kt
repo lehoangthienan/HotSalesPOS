@@ -22,9 +22,6 @@ import com.uit.daniel.hotsalesmanager.view.custom.countrycode.listCodeCountry
 import com.uit.daniel.hotsalesmanager.view.signin.updateuserphonenumber.UpdatePhoneNumberActivity
 import kotlinx.android.synthetic.main.dialog_not_input_phone_number.*
 import kotlinx.android.synthetic.main.fragment_update_user_profile.*
-import com.google.firebase.storage.StorageReference
-import com.google.firebase.storage.FirebaseStorage
-
 
 
 class UpdateUserProfileFragment : android.app.Fragment() {

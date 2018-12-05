@@ -11,6 +11,7 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.support.design.widget.BottomSheetDialog
@@ -22,6 +23,9 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.RelativeLayout
 import com.bumptech.glide.Glide
+import com.google.android.gms.tasks.OnSuccessListener
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.UploadTask
 import com.tbruyelle.rxpermissions2.RxPermissions
 import com.uit.daniel.hotsalesmanager.R
 import com.uit.daniel.hotsalesmanager.utils.*
@@ -33,7 +37,8 @@ import com.uit.daniel.hotsalesmanager.view.signin.updateuserphonenumber.UpdatePh
 import com.uit.daniel.hotsalesmanager.view.signin.updateuserprofile.UpdateUserProfileViewModel
 import kotlinx.android.synthetic.main.dialog_permissin_read_write_storage.*
 import kotlinx.android.synthetic.main.fragment_navigation_profile.*
-import java.io.File
+import java.io.ByteArrayOutputStream
+import java.util.*
 
 class ProfileFragment : Fragment() {
 
@@ -41,11 +46,7 @@ class ProfileFragment : Fragment() {
     private lateinit var rxPermissionsSTORAGE: RxPermissions
     private lateinit var bottomSheetDialogUpdateAvatarUser: BottomSheetDialog
     private lateinit var dlPermissionStorage: Dialog
-    private var urlUserImage: String = ""
-    private lateinit var photoFile: File
-    private var imageUtils = ImageUtils()
     private val intentUtils = IntentUtils()
-    private val cameraUtils = CameraUtils()
     private lateinit var userManagerUtil: UserManagerUtil
     private var phoneNumber: String = ""
     private var phoneNumberVerified: String = ""
@@ -55,6 +56,8 @@ class ProfileFragment : Fragment() {
     private var check: Boolean = false
     private lateinit var dlNotInputPhoneNumber: Dialog
     private lateinit var updateUserProfileViewModel: UpdateUserProfileViewModel
+    var storage = FirebaseStorage.getInstance()
+    var storageRef = storage.getReferenceFromUrl("gs://hotsalesmanager-fef89.appspot.com")
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_navigation_profile, container, false)
@@ -63,8 +66,7 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        inItBottomSheetDialog()
-        initeDialogPermissionStorage()
+        addControls()
         addItemSpinerCodeCountry()
         setFocusInitView()
         setDefaultValueOfSpinner()
@@ -73,6 +75,20 @@ class ProfileFragment : Fragment() {
         initView()
         addEvents()
 
+    }
+
+    private fun addControls() {
+        dlNotInputPhoneNumber = Dialog(activity)
+        dlNotInputPhoneNumber.setContentView(R.layout.dialog_not_input_phone_number)
+        dlNotInputPhoneNumber.window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+        bottomSheetDialogUpdateAvatarUser = BottomSheetDialog(activity)
+        bottomSheetDialogUpdateAvatarUser.setContentView(R.layout.bottomsheetdialog_update_avatar_profile)
+        bottomSheetDialogUpdateAvatarUser.window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+        dlPermissionStorage = Dialog(activity)
+        dlPermissionStorage.setContentView(R.layout.dialog_permissin_read_write_storage)
+        dlPermissionStorage.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
     }
 
     private fun startConfirmPhoneNumberActivity() {
@@ -113,12 +129,6 @@ class ProfileFragment : Fragment() {
         phoneNumberVerified = userManagerUtil.getUserPhoneNumberVerifired()
     }
 
-    private fun initeDialogNotInputPhoneNumber() {
-        dlNotInputPhoneNumber = Dialog(activity)
-        dlNotInputPhoneNumber.setContentView(R.layout.dialog_not_input_phone_number)
-        dlNotInputPhoneNumber.window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-    }
-
     private fun setDefaultValueOfSpinner() {
         spCodeCoutry.setSelection(239)
     }
@@ -141,6 +151,10 @@ class ProfileFragment : Fragment() {
     }
 
     private fun initView() {
+
+        if (progressBarAddLocation != null) progressBarAddLocation.visibility =
+                getVisibilityView(false)
+
         try {
             if (!userName.isEmpty()) {
                 etName.setText(userName)
@@ -241,22 +255,11 @@ class ProfileFragment : Fragment() {
         }
     }
 
-
-    private fun inItBottomSheetDialog() {
-        bottomSheetDialogUpdateAvatarUser = BottomSheetDialog(activity)
-        bottomSheetDialogUpdateAvatarUser.setContentView(R.layout.bottomsheetdialog_update_avatar_profile)
-        bottomSheetDialogUpdateAvatarUser.window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-    }
-
-
-    private fun initeDialogPermissionStorage() {
-        dlPermissionStorage = Dialog(activity)
-        dlPermissionStorage.setContentView(R.layout.dialog_permissin_read_write_storage)
-        dlPermissionStorage.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-    }
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+
+        if (progressBarAddLocation != null) progressBarAddLocation.visibility =
+                getVisibilityView(true)
 
         when (requestCode) {
             Constant.REQUEST_GALLERY -> {
@@ -271,11 +274,40 @@ class ProfileFragment : Fragment() {
     private fun setImageForCamera(data: Intent?) {
         if (data?.extras?.get("data") == null) return
         val bitmap = data.extras?.get("data") as Bitmap
+
+        updateImageCameraToSever(bitmap)
+
         Glide.with(this)
             .asBitmap()
             .load(bitmap)
             .into(imgAvatarUpdate)
         bottomSheetDialogUpdateAvatarUser.dismiss()
+    }
+
+    private fun updateImageCameraToSever(bitmap: Bitmap) {
+        val baos = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
+        val data = baos.toByteArray()
+
+        val childRef = storageRef.child("images/" + UUID.randomUUID().toString())
+        val uploadTask = childRef.putBytes(data)
+        uploadTask.addOnSuccessListener(object : OnSuccessListener<UploadTask.TaskSnapshot> {
+            override fun onSuccess(taskSnapshot: UploadTask.TaskSnapshot?) {
+                childRef.downloadUrl.addOnSuccessListener(object : OnSuccessListener<Uri> {
+                    @SuppressLint("CheckResult")
+                    override fun onSuccess(uri: Uri?) {
+                        updateUserProfileViewModel.isUpdateAvatarToSever().subscribe { check ->
+                            if (check) {
+                                userManagerUtil.setUserUrlAvatar(uri.toString())
+                                if (progressBarAddLocation != null) progressBarAddLocation.visibility =
+                                        getVisibilityView(false)
+                            }
+                        }
+                        updateUserProfileViewModel.updateUserAvatarRequest(userManagerUtil.getUserId(), uri.toString())
+                    }
+                })
+            }
+        })
     }
 
     private fun setImageForGallery(data: Intent?) {
@@ -293,6 +325,35 @@ class ProfileFragment : Fragment() {
         val bitmap = BitmapFactory.decodeFile(filepath)
         imgAvatarUpdate.setImageBitmap(bitmap)
         bottomSheetDialogUpdateAvatarUser.dismiss()
+
+        updateImageToSever(uri)
+    }
+
+    private fun updateImageToSever(uri: Uri) {
+        if (uri != null) {
+            val childRef = storageRef.child("images/" + UUID.randomUUID().toString())
+            val uploadTask = childRef.putFile(uri)
+            uploadTask.addOnSuccessListener(object : OnSuccessListener<UploadTask.TaskSnapshot> {
+                override fun onSuccess(taskSnapshot: UploadTask.TaskSnapshot?) {
+                    childRef.downloadUrl.addOnSuccessListener(object : OnSuccessListener<Uri> {
+                        @SuppressLint("CheckResult")
+                        override fun onSuccess(uri: Uri?) {
+                            updateUserProfileViewModel.isUpdateAvatarToSever().subscribe { check ->
+                                if (check) {
+                                    userManagerUtil.setUserUrlAvatar(uri.toString())
+                                    if (progressBarAddLocation != null) progressBarAddLocation.visibility =
+                                            getVisibilityView(false)
+                                }
+                            }
+                            updateUserProfileViewModel.updateUserAvatarRequest(
+                                userManagerUtil.getUserId(),
+                                uri.toString()
+                            )
+                        }
+                    })
+                }
+            })
+        }
     }
 
     override fun onAttach(context: Context) {
@@ -301,10 +362,6 @@ class ProfileFragment : Fragment() {
         rxPermissionsSTORAGE = RxPermissions(FragmentActivity())
         userManagerUtil = UserManagerUtil.getInstance(context)
         updateUserProfileViewModel = UpdateUserProfileViewModel(context)
-    }
-
-    override fun onResume() {
-        super.onResume()
     }
 
 }
