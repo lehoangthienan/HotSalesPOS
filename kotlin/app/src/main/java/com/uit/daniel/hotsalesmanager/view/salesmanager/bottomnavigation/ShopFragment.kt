@@ -8,14 +8,12 @@ import android.net.Uri
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
 import com.jakewharton.rxbinding2.widget.RxTextView
 import com.uit.daniel.hotsalesmanager.R
 import com.uit.daniel.hotsalesmanager.data.response.ProductResult
-import com.uit.daniel.hotsalesmanager.utils.LocationUtils
 import com.uit.daniel.hotsalesmanager.utils.ProductManagerUtils
 import com.uit.daniel.hotsalesmanager.utils.getVisibilityView
 import com.uit.daniel.hotsalesmanager.view.custom.shopproduct.ShopProductAdapter
@@ -166,9 +164,9 @@ class ShopFragment : Fragment() {
         getProductsWithRadius(15)
     }
 
-    private fun getProductsWithRadius(radius: Int){
+    private fun getProductsWithRadius(radius: Int) {
         productsAdapter = ShopProductAdapter(
-            productManagerUtils.getProductsDistance(products, radius,activity),
+            productManagerUtils.getProductsDistance(products, radius, activity),
             object : ShopProductAdapter.OnItemClickedListener {
                 override fun onItemClicked(id: String) {
                     startProductDetailActivity(id)

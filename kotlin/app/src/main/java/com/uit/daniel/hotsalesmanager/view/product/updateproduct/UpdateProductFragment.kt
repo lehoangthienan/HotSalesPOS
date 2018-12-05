@@ -23,6 +23,7 @@ import com.google.firebase.storage.UploadTask
 import com.uit.daniel.hotsalesmanager.R
 import com.uit.daniel.hotsalesmanager.data.response.ProductResponse
 import com.uit.daniel.hotsalesmanager.utils.*
+import com.uit.daniel.hotsalesmanager.view.location.searchaddresslocation.SearchAddressLocationActivity
 import kotlinx.android.synthetic.main.fragment_update_product.*
 import java.io.ByteArrayOutputStream
 import java.util.*
@@ -70,6 +71,9 @@ class UpdateProductFragment : Fragment() {
         ivProductImage.setOnClickListener {
             showBottomDialog()
         }
+        tvAddLocation.setOnClickListener {
+            startSearchLocationActivity()
+        }
     }
 
     private fun isFullField() {
@@ -88,6 +92,7 @@ class UpdateProductFragment : Fragment() {
     private fun updateProduct() {
         updateProductViewModel.updateProductObservable().subscribe { check ->
             if (check) {
+                setLatLagOfProduct()
                 activity.finish()
                 activity.overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
             } else ToastSnackBar.showSnackbar("Update product fail!", view, activity)
@@ -102,15 +107,25 @@ class UpdateProductFragment : Fragment() {
         productResponse.result!![0].discount = etDiscount.text.toString().toInt()
         productResponse.result!![0].content = etContent.text.toString()
         productResponse.result!![0].image = imageUrl
+        productResponse.result?.get(0)?.lat = userManagerUtil.getLat()
+        productResponse.result?.get(0)?.lng = userManagerUtil.getLng()
     }
 
     @SuppressLint("CheckResult")
     private fun getProductDetail() {
         updateProductViewModel.productObservable().subscribe { response ->
             productResponse = response
+            userManagerUtil.setLng(productResponse.result?.get(0)?.lat!!)
+            userManagerUtil.setLng(productResponse.result?.get(0)?.lng!!)
             initView()
         }
         updateProductViewModel.product(productId)
+    }
+
+    private fun startSearchLocationActivity() {
+        val intent = Intent(activity, SearchAddressLocationActivity::class.java)
+        activity.startActivity(intent)
+        activity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
     }
 
     private fun initView() {
@@ -203,7 +218,7 @@ class UpdateProductFragment : Fragment() {
     }
 
     private fun setImageForCamera(data: Intent?) {
-        if (data?.extras?.get("data") == null){
+        if (data?.extras?.get("data") == null) {
             if (progressBarAddLocation != null) progressBarAddLocation.visibility =
                     getVisibilityView(false)
             return
@@ -247,7 +262,7 @@ class UpdateProductFragment : Fragment() {
 
     private fun setImageForGallery(data: Intent?) {
         //Get uri from picture choose from gallery
-        if (data?.data == null){
+        if (data?.data == null) {
             if (progressBarAddLocation != null) progressBarAddLocation.visibility =
                     getVisibilityView(false)
             return
