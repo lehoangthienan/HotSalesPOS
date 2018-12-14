@@ -37,18 +37,10 @@
 
 **Please click the image below to enlarge.**
 
-<img src="https://github.com/lehoangthienan/HotSalesPOS/blob/master/image/Screenshot_1543999114.png" height="600" width="300" hspace="40"><img src="https://github.com/Shashank02051997/LoginUI-Android/blob/master/Screenshots/Screenshot_20181211-033921.png" height="600" width="300" hspace="40">
+<img src="https://github.com/lehoangthienan/HotSalesPOS/blob/master/image/Screenshot_1543999114.png" height="600" width="300" hspace="40"><img src="https://github.com/lehoangthienan/HotSalesPOS/blob/master/image/Screenshot_1543999124.png" height="600" width="300" hspace="40">
 
-<img src="https://github.com/lehoangthienan/HotSalesPOS/blob/master/image/Screenshot_1543999124.png" height="600" width="300" hspace="40"><img src="https://github.com/Shashank02051997/LoginUI-Android/blob/master/Screenshots/Screenshot_20181211-033921.png" height="600" width="300" hspace="40">
+<img src="https://github.com/lehoangthienan/HotSalesPOS/blob/master/image/Screenshot_1543999185.png" height="600" width="300" hspace="40"><img src="https://github.com/lehoangthienan/HotSalesPOS/blob/master/image/Screenshot_1543999305.png" height="600" width="300" hspace="40">
 
-<img src="https://github.com/lehoangthienan/HotSalesPOS/blob/master/image/Screenshot_1543999185.png" height="600" width="300" hspace="40"><img src="https://github.com/Shashank02051997/LoginUI-Android/blob/master/Screenshots/Screenshot_20181211-033921.png" height="600" width="300" hspace="40">
+<img src="https://github.com/lehoangthienan/HotSalesPOS/blob/master/image/Screenshot_1543999217.png" height="600" width="300" hspace="40"><img src="https://github.com/lehoangthienan/HotSalesPOS/blob/master/image/Screenshot_1543999347.png" height="600" width="300" hspace="40">
 
-<img src="https://github.com/lehoangthienan/HotSalesPOS/blob/master/image/Screenshot_1543999305.png" height="600" width="300" hspace="40"><img src="https://github.com/Shashank02051997/LoginUI-Android/blob/master/Screenshots/Screenshot_20181211-033921.png" height="600" width="300" hspace="40">
-
-<img src=https://github.com/lehoangthienan/HotSalesPOS/blob/master/image/Screenshot_1543999217.png" height="600" width="300" hspace="40"><img src="https://github.com/Shashank02051997/LoginUI-Android/blob/master/Screenshots/Screenshot_20181211-033921.png" height="600" width="300" hspace="40">
-
-<img src="https://github.com/lehoangthienan/HotSalesPOS/blob/master/image/Screenshot_1543999347.png" height="600" width="300" hspace="40"><img src="https://github.com/Shashank02051997/LoginUI-Android/blob/master/Screenshots/Screenshot_20181211-033921.png" height="600" width="300" hspace="40">
-
-<img src=https://github.com/lehoangthienan/HotSalesPOS/blob/master/image/Screenshot_1543999428.png" height="600" width="300" hspace="40"><img src="https://github.com/Shashank02051997/LoginUI-Android/blob/master/Screenshots/Screenshot_20181211-033921.png" height="600" width="300" hspace="40">
-
-<img src=https://github.com/lehoangthienan/HotSalesPOS/blob/master/image/Screenshot_1543999434.png" height="600" width="300" hspace="40"><img src="https://github.com/Shashank02051997/LoginUI-Android/blob/master/Screenshots/Screenshot_20181211-033921.png" height="600" width="300" hspace="40">
+<img src="https://github.com/lehoangthienan/HotSalesPOS/blob/master/image/Screenshot_1543999428.png" height="600" width="300" hspace="40"><img src="https://github.com/lehoangthienan/HotSalesPOS/blob/master/image/Screenshot_1543999434.png" height="600" width="300" hspace="40">
