@@ -44,3 +44,5 @@
 <img src="https://github.com/lehoangthienan/HotSalesPOS/blob/master/image/Screenshot_1543999217.png" height="600" width="350" hspace="40"><img src="https://github.com/lehoangthienan/HotSalesPOS/blob/master/image/Screenshot_1543999347.png" height="600" width="350" hspace="40">
 
 <img src="https://github.com/lehoangthienan/HotSalesPOS/blob/master/image/Screenshot_1543999428.png" height="600" width="350" hspace="40"><img src="https://github.com/lehoangthienan/HotSalesPOS/blob/master/image/Screenshot_1543999434.png" height="600" width="350" hspace="40">
+
+<img src="https://github.com/lehoangthienan/HotSalesPOS/blob/master/image/Screenshot_1543999386.png" height="600" width="350" hspace="40"><img src="https://github.com/lehoangthienan/HotSalesPOS/blob/master/image/Screenshot_1543999226.png" height="600" width="350" hspace="40">
