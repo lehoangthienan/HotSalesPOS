@@ -90,9 +90,9 @@ class PhoneNumberFirebase {
                             override fun onComplete(@NonNull task: Task<GetTokenResult>) {
                                 if (task.isSuccessful) {
                                     idToken = task.result?.token
-
-
+                                    checkVerifiedCodePhoneNumberPublishSubject.onNext(true)
                                 } else {
+                                    //checkVerifiedCodePhoneNumberPublishSubject.onNext(true)
                                 }
                             }
                         })
