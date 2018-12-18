@@ -37,6 +37,7 @@ class ProductManagerUtils {
                 }
             }
         }
+        Log.d("CountXXX", productsDistance.size.toString())
         return productsDistance
     }
 
