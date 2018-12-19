@@ -6,6 +6,28 @@
 - ![#c5f015](https://placehold.it/15/c5f015/000000?text=+) `Kotlin-Mvvm-Android-Rx-Nodejs-MongoDB-ExpressJs-Okthttp`
 - ![#1589F0](https://placehold.it/15/1589F0/000000?text=+) `Made by Daniel`
 
+### Dependencies
+|Dependency    |Version |
+|--------------|--------|
+|Node.js       |8.12.0  |
+|npm           |6.4.1   |
+|Express       |4.16.4  |
+|MongoDB       |3.4.14  |
+|Mongoose      |5.3.13  |
+|Android Studio|3.0.2   |
+
+### Server-side:
+
+#### Node.js
+[Node.js®](https://nodejs.org/en/) is a JavaScript runtime built on [Chrome's V8 JavaScript engine](https://developers.google.com/v8/). Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient. Node.js' package ecosystem, [npm](https://www.npmjs.com/), is the largest ecosystem of open source libraries in the world.
+
+#### Express
+[Express](https://expressjs.com/) is a fast, unopinionated, minimalist web framework for [Node.js](https://nodejs.org/en/).
+
+#### MongoDB
+[MongoDB](https://www.mongodb.com/) is a document database with the scalability and flexibility that you want with the querying and indexing that you need.
+
+
 # App to show all product hot sales from website
 
 - User can sale all product
