@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="Gradle: com.github.faruktoptas:FancyShowCaseView-1.0.1">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/FancyShowCaseView-1.0.1.aar/fc5711e22f4e0cc64091c5c2f51e212c/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/FancyShowCaseView-1.0.1.aar/fc5711e22f4e0cc64091c5c2f51e212c/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/FancyShowCaseView-1.0.1.aar/dc0beff525d19c318a6d96995f0fe261/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/FancyShowCaseView-1.0.1.aar/dc0beff525d19c318a6d96995f0fe261/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

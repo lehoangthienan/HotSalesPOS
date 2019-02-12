@@ -13,6 +13,16 @@ import com.facebook.appevents.AppEventsLogger
 import com.uit.daniel.hotsalesmanager.view.salesmanager.SalesManagerActivity
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
+import android.content.Context.MODE_PRIVATE
+import android.R.id.edit
+import android.app.PendingIntent.getActivity
+import android.content.Context
+import com.google.firebase.internal.FirebaseAppHelper.getToken
+import com.google.firebase.iid.FirebaseInstanceId
+import android.R.attr.label
+import android.content.ClipData
+import android.content.ClipboardManager
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,8 +35,25 @@ class MainActivity : AppCompatActivity() {
 
         createKeyHashFacebook()
 
+        getTokenFirebase()
+
         initView()
         setTimeSleep()
+    }
+
+    private fun getTokenFirebase() {
+        FirebaseInstanceId.getInstance().instanceId.addOnSuccessListener(this) { instanceIdResult ->
+            val newToken = instanceIdResult.token
+            Log.e("newToken", newToken)
+
+            val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+            val clip = ClipData.newPlainText("abc", newToken)
+            clipboard.setPrimaryClip(clip)
+
+            this.getPreferences(Context.MODE_PRIVATE).edit().putString("fb", newToken).apply()
+        }
+
+        Log.d("newToken", this.getPreferences(Context.MODE_PRIVATE).getString("fb", "empty :("))
     }
 
     @SuppressLint("PackageManagerGetSignatures")
